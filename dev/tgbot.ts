@@ -1,12 +1,14 @@
 class tgbot {
   token: string
+  api_url:string
 
   constructor(token: string) {
     this.token = token
+    this.api_url = `https://api.telegram.org/bot${this.token}/`
   }
 
   public getMe() {
-    var payload = {
+    let payload = {
       "method": "getMe",
     }
     return this.start(payload)
@@ -25,7 +27,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (text === '') this.miss_parameter("chat_id")
-    var payload = {
+    let payload = {
       "method": "sendMessage",
       'chat_id': String(chat_id),
       'text': String(text),
@@ -43,12 +45,11 @@ class tgbot {
   }
 
   private start(payload: any) {
-    let Telegram_bot_key = this.token
     let data = {
       "method": "post",
       "payload": payload
     }
     // @ts-ignore
-    return UrlFetchApp.fetch("https://api.telegram.org/bot" + Telegram_bot_key + "/", data);
+    return UrlFetchApp.fetch(this.api_url, data);
   }
 }
