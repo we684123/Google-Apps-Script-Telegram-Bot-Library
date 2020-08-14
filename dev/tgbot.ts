@@ -442,8 +442,8 @@ class tgbot {
       'longitude': longitude,
       'title': title,
       'address': address,
-      'foursquare_id':foursquare_id,
-      'foursquare_type':foursquare_type,
+      'foursquare_id': foursquare_id,
+      'foursquare_type': foursquare_type,
       'disable_notification': disable_notification,
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
@@ -560,6 +560,114 @@ class tgbot {
     return this.start(payload)
   }
 
+  public getUserProfilePhotos(
+    {
+      user_id = '',
+      offset = '',
+      limit = 100,
+    } = {}
+  ) {
+    if (user_id === '') this.miss_parameter("user_id")
+    let payload = {
+      "method": "getUserProfilePhotos",
+      'user_id': Number(user_id),
+      "offset": offset,
+      "limit": limit,
+    }
+    return this.start(payload)
+  }
+
+  public getFile(
+    {
+      file_id = '',
+    } = {}
+  ) {
+    if (file_id === '') this.miss_parameter("file_id")
+    let payload = {
+      "method": "getFile",
+      'file_id': String(file_id),
+    }
+    return this.start(payload)
+  }
+
+  public kickChatMember(
+    {
+      chat_id = '',
+      user_id = '',
+      until_date = ''
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (user_id === '') this.miss_parameter("user_id")
+    let payload = {
+      "method": "kickChatMember",
+      'chat_id': String(chat_id),
+      'user_id': Number(user_id),
+      'until_date': Number(until_date)
+    }
+    return this.start(payload)
+  }
+
+  public unbanChatMember(
+    {
+      chat_id = '',
+      user_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (user_id === '') this.miss_parameter("user_id")
+    let payload = {
+      "method": "unbanChatMember",
+      'chat_id': String(chat_id),
+      'user_id': Number(user_id),
+    }
+    return this.start(payload)
+  }
+
+  public restrictChatMember(
+    {
+      chat_id = '',
+      user_id = '',
+      permissions = '',
+      until_date = ''
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (user_id === '') this.miss_parameter("user_id")
+    let payload = {
+      "method": "restrictChatMember",
+      'chat_id': String(chat_id),
+      'user_id': Number(user_id),
+      'permissions': permissions,
+      'until_date': Number(until_date)
+    }
+    return this.start(payload)
+  }
+
+  // === public 自家der方法 ===
+  public getPath(
+    {
+      file_id = '',
+    } = {}
+  ) {
+    if (file_id === '') this.miss_parameter("file_id")
+    const url = `"https://api.telegram.org/bot${this.token}/getFile?file_id=${file_id}`
+    // @ts-ignore
+    var html = UrlFetchApp.fetch(url);
+    html = JSON.parse(html);
+    var path = html.result.file_path
+    return path;
+  }
+
+  public getFileDownloadUrl(
+    {
+      path = ''
+    } = {}
+  ) {
+    if (path === '') this.miss_parameter("path")
+    let TGDurl = `https://api.telegram.org/file/bot${this.token}/${path}`
+    return TGDurl;
+  }
   // === private 自家der方法 ===
   private miss_parameter(parameter: string) {
     throw new Error(`Missing ${parameter}`)
