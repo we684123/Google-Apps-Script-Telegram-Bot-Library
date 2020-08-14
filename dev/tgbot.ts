@@ -21,8 +21,10 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
-    }
+    } = { /*chat_id=this.miss_parameter()*/ }
   ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (text === '') this.miss_parameter("chat_id")
     var payload = {
       "method": "sendMessage",
       'chat_id': String(chat_id),
@@ -36,13 +38,17 @@ class tgbot {
     return this.start(payload)
   }
 
+  private miss_parameter(parameter: string) {
+    throw new Error(`Missing ${parameter}`)
+  }
+
   private start(payload: any) {
     let Telegram_bot_key = this.token
     let data = {
       "method": "post",
       "payload": payload
     }
-
+    // @ts-ignore
     return UrlFetchApp.fetch("https://api.telegram.org/bot" + Telegram_bot_key + "/", data);
   }
 }
