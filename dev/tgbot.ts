@@ -941,11 +941,128 @@ class tgbot {
 
 
 
+  // === Updating messages ===
+  public editMessageText(
+    {
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      text = '',
+      parse_mode = '',
+      disable_web_page_preview = false,
+      reply_markup = ''
+    } = {}
+  ) {
+    if (text === '') this.miss_parameter("text")
+    let payload = {
+      "method": "editMessageText",
+      'chat_id': String(chat_id),
+      'message_id': String(message_id),
+      'inline_message_id': String(inline_message_id),
+      'text': String(text),
+      'parse_mode': parse_mode,
+      'disable_web_page_preview': disable_web_page_preview,
+      'reply_markup': reply_markup
+    }
+    return this.start(payload)
+  }
 
+  public editMessageCaption(
+    {
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      caption = '',
+      parse_mode = '',
+      disable_web_page_preview = false,
+      reply_markup = ''
+    } = {}
+  ) {
+    let payload = {
+      "method": "editMessageCaption",
+      'chat_id': String(chat_id),
+      'message_id': String(message_id),
+      'inline_message_id': String(inline_message_id),
+      'caption': String(caption),
+      'parse_mode': parse_mode,
+      'disable_web_page_preview': disable_web_page_preview,
+      'reply_markup': reply_markup
+    }
+    return this.start(payload)
+  }
 
+  public editMessageMedia(
+    {
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      media = '',
+      reply_markup = ''
+    } = {}
+  ) {
+    if (media === '') this.miss_parameter("media")
+    let payload = {
+      "method": "editMessageMedia",
+      'chat_id': String(chat_id),
+      'message_id': String(message_id),
+      'inline_message_id': String(inline_message_id),
+      'media': String(media),
+      'reply_markup': reply_markup
+    }
+    return this.start(payload)
+  }
 
+  public editMessageReplyMarkup(
+    {
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      reply_markup = ''
+    } = {}
+  ) {
+    let payload = {
+      "method": "editMessageReplyMarkup",
+      'chat_id': String(chat_id),
+      'message_id': String(message_id),
+      'inline_message_id': String(inline_message_id),
+      'reply_markup': reply_markup
+    }
+    return this.start(payload)
+  }
 
+  public stopPoll(
+    {
+      chat_id = '',
+      message_id = '',
+      reply_markup = ''
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (message_id === '') this.miss_parameter("message_id")
+    let payload = {
+      "method": "stopPoll",
+      'chat_id': String(chat_id),
+      'message_id': String(message_id),
+      'reply_markup': reply_markup
+    }
+    return this.start(payload)
+  }
 
+  public deleteMessage(
+    {
+      chat_id = '',
+      message_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (message_id === '') this.miss_parameter("message_id")
+    let payload = {
+      "method": "deleteMessage",
+      'chat_id': String(chat_id),
+      'message_id': String(message_id),
+    }
+    return this.start(payload)
+  }
 
 
 
