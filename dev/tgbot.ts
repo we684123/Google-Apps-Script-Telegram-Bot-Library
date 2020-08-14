@@ -644,6 +644,312 @@ class tgbot {
     return this.start(payload)
   }
 
+  public promoteChatMember(
+    {
+      chat_id = '',
+      user_id = '',
+      can_change_info = false,
+      can_post_messages = false,
+      can_edit_messages = false,
+      can_delete_messages = false,
+      can_invite_users = false,
+      can_restrict_members = false,
+      can_pin_messages = false,
+      can_promote_members = false,
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (user_id === '') this.miss_parameter("user_id")
+    let payload = {
+      "method": "promoteChatMember",
+      'chat_id': String(chat_id),
+      'user_id': Number(user_id),
+      'can_change_info': Boolean(can_change_info),
+      'can_post_messages': Boolean(can_post_messages),
+      'can_edit_messages': Boolean(can_edit_messages),
+      'can_delete_messages': Boolean(can_delete_messages),
+      'can_invite_users': Boolean(can_invite_users),
+      'can_restrict_members': Boolean(can_restrict_members),
+      'can_pin_messages': Boolean(can_pin_messages),
+      'can_promote_members': Boolean(can_promote_members),
+    }
+    return this.start(payload)
+  }
+
+  public setChatAdministratorCustomTitle(
+    {
+      chat_id = '',
+      user_id = '',
+      custom_title = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (user_id === '') this.miss_parameter("user_id")
+    let payload = {
+      "method": "setChatAdministratorCustomTitle",
+      'chat_id': String(chat_id),
+      'user_id': Number(user_id),
+      'custom_title': String(custom_title),
+    }
+    return this.start(payload)
+  }
+
+  public setChatPermissions(
+    {
+      chat_id = '',
+      permissions = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (permissions === '') this.miss_parameter("permissions")
+    let payload = {
+      "method": "setChatPermissions",
+      'chat_id': String(chat_id),
+      'permissions': Number(permissions),
+    }
+    return this.start(payload)
+  }
+
+  public exportChatInviteLink(
+    {
+      chat_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let payload = {
+      "method": "exportChatInviteLink",
+      'chat_id': String(chat_id),
+    }
+    return this.start(payload)
+  }
+
+  public setChatPhoto(
+    {
+      chat_id = '',
+      photo = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (photo === '') this.miss_parameter("photo")
+    let payload = {
+      "method": "setChatPhoto",
+      'chat_id': String(chat_id),
+      'photo': photo,
+    }
+    return this.start(payload)
+  }
+
+  public deleteChatPhoto(
+    {
+      chat_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let payload = {
+      "method": "deleteChatPhoto",
+      'chat_id': String(chat_id),
+    }
+    return this.start(payload)
+  }
+
+  public setChatTitle(
+    {
+      chat_id = '',
+      title = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (title === '') this.miss_parameter("title")
+    let payload = {
+      "method": "setChatTitle",
+      'chat_id': String(chat_id),
+      'title': title,
+    }
+    return this.start(payload)
+  }
+
+  public setChatDescription(
+    {
+      chat_id = '',
+      description = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (description === '') this.miss_parameter("description")
+    let payload = {
+      "method": "setChatDescription",
+      'chat_id': String(chat_id),
+      'description': description,
+    }
+    return this.start(payload)
+  }
+
+  public pinChatMessage(
+    {
+      chat_id = '',
+      message_id = '',
+      disable_notification = false,
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (message_id === '') this.miss_parameter("message_id")
+    let payload = {
+      "method": "pinChatMessage",
+      'chat_id': String(chat_id),
+      'message_id': message_id,
+      'disable_notification': disable_notification,
+    }
+    return this.start(payload)
+  }
+
+  public unpinChatMessage(
+    {
+      chat_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let payload = {
+      "method": "unpinChatMessage",
+      'chat_id': String(chat_id),
+    }
+    return this.start(payload)
+  }
+
+  public leaveChat(
+    {
+      chat_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let payload = {
+      "method": "leaveChat",
+      'chat_id': String(chat_id),
+    }
+    return this.start(payload)
+  }
+
+  public getChatAdministrators(
+    {
+      chat_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let payload = {
+      "method": "getChatAdministrators",
+      'chat_id': String(chat_id),
+    }
+    return this.start(payload)
+  }
+
+  public getChatMembersCount(
+    {
+      chat_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let payload = {
+      "method": "getChatMembersCount",
+      'chat_id': String(chat_id),
+    }
+    return this.start(payload)
+  }
+
+  public getChatMember(
+    {
+      chat_id = '',
+      user_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (user_id === '') this.miss_parameter("user_id")
+    let payload = {
+      "method": "getChatMembersCount",
+      'chat_id': String(chat_id),
+      'user_id': Number(user_id),
+    }
+    return this.start(payload)
+  }
+
+  public setChatStickerSet(
+    {
+      chat_id = '',
+      sticker_set_name = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let payload = {
+      "method": "setChatStickerSet",
+      'chat_id': String(chat_id),
+      'sticker_set_name': sticker_set_name,
+    }
+    return this.start(payload)
+  }
+
+  public deleteChatStickerSet(
+    {
+      chat_id = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let payload = {
+      "method": "deleteChatStickerSet",
+      'chat_id': String(chat_id),
+    }
+    return this.start(payload)
+  }
+
+  public answerCallbackQuery(
+    {
+      callback_query_id = '',
+      text = '',
+      show_alert = false,
+      url = '',
+      cache_time = '',
+    } = {}
+  ) {
+    if (callback_query_id === '') this.miss_parameter("callback_query_id")
+    let payload = {
+      "method": "answerCallbackQuery",
+      'callback_query_id': String(callback_query_id),
+      'text': String(text),
+      'show_alert': Boolean(show_alert),
+      'url': String(url),
+      'cache_time': Number(cache_time),
+    }
+    return this.start(payload)
+  }
+
+  public setMyCommands(
+    {
+      commands = [],
+    } = {}
+  ) {
+    if (commands === []) this.miss_parameter("commands")
+    let payload = {
+      "method": "setMyCommands",
+      'commands': commands,
+    }
+    return this.start(payload)
+  }
+
+  public getMyCommands() {
+    let payload = {
+      "method": "getMyCommands",
+    }
+    return this.start(payload)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
   // === public 自家der方法 ===
   public getPath(
     {
