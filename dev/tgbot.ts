@@ -1221,6 +1221,35 @@ class tgbot {
   }
 
 
+  // === Inline mode ===
+  public answerInlineQuery(
+    {
+      inline_query_id = '',
+      results = [],
+      cache_time = '',
+      is_personal = '',
+      next_offset = '',
+      switch_pm_text = '',
+      switch_pm_parameter = '',
+    } = {}
+  ) {
+    if (inline_query_id === '') this.miss_parameter("inline_query_id")
+    if (results === []) this.miss_parameter("results")
+    let payload = {
+      "method": "answerInlineQuery",
+      'inline_query_id': String(inline_query_id),
+      'results': String(results),
+      'cache_time': cache_time,
+      'is_personal': is_personal,
+      'next_offset': next_offset,
+      'switch_pm_text': switch_pm_text,
+      'switch_pm_parameter': switch_pm_parameter,
+    }
+    return this.start(payload)
+  }
+
+  
+
 
   // === public 自家der方法 ===
   public getPath(
