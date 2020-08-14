@@ -72,7 +72,7 @@ class tgbot {
       disable_web_page_preview = false,
       disable_notification = false,
       reply_to_message_id = '',
-      reply_markup = ''
+      reply_markup = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -85,7 +85,7 @@ class tgbot {
       'disable_web_page_preview': disable_web_page_preview,
       'disable_notification': disable_notification,
       'reply_to_message_id': reply_to_message_id,
-      'reply_markup': reply_markup
+      'reply_markup': reply_markup,
     }
     return this.start(payload)
   }
@@ -1064,6 +1064,161 @@ class tgbot {
     return this.start(payload)
   }
 
+
+
+  // === Stickers ===
+  public sendSticker(
+    {
+      chat_id = '',
+      sticker = '',
+      disable_notification = false,
+      reply_to_message_id = '',
+      reply_markup = '',
+    } = {}
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (sticker === '') this.miss_parameter("sticker")
+    let payload = {
+      "method": "sendSticker",
+      'chat_id': String(chat_id),
+      'sticker': sticker,
+      'disable_notification': disable_notification,
+      'reply_to_message_id': reply_to_message_id,
+      'reply_markup': reply_markup,
+    }
+    return this.start(payload)
+  }
+
+  public getStickerSet(
+    {
+      name = '',
+    } = {}
+  ) {
+    if (name === '') this.miss_parameter("name")
+    let payload = {
+      "method": "getStickerSet",
+      'name': String(name),
+    }
+    return this.start(payload)
+  }
+
+  public uploadStickerFile(
+    {
+      user_id = '',
+      png_sticker = '',
+    } = {}
+  ) {
+    if (user_id === '') this.miss_parameter("user_id")
+    if (png_sticker === '') this.miss_parameter("png_sticker")
+    let payload = {
+      "method": "uploadStickerFile",
+      'user_id': String(user_id),
+      'png_sticker': png_sticker,
+    }
+    return this.start(payload)
+  }
+
+  public createNewStickerSet(
+    {
+      user_id = '',
+      name = '',
+      title = '',
+      png_sticker = '',
+      tgs_sticker = '',
+      emojis = '',
+      contains_masks = false,
+      mask_position = '',
+    } = {}
+  ) {
+    if (user_id === '') this.miss_parameter("user_id")
+    if (name === '') this.miss_parameter("name")
+    if (title === '') this.miss_parameter("title")
+    if (emojis === '') this.miss_parameter("emojis")
+    let payload = {
+      "method": "createNewStickerSet",
+      'user_id': String(user_id),
+      'name': String(name),
+      'title': String(title),
+      'png_sticker': png_sticker,
+      'tgs_sticker': tgs_sticker,
+      'emojis': String(emojis),
+      'contains_masks': contains_masks,
+      'mask_position': mask_position,
+    }
+    return this.start(payload)
+  }
+
+  public addStickerToSet(
+    {
+      user_id = '',
+      name = '',
+      png_sticker = '',
+      tgs_sticker = '',
+      emojis = '',
+      mask_position = '',
+    } = {}
+  ) {
+    if (user_id === '') this.miss_parameter("user_id")
+    if (name === '') this.miss_parameter("name")
+    if (emojis === '') this.miss_parameter("emojis")
+    let payload = {
+      "method": "addStickerToSet",
+      'user_id': String(user_id),
+      'name': String(name),
+      'png_sticker': png_sticker,
+      'tgs_sticker': tgs_sticker,
+      'emojis': String(emojis),
+      'mask_position': mask_position,
+    }
+    return this.start(payload)
+  }
+
+  public setStickerPositionInSet(
+    {
+      sticker = '',
+      position = '',
+    } = {}
+  ) {
+    if (sticker === '') this.miss_parameter("sticker")
+    if (position === '') this.miss_parameter("position")
+    let payload = {
+      "method": "setStickerPositionInSet",
+      'sticker': String(sticker),
+      'position': Number(position),
+    }
+    return this.start(payload)
+  }
+
+  public deleteStickerFromSet(
+    {
+      sticker = '',
+    } = {}
+  ) {
+    if (sticker === '') this.miss_parameter("sticker")
+    let payload = {
+      "method": "deleteStickerFromSet",
+      'sticker': String(sticker),
+    }
+    return this.start(payload)
+  }
+
+  public setStickerSetThumb(
+    {
+      name = '',
+      user_id = '',
+      thumb = '',
+    } = {}
+  ) {
+    if (name === '') this.miss_parameter("name")
+    if (user_id === '') this.miss_parameter("user_id")
+    let payload = {
+      "method": "setStickerSetThumb",
+      'name': String(name),
+      'user_id': String(user_id),
+      'thumb': thumb,
+    }
+    return this.start(payload)
+  }
 
 
 
