@@ -1248,7 +1248,7 @@ class tgbot {
     return this.start(payload)
   }
 
-  
+
 
 
   // === public 自家der方法 ===
@@ -1260,9 +1260,9 @@ class tgbot {
     if (file_id === '') this.miss_parameter("file_id")
     const url = `"https://api.telegram.org/bot${this.token}/getFile?file_id=${file_id}`
     // @ts-ignore
-    var html = UrlFetchApp.fetch(url);
-    html = JSON.parse(html);
-    var path = html.result.file_path
+    var html:string = UrlFetchApp.fetch(url);
+    var json_html:any = JSON.parse(html);
+    var path = json_html.result.file_path
     return path;
   }
 
