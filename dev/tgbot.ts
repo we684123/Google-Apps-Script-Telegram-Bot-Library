@@ -14,14 +14,14 @@ class tgbot {
     allowed_updates = ''
   } = {}
   ) {
-    let payload = {
+    let start_payload = {
       "method": "getUpdates",
       "offset": offset,
       "limit": limit,
       "timeout": timeout,
       "allowed_updates": allowed_updates,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setWebhook({
@@ -32,36 +32,36 @@ class tgbot {
   } = {}
   ) {
     if (url === '') this.miss_parameter("url")
-    let payload = {
+    let start_payload = {
       "method": "setWebhook",
       "url": url,
       "certificate": certificate,
       "max_connections": max_connections,
       "allowed_updates": allowed_updates,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public deleteWebhook() {
-    let payload = {
+    let start_payload = {
       "method": "deleteWebhook",
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public getWebhookInfo() {
-    let payload = {
+    let start_payload = {
       "method": "getWebhookInfo",
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   // === Available methods ===
   public getMe() {
-    let payload = {
+    let start_payload = {
       "method": "getMe",
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendMessage(
@@ -77,7 +77,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (text === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "sendMessage",
       'chat_id': String(chat_id),
       'text': String(text),
@@ -87,7 +87,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public forwardMessage(
@@ -102,7 +102,7 @@ class tgbot {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (from_chat_id === '') this.miss_parameter("from_chat_id")
     if (message_id === '') this.miss_parameter("message_id")
-    let payload = {
+    let start_payload = {
       "method": "forwardMessage",
       'chat_id': String(chat_id),
       'from_chat_id': String(from_chat_id),
@@ -110,7 +110,7 @@ class tgbot {
       'disable_notification': disable_notification,
       'message_id': message_id
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendPhoto(
@@ -126,7 +126,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (photo === '') this.miss_parameter("photo")
-    let payload = {
+    let start_payload = {
       "method": "sendPhoto",
       'chat_id': String(chat_id),
       'photo': photo,
@@ -136,7 +136,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendAudio(
@@ -156,7 +156,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (audio === '') this.miss_parameter("audio")
-    let payload = {
+    let start_payload = {
       "method": "sendAudio",
       'chat_id': String(chat_id),
       'audio': audio,
@@ -170,7 +170,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendDocument(
@@ -187,7 +187,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (document === '') this.miss_parameter("document")
-    let payload = {
+    let start_payload = {
       "method": "sendDocument",
       'chat_id': String(chat_id),
       'document': document,
@@ -198,7 +198,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendVideo(
@@ -219,7 +219,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (video === '') this.miss_parameter("video")
-    let payload = {
+    let start_payload = {
       "method": "sendVideo",
       'chat_id': String(chat_id),
       'video': video,
@@ -234,7 +234,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendAnimation(
@@ -254,7 +254,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (animation === '') this.miss_parameter("animation")
-    let payload = {
+    let start_payload = {
       "method": "sendAnimation",
       'chat_id': String(chat_id),
       'animation': animation,
@@ -268,7 +268,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendVoice(
@@ -285,7 +285,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (voice === '') this.miss_parameter("voice")
-    let payload = {
+    let start_payload = {
       "method": "sendVoice",
       'chat_id': String(chat_id),
       'voice': voice,
@@ -296,7 +296,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendVideoNote(
@@ -313,7 +313,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (video_note === '') this.miss_parameter("video_note")
-    let payload = {
+    let start_payload = {
       "method": "sendVideoNote",
       'chat_id': String(chat_id),
       'video_note': video_note,
@@ -324,7 +324,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendMediaGroup(
@@ -337,14 +337,14 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (media === '') this.miss_parameter("media")
-    let payload = {
+    let start_payload = {
       "method": "sendMediaGroup",
       'chat_id': String(chat_id),
       'media': media,
       'disable_notification': disable_notification,
       'reply_to_message_id': reply_to_message_id,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendLocation(
@@ -361,7 +361,7 @@ class tgbot {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (latitude === '') this.miss_parameter("latitude")
     if (longitude === '') this.miss_parameter("longitude")
-    let payload = {
+    let start_payload = {
       "method": "sendLocation",
       'chat_id': String(chat_id),
       'latitude': latitude,
@@ -371,7 +371,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public editMessageLiveLocation(
@@ -386,7 +386,7 @@ class tgbot {
   ) {
     if (latitude === '') this.miss_parameter("latitude")
     if (longitude === '') this.miss_parameter("longitude")
-    let payload = {
+    let start_payload = {
       "method": "editMessageLiveLocation",
       'chat_id': String(chat_id),
       'message_id': message_id,
@@ -395,7 +395,7 @@ class tgbot {
       'longitude': longitude,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public stopMessageLiveLocation(
@@ -406,14 +406,14 @@ class tgbot {
       reply_markup = ''
     } = {}
   ) {
-    let payload = {
+    let start_payload = {
       "method": "stopMessageLiveLocation",
       'chat_id': String(chat_id),
       'message_id': message_id,
       'inline_message_id': inline_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendVenue(
@@ -435,7 +435,7 @@ class tgbot {
     if (longitude === '') this.miss_parameter("longitude")
     if (title === '') this.miss_parameter("title")
     if (address === '') this.miss_parameter("address")
-    let payload = {
+    let start_payload = {
       "method": "sendVenue",
       'chat_id': String(chat_id),
       'latitude': latitude,
@@ -448,7 +448,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendContact(
@@ -466,7 +466,7 @@ class tgbot {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (phone_number === '') this.miss_parameter("phone_number")
     if (first_name === '') this.miss_parameter("first_name")
-    let payload = {
+    let start_payload = {
       "method": "sendContact",
       'chat_id': String(chat_id),
       'phone_number': phone_number,
@@ -477,7 +477,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendPoll(
@@ -502,7 +502,7 @@ class tgbot {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (question === '') this.miss_parameter("question")
     if (options === '') this.miss_parameter("options")
-    let payload = {
+    let start_payload = {
       "method": "sendPoll",
       'chat_id': String(chat_id),
       'question': question,
@@ -520,7 +520,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendDice(
@@ -533,7 +533,7 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "sendDice",
       'chat_id': String(chat_id),
       'emoji': emoji,
@@ -541,7 +541,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public sendChatAction(
@@ -552,12 +552,12 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (action === '') this.miss_parameter("action")
-    let payload = {
+    let start_payload = {
       "method": "sendChatAction",
       'chat_id': String(chat_id),
       'action': action,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public getUserProfilePhotos(
@@ -568,13 +568,13 @@ class tgbot {
     } = {}
   ) {
     if (user_id === '') this.miss_parameter("user_id")
-    let payload = {
+    let start_payload = {
       "method": "getUserProfilePhotos",
       'user_id': Number(user_id),
       "offset": offset,
       "limit": limit,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public getFile(
@@ -583,11 +583,11 @@ class tgbot {
     } = {}
   ) {
     if (file_id === '') this.miss_parameter("file_id")
-    let payload = {
+    let start_payload = {
       "method": "getFile",
       'file_id': String(file_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public kickChatMember(
@@ -599,13 +599,13 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (user_id === '') this.miss_parameter("user_id")
-    let payload = {
+    let start_payload = {
       "method": "kickChatMember",
       'chat_id': String(chat_id),
       'user_id': Number(user_id),
       'until_date': Number(until_date)
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public unbanChatMember(
@@ -616,12 +616,12 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (user_id === '') this.miss_parameter("user_id")
-    let payload = {
+    let start_payload = {
       "method": "unbanChatMember",
       'chat_id': String(chat_id),
       'user_id': Number(user_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public restrictChatMember(
@@ -634,14 +634,14 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (user_id === '') this.miss_parameter("user_id")
-    let payload = {
+    let start_payload = {
       "method": "restrictChatMember",
       'chat_id': String(chat_id),
       'user_id': Number(user_id),
       'permissions': permissions,
       'until_date': Number(until_date)
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public promoteChatMember(
@@ -660,7 +660,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (user_id === '') this.miss_parameter("user_id")
-    let payload = {
+    let start_payload = {
       "method": "promoteChatMember",
       'chat_id': String(chat_id),
       'user_id': Number(user_id),
@@ -673,7 +673,7 @@ class tgbot {
       'can_pin_messages': Boolean(can_pin_messages),
       'can_promote_members': Boolean(can_promote_members),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setChatAdministratorCustomTitle(
@@ -685,13 +685,13 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (user_id === '') this.miss_parameter("user_id")
-    let payload = {
+    let start_payload = {
       "method": "setChatAdministratorCustomTitle",
       'chat_id': String(chat_id),
       'user_id': Number(user_id),
       'custom_title': String(custom_title),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setChatPermissions(
@@ -702,12 +702,12 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (permissions === '') this.miss_parameter("permissions")
-    let payload = {
+    let start_payload = {
       "method": "setChatPermissions",
       'chat_id': String(chat_id),
       'permissions': Number(permissions),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public exportChatInviteLink(
@@ -716,11 +716,11 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "exportChatInviteLink",
       'chat_id': String(chat_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setChatPhoto(
@@ -731,12 +731,12 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (photo === '') this.miss_parameter("photo")
-    let payload = {
+    let start_payload = {
       "method": "setChatPhoto",
       'chat_id': String(chat_id),
       'photo': photo,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public deleteChatPhoto(
@@ -745,11 +745,11 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "deleteChatPhoto",
       'chat_id': String(chat_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setChatTitle(
@@ -760,12 +760,12 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (title === '') this.miss_parameter("title")
-    let payload = {
+    let start_payload = {
       "method": "setChatTitle",
       'chat_id': String(chat_id),
       'title': title,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setChatDescription(
@@ -776,12 +776,12 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (description === '') this.miss_parameter("description")
-    let payload = {
+    let start_payload = {
       "method": "setChatDescription",
       'chat_id': String(chat_id),
       'description': description,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public pinChatMessage(
@@ -793,13 +793,13 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (message_id === '') this.miss_parameter("message_id")
-    let payload = {
+    let start_payload = {
       "method": "pinChatMessage",
       'chat_id': String(chat_id),
       'message_id': message_id,
       'disable_notification': disable_notification,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public unpinChatMessage(
@@ -808,11 +808,11 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "unpinChatMessage",
       'chat_id': String(chat_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public leaveChat(
@@ -821,11 +821,11 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "leaveChat",
       'chat_id': String(chat_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public getChatAdministrators(
@@ -834,11 +834,11 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "getChatAdministrators",
       'chat_id': String(chat_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public getChatMembersCount(
@@ -847,11 +847,11 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "getChatMembersCount",
       'chat_id': String(chat_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public getChatMember(
@@ -862,12 +862,12 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (user_id === '') this.miss_parameter("user_id")
-    let payload = {
+    let start_payload = {
       "method": "getChatMembersCount",
       'chat_id': String(chat_id),
       'user_id': Number(user_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setChatStickerSet(
@@ -877,12 +877,12 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "setChatStickerSet",
       'chat_id': String(chat_id),
       'sticker_set_name': sticker_set_name,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public deleteChatStickerSet(
@@ -891,11 +891,11 @@ class tgbot {
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    let payload = {
+    let start_payload = {
       "method": "deleteChatStickerSet",
       'chat_id': String(chat_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public answerCallbackQuery(
@@ -908,7 +908,7 @@ class tgbot {
     } = {}
   ) {
     if (callback_query_id === '') this.miss_parameter("callback_query_id")
-    let payload = {
+    let start_payload = {
       "method": "answerCallbackQuery",
       'callback_query_id': String(callback_query_id),
       'text': String(text),
@@ -916,7 +916,7 @@ class tgbot {
       'url': String(url),
       'cache_time': Number(cache_time),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setMyCommands(
@@ -925,18 +925,18 @@ class tgbot {
     } = {}
   ) {
     if (commands === []) this.miss_parameter("commands")
-    let payload = {
+    let start_payload = {
       "method": "setMyCommands",
       'commands': commands,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public getMyCommands() {
-    let payload = {
+    let start_payload = {
       "method": "getMyCommands",
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
 
@@ -954,7 +954,7 @@ class tgbot {
     } = {}
   ) {
     if (text === '') this.miss_parameter("text")
-    let payload = {
+    let start_payload = {
       "method": "editMessageText",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
@@ -964,7 +964,7 @@ class tgbot {
       'disable_web_page_preview': disable_web_page_preview,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public editMessageCaption(
@@ -978,7 +978,7 @@ class tgbot {
       reply_markup = ''
     } = {}
   ) {
-    let payload = {
+    let start_payload = {
       "method": "editMessageCaption",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
@@ -988,7 +988,7 @@ class tgbot {
       'disable_web_page_preview': disable_web_page_preview,
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public editMessageMedia(
@@ -1001,7 +1001,7 @@ class tgbot {
     } = {}
   ) {
     if (media === '') this.miss_parameter("media")
-    let payload = {
+    let start_payload = {
       "method": "editMessageMedia",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
@@ -1009,7 +1009,7 @@ class tgbot {
       'media': String(media),
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public editMessageReplyMarkup(
@@ -1020,14 +1020,14 @@ class tgbot {
       reply_markup = ''
     } = {}
   ) {
-    let payload = {
+    let start_payload = {
       "method": "editMessageReplyMarkup",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
       'inline_message_id': String(inline_message_id),
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public stopPoll(
@@ -1039,13 +1039,13 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (message_id === '') this.miss_parameter("message_id")
-    let payload = {
+    let start_payload = {
       "method": "stopPoll",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
       'reply_markup': reply_markup
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public deleteMessage(
@@ -1056,12 +1056,12 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (message_id === '') this.miss_parameter("message_id")
-    let payload = {
+    let start_payload = {
       "method": "deleteMessage",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
 
@@ -1078,7 +1078,7 @@ class tgbot {
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (sticker === '') this.miss_parameter("sticker")
-    let payload = {
+    let start_payload = {
       "method": "sendSticker",
       'chat_id': String(chat_id),
       'sticker': sticker,
@@ -1086,7 +1086,7 @@ class tgbot {
       'reply_to_message_id': reply_to_message_id,
       'reply_markup': reply_markup,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public getStickerSet(
@@ -1095,11 +1095,11 @@ class tgbot {
     } = {}
   ) {
     if (name === '') this.miss_parameter("name")
-    let payload = {
+    let start_payload = {
       "method": "getStickerSet",
       'name': String(name),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public uploadStickerFile(
@@ -1110,12 +1110,12 @@ class tgbot {
   ) {
     if (user_id === '') this.miss_parameter("user_id")
     if (png_sticker === '') this.miss_parameter("png_sticker")
-    let payload = {
+    let start_payload = {
       "method": "uploadStickerFile",
       'user_id': String(user_id),
       'png_sticker': png_sticker,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public createNewStickerSet(
@@ -1134,7 +1134,7 @@ class tgbot {
     if (name === '') this.miss_parameter("name")
     if (title === '') this.miss_parameter("title")
     if (emojis === '') this.miss_parameter("emojis")
-    let payload = {
+    let start_payload = {
       "method": "createNewStickerSet",
       'user_id': String(user_id),
       'name': String(name),
@@ -1145,7 +1145,7 @@ class tgbot {
       'contains_masks': contains_masks,
       'mask_position': mask_position,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public addStickerToSet(
@@ -1161,7 +1161,7 @@ class tgbot {
     if (user_id === '') this.miss_parameter("user_id")
     if (name === '') this.miss_parameter("name")
     if (emojis === '') this.miss_parameter("emojis")
-    let payload = {
+    let start_payload = {
       "method": "addStickerToSet",
       'user_id': String(user_id),
       'name': String(name),
@@ -1170,7 +1170,7 @@ class tgbot {
       'emojis': String(emojis),
       'mask_position': mask_position,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setStickerPositionInSet(
@@ -1181,12 +1181,12 @@ class tgbot {
   ) {
     if (sticker === '') this.miss_parameter("sticker")
     if (position === '') this.miss_parameter("position")
-    let payload = {
+    let start_payload = {
       "method": "setStickerPositionInSet",
       'sticker': String(sticker),
       'position': Number(position),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public deleteStickerFromSet(
@@ -1195,11 +1195,11 @@ class tgbot {
     } = {}
   ) {
     if (sticker === '') this.miss_parameter("sticker")
-    let payload = {
+    let start_payload = {
       "method": "deleteStickerFromSet",
       'sticker': String(sticker),
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
   public setStickerSetThumb(
@@ -1211,13 +1211,13 @@ class tgbot {
   ) {
     if (name === '') this.miss_parameter("name")
     if (user_id === '') this.miss_parameter("user_id")
-    let payload = {
+    let start_payload = {
       "method": "setStickerSetThumb",
       'name': String(name),
       'user_id': String(user_id),
       'thumb': thumb,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
 
@@ -1235,7 +1235,7 @@ class tgbot {
   ) {
     if (inline_query_id === '') this.miss_parameter("inline_query_id")
     if (results === []) this.miss_parameter("results")
-    let payload = {
+    let start_payload = {
       "method": "answerInlineQuery",
       'inline_query_id': String(inline_query_id),
       'results': String(results),
@@ -1245,10 +1245,11 @@ class tgbot {
       'switch_pm_text': switch_pm_text,
       'switch_pm_parameter': switch_pm_parameter,
     }
-    return this.start(payload)
+    return this.start(start_payload)
   }
 
 
+  
 
 
   // === public 自家der方法 ===
