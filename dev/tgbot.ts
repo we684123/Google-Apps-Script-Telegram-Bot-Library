@@ -1249,7 +1249,89 @@ class tgbot {
   }
 
 
-  
+
+  // === Payments ===
+  public sendInvoice({
+    chat_id = '',
+    title = '',
+    description = '',
+    payload = '',
+    provider_token = '',
+    start_parameter = '',
+    currency = '',
+    prices = [],
+    provider_data = '',
+    photo_url = '',
+    photo_size = '',
+    photo_width = '',
+    photo_height = '',
+    need_name = false,
+    need_phone_number = false,
+    need_email = false,
+    need_shipping_address = false,
+    send_phone_number_to_provider = false,
+    send_email_to_provider = false,
+    is_flexible = false,
+    disable_notification = false,
+    reply_to_message_id = '',
+    reply_markup = '',
+  } = {}) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (title === '') this.miss_parameter("title")
+    if (description === '') this.miss_parameter("description")
+    if (payload === '') this.miss_parameter("payload")
+    if (provider_token === '') this.miss_parameter("provider_token")
+    if (start_parameter === '') this.miss_parameter("start_parameter")
+    if (currency === '') this.miss_parameter("currency")
+    if (prices === []) this.miss_parameter("prices")
+    let start_payload = {
+      "method": "sendInvoice",
+      'chat_id': String(chat_id),
+      'title': String(title),
+      'description': description,
+      'payload': payload,
+      'provider_token': provider_token,
+      'start_parameter': start_parameter,
+      'currency': currency,
+      'prices': prices,
+      'provider_data': provider_data,
+      'photo_url': photo_url,
+      'photo_size': photo_size,
+      'photo_width': photo_width,
+      'photo_height': photo_height,
+      'need_name': need_name,
+      'need_phone_number': need_phone_number,
+      'need_email': need_email,
+      'need_shipping_address': need_shipping_address,
+      'send_phone_number_to_provider': send_phone_number_to_provider,
+      'send_email_to_provider': send_email_to_provider,
+      'is_flexible': is_flexible,
+      'disable_notification': disable_notification,
+      'reply_to_message_id': reply_to_message_id,
+      'reply_markup': reply_markup,
+    }
+    return this.start(start_payload)
+  }
+
+  public answerShippingQuery(
+    {
+      shipping_query_id = '',
+      ok = '',
+      shipping_options = '',
+      error_message = '',
+    } = {}
+  ) {
+    if (shipping_query_id === '') this.miss_parameter("shipping_query_id")
+    if (ok === '') this.miss_parameter("ok")
+    let start_payload = {
+      "method": "answerShippingQuery",
+      'shipping_query_id': String(shipping_query_id),
+      'ok': Boolean(ok),
+      'shipping_options	': shipping_options,
+      'error_message': error_message,
+    }
+    return this.start(start_payload)
+  }
 
 
   // === public 自家der方法 ===
@@ -1261,8 +1343,8 @@ class tgbot {
     if (file_id === '') this.miss_parameter("file_id")
     const url = `"https://api.telegram.org/bot${this.token}/getFile?file_id=${file_id}`
     // @ts-ignore
-    var html:string = UrlFetchApp.fetch(url);
-    var json_html:any = JSON.parse(html);
+    var html: string = UrlFetchApp.fetch(url);
+    var json_html: any = JSON.parse(html);
     var path = json_html.result.file_path
     return path;
   }
