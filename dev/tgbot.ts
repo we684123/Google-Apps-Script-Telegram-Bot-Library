@@ -71,7 +71,7 @@ class tgbot {
       parse_mode = '',
       disable_web_page_preview = false,
       disable_notification = false,
-      reply_to_message_id = '',
+      reply_to_message_id = 0,
       reply_markup = '',
     } = {}
   ) {
