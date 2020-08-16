@@ -1333,6 +1333,24 @@ class tgbot {
     return this.start(start_payload)
   }
 
+  public answerPreCheckoutQuery(
+    {
+      pre_checkout_query_id = '',
+      ok = '',
+      error_message = '',
+    } = {}
+  ) {
+    if (pre_checkout_query_id === '') this.miss_parameter("pre_checkout_query_id")
+    if (ok === '') this.miss_parameter("ok")
+    let start_payload = {
+      "method": "answerPreCheckoutQuery",
+      'pre_checkout_query_id': String(pre_checkout_query_id),
+      'ok': Boolean(ok),
+      'error_message': error_message,
+    }
+    return this.start(start_payload)
+  }
+
 
   // === public 自家der方法 ===
   public getPath(
