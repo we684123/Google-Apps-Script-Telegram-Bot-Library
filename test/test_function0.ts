@@ -8,7 +8,7 @@ function unit_test2() {
   logger.set_sheet_page_name("test")
   logger.set_use_sheet(true);
 
-  var bot22 = new tgbot4("909196871:AAHFdyF9E_LhvjjPePs6JhNHVtDU79unK4I")
+  var bot22 = new tgbot("909196871:AAHFdyF9E_LhvjjPePs6JhNHVtDU79unK4I")
   var i = 0
 
 
@@ -23,7 +23,8 @@ function unit_test2() {
     )
   } catch (error) { logger.error(error) }
 
-  bot22.sendMessage({"chat_id":123,'text':''})
-
-
+  bot22.sendMessage({ "chat_id": 123, 'text': '' })
+  bot22.getUpdates()
+  var r = new tgbot()
+  r.getUpdates()
 }

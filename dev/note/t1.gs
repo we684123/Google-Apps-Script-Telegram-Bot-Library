@@ -1,7 +1,7 @@
 {
-  "update_id": 33321849,
-  "callback_query": {
-    "id": "889120953351445375",
+  "update_id": 33321929,
+  "message": {
+    "message_id": 39,
     "from": {
       "id": 207014603,
       "is_bot": false,
@@ -10,61 +10,30 @@
       "username": "we684123",
       "language_code": "zh-hant"
     },
-    "message": {
-      "message_id": 27,
-      "from": {
-        "id": 909196871,
-        "is_bot": true,
-        "first_name": "此方",
-        "username": "CiFang_bot"
-      },
-      "chat": {
-        "id": 207014603,
-        "first_name": "永格天",
-        "last_name": "(則天)",
-        "username": "we684123",
-        "type": "private"
-      },
-      "date": 1597412048,
-      "reply_to_message": {
-        "message_id": 10,
-        "from": {
-          "id": 909196871,
-          "is_bot": true,
-          "first_name": "此方",
-          "username": "CiFang_bot"
-        },
-        "chat": {
-          "id": 207014603,
-          "first_name": "永格天",
-          "last_name": "(則天)",
-          "username": "we684123",
-          "type": "private"
-        },
-        "date": 1570349202,
-        "text": "12"
-      },
-      "text": "456",
-      "reply_markup": {
-        "inline_keyboard": [
-          [{
-            "text": "⭕️",
-            "callback_data": "event_join_⭕️"
-          }, {
-            "text": "❓",
-            "callback_data": "event_join_❓"
-          }, {
-            "text": "❌",
-            "callback_data": "event_join_❌"
-          }],
-          [{
-            "text": "Leave",
-            "callback_data": "event_leave"
-          }]
-        ]
-      }
+    "chat": {
+      "id": 207014603,
+      "first_name": "永格天",
+      "last_name": "(則天)",
+      "username": "we684123",
+      "type": "private"
     },
-    "chat_instance": "-630598374506774449",
-    "data": "event_join_⭕️"
+    "date": 1597652764,
+    "sticker": {
+      "width": 512,
+      "height": 512,
+      "emoji": "👍",
+      "set_name": "Animated_Capoo",
+      "is_animated": true,
+      "thumb": {
+        "file_id": "AAMCAgADGQEAAydfOj8cakNkAeXIQTUmPDlptrXdXQACYBIAAujW4hJ3IT5zRVaK93HQmg8ABAEAB20AAwgtAAIaBA",
+        "file_unique_id": "AQADcdCaDwAECC0AAg",
+        "file_size": 3272,
+        "width": 128,
+        "height": 128
+      },
+      "file_id": "CAACAgIAAxkBAAMnXzo_HGpDZAHlyEE1Jjw5aba13V0AAmASAALo1uISdyE-c0VWivcaBA",
+      "file_unique_id": "AgADYBIAAujW4hI",
+      "file_size": 32383
+    }
   }
 }

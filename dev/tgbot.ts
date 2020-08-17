@@ -1,19 +1,46 @@
+/** Telegram bot class */
 class tgbot {
   token: string
   api_url: string
 
+  /**
+  * @param {string} token - The bot token
+  */
   constructor(token: string) {
     this.token = token
     this.api_url = `https://api.telegram.org/bot${this.token}/`
   }
+
   // === Getting updates ===
-  public getUpdates({
-    offset = '',
-    limit = 100,
-    timeout = 0,
-    allowed_updates = ''
-  } = {}
+  // 怎麼沒有用r QQ
+  /**
+   * @param {object} options
+   * @param {number} options.offset - offset
+   * @param {number} options.limit - limit
+   * @param {number} options.timeout - timeout
+   * @param {string[]} options.allowed_updates - allowed_updates
+  */
+  public getUpdates(
+    {
+      offset = '',
+      limit = 100,
+      timeout = 0,
+      allowed_updates = ''
+    }: {
+        offset?: number | string,
+        limit?: number,
+        timeout?: number,
+        allowed_updates?: string | string[],
+      } = {}
   ) {
+    /**
+   * @param {object} options
+   * @param {number} options.offset - offset
+   * @param {number} options.limit - limit
+   * @param {number} options.timeout - timeout
+   * @param {string[]} options.allowed_updates - allowed_updates
+  */
+
     let start_payload = {
       "method": "getUpdates",
       "offset": offset,
@@ -28,8 +55,15 @@ class tgbot {
     url = '',
     certificate = '',
     max_connections = 40,
-    allowed_updates = ''
-  } = {}
+    allowed_updates = []
+  }: {
+      url: string,
+      certificate?: any,
+      max_connections?: number,
+      allowed_updates?: string[],
+    } = {
+      url: '',
+    }
   ) {
     if (url === '') this.miss_parameter("url")
     let start_payload = {
@@ -71,9 +105,20 @@ class tgbot {
       parse_mode = '',
       disable_web_page_preview = false,
       disable_notification = false,
-      reply_to_message_id = 0,
+      reply_to_message_id = '',
       reply_markup = '',
-    } = {}
+    }: {
+        chat_id: string | number | undefined,
+        text: string | undefined,
+        parse_mode?: string | undefined,
+        disable_web_page_preview?: Boolean | undefined,
+        disable_notification?: Boolean | undefined,
+        reply_to_message_id?: string | number | undefined,
+        reply_markup?: any | undefined,
+      } = {
+        chat_id: '',
+        text: '',
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (text === '') this.miss_parameter("chat_id")
@@ -94,10 +139,18 @@ class tgbot {
     {
       chat_id = '',
       from_chat_id = '',
-      parse_mode = '',
       disable_notification = false,
       message_id = ''
-    } = {}
+    }: {
+        chat_id: string,
+        from_chat_id: string,
+        disable_notification?: boolean,
+        message_id: string,
+      } = {
+        chat_id: '',
+        from_chat_id: '',
+        message_id: ''
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (from_chat_id === '') this.miss_parameter("from_chat_id")
@@ -106,7 +159,6 @@ class tgbot {
       "method": "forwardMessage",
       'chat_id': String(chat_id),
       'from_chat_id': String(from_chat_id),
-      'parse_mode': parse_mode,
       'disable_notification': disable_notification,
       'message_id': message_id
     }
@@ -122,7 +174,18 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
-    } = {}
+    }: {
+        chat_id: string | number,
+        photo: any,
+        caption?: string,
+        parse_mode?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: string | number,
+        reply_markup?: any,
+      } = {
+        chat_id: '',
+        photo: '',
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (photo === '') this.miss_parameter("photo")
@@ -152,7 +215,22 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
-    } = {}
+    }: {
+        chat_id: string,
+        audio: any,
+        caption?: string,
+        parse_mode?: string,
+        duration?: number | string,
+        performer?: string,
+        title?: string,
+        thumb?: any,
+        disable_notification?: boolean,
+        reply_to_message_id?: string | number,
+        reply_markup?: any,
+      } = {
+        chat_id: '',
+        audio: '',
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (audio === '') this.miss_parameter("audio")
@@ -183,7 +261,19 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
-    } = {}
+    }: {
+        chat_id: number | string,
+        document: any,
+        thumb?: any,
+        caption?: string,
+        parse_mode?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
+        chat_id: '',
+        document: '',
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (document === '') this.miss_parameter("document")
@@ -215,7 +305,23 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
-    } = {}
+    }: {
+        chat_id: number | string,
+        video: any,
+        duration?: number | string,
+        width?: number | string,
+        height?: number | string,
+        thumb?: any,
+        caption?: string,
+        parse_mode?: string,
+        supports_streaming?: boolean,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
+        chat_id: '',
+        video: '',
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (video === '') this.miss_parameter("video")
@@ -250,7 +356,22 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
-    } = {}
+    }: {
+        chat_id: number | string,
+        animation: any,
+        duration?: number | string,
+        width?: number | string,
+        height?: number | string,
+        thumb?: any,
+        caption?: string,
+        parse_mode?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
+        chat_id: '',
+        animation: '',
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (animation === '') this.miss_parameter("animation")
