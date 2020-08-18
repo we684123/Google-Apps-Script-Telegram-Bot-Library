@@ -1,11 +1,29 @@
-"use strict";
+/** Telegram bot class */
 var tgbot = /** @class */ (function () {
+    /**
+    * @param {string} token - The bot token
+    */
     function tgbot(token) {
         this.token = token;
         this.api_url = "https://api.telegram.org/bot" + this.token + "/";
     }
     // === Getting updates ===
+    // 怎麼沒有用r QQ
+    /**
+     * @param {object} options
+     * @param {number} options.offset - offset
+     * @param {number} options.limit - limit
+     * @param {number} options.timeout - timeout
+     * @param {string[]} options.allowed_updates - allowed_updates
+    */
     tgbot.prototype.getUpdates = function (_a) {
+        /**
+       * @param {object} options
+       * @param {number} options.offset - offset
+       * @param {number} options.limit - limit
+       * @param {number} options.timeout - timeout
+       * @param {string[]} options.allowed_updates - allowed_updates
+      */
         var _b = _a === void 0 ? {} : _a, _c = _b.offset, offset = _c === void 0 ? '' : _c, _d = _b.limit, limit = _d === void 0 ? 100 : _d, _e = _b.timeout, timeout = _e === void 0 ? 0 : _e, _f = _b.allowed_updates, allowed_updates = _f === void 0 ? '' : _f;
         var start_payload = {
             "method": "getUpdates",
@@ -17,7 +35,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setWebhook = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.url, url = _c === void 0 ? '' : _c, _d = _b.certificate, certificate = _d === void 0 ? '' : _d, _e = _b.max_connections, max_connections = _e === void 0 ? 40 : _e, _f = _b.allowed_updates, allowed_updates = _f === void 0 ? '' : _f;
+        var _b = _a === void 0 ? {
+            url: ''
+        } : _a, _c = _b.url, url = _c === void 0 ? '' : _c, _d = _b.certificate, certificate = _d === void 0 ? '' : _d, _e = _b.max_connections, max_connections = _e === void 0 ? 40 : _e, _f = _b.allowed_updates, allowed_updates = _f === void 0 ? [] : _f;
         if (url === '')
             this.miss_parameter("url");
         var start_payload = {
@@ -49,7 +69,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.sendMessage = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.text, text = _d === void 0 ? '' : _d, _e = _b.parse_mode, parse_mode = _e === void 0 ? '' : _e, _f = _b.disable_web_page_preview, disable_web_page_preview = _f === void 0 ? false : _f, _g = _b.disable_notification, disable_notification = _g === void 0 ? false : _g, _h = _b.reply_to_message_id, reply_to_message_id = _h === void 0 ? '' : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            text: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.text, text = _d === void 0 ? '' : _d, _e = _b.parse_mode, parse_mode = _e === void 0 ? '' : _e, _f = _b.disable_web_page_preview, disable_web_page_preview = _f === void 0 ? false : _f, _g = _b.disable_notification, disable_notification = _g === void 0 ? false : _g, _h = _b.reply_to_message_id, reply_to_message_id = _h === void 0 ? '' : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (text === '')
@@ -62,12 +85,16 @@ var tgbot = /** @class */ (function () {
             'disable_web_page_preview': disable_web_page_preview,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.forwardMessage = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.from_chat_id, from_chat_id = _d === void 0 ? '' : _d, _e = _b.parse_mode, parse_mode = _e === void 0 ? '' : _e, _f = _b.disable_notification, disable_notification = _f === void 0 ? false : _f, _g = _b.message_id, message_id = _g === void 0 ? '' : _g;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            from_chat_id: '',
+            message_id: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.from_chat_id, from_chat_id = _d === void 0 ? '' : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e, _f = _b.message_id, message_id = _f === void 0 ? '' : _f;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (from_chat_id === '')
@@ -78,14 +105,16 @@ var tgbot = /** @class */ (function () {
             "method": "forwardMessage",
             'chat_id': String(chat_id),
             'from_chat_id': String(from_chat_id),
-            'parse_mode': parse_mode,
             'disable_notification': disable_notification,
             'message_id': message_id
         };
         return this.start(start_payload);
     };
     tgbot.prototype.sendPhoto = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.photo, photo = _d === void 0 ? '' : _d, _e = _b.caption, caption = _e === void 0 ? '' : _e, _f = _b.parse_mode, parse_mode = _f === void 0 ? '' : _f, _g = _b.disable_notification, disable_notification = _g === void 0 ? false : _g, _h = _b.reply_to_message_id, reply_to_message_id = _h === void 0 ? '' : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            photo: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.photo, photo = _d === void 0 ? '' : _d, _e = _b.caption, caption = _e === void 0 ? '' : _e, _f = _b.parse_mode, parse_mode = _f === void 0 ? '' : _f, _g = _b.disable_notification, disable_notification = _g === void 0 ? false : _g, _h = _b.reply_to_message_id, reply_to_message_id = _h === void 0 ? '' : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (photo === '')
@@ -98,12 +127,15 @@ var tgbot = /** @class */ (function () {
             'parse_mode': parse_mode,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.sendAudio = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.audio, audio = _d === void 0 ? '' : _d, _e = _b.caption, caption = _e === void 0 ? '' : _e, _f = _b.parse_mode, parse_mode = _f === void 0 ? '' : _f, _g = _b.duration, duration = _g === void 0 ? '' : _g, _h = _b.performer, performer = _h === void 0 ? '' : _h, _j = _b.title, title = _j === void 0 ? '' : _j, _k = _b.thumb, thumb = _k === void 0 ? '' : _k, _l = _b.disable_notification, disable_notification = _l === void 0 ? false : _l, _m = _b.reply_to_message_id, reply_to_message_id = _m === void 0 ? '' : _m, _o = _b.reply_markup, reply_markup = _o === void 0 ? '' : _o;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            audio: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.audio, audio = _d === void 0 ? '' : _d, _e = _b.caption, caption = _e === void 0 ? '' : _e, _f = _b.parse_mode, parse_mode = _f === void 0 ? '' : _f, _g = _b.duration, duration = _g === void 0 ? '' : _g, _h = _b.performer, performer = _h === void 0 ? '' : _h, _j = _b.title, title = _j === void 0 ? '' : _j, _k = _b.thumb, thumb = _k === void 0 ? '' : _k, _l = _b.disable_notification, disable_notification = _l === void 0 ? false : _l, _m = _b.reply_to_message_id, reply_to_message_id = _m === void 0 ? '' : _m, _o = _b.reply_markup, reply_markup = _o === void 0 ? '' : _o;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (audio === '')
@@ -120,12 +152,15 @@ var tgbot = /** @class */ (function () {
             'thumb': thumb,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.sendDocument = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.document, document = _d === void 0 ? '' : _d, _e = _b.thumb, thumb = _e === void 0 ? '' : _e, _f = _b.caption, caption = _f === void 0 ? '' : _f, _g = _b.parse_mode, parse_mode = _g === void 0 ? '' : _g, _h = _b.disable_notification, disable_notification = _h === void 0 ? false : _h, _j = _b.reply_to_message_id, reply_to_message_id = _j === void 0 ? '' : _j, _k = _b.reply_markup, reply_markup = _k === void 0 ? '' : _k;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            document: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.document, document = _d === void 0 ? '' : _d, _e = _b.thumb, thumb = _e === void 0 ? '' : _e, _f = _b.caption, caption = _f === void 0 ? '' : _f, _g = _b.parse_mode, parse_mode = _g === void 0 ? '' : _g, _h = _b.disable_notification, disable_notification = _h === void 0 ? false : _h, _j = _b.reply_to_message_id, reply_to_message_id = _j === void 0 ? '' : _j, _k = _b.reply_markup, reply_markup = _k === void 0 ? '' : _k;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (document === '')
@@ -139,12 +174,15 @@ var tgbot = /** @class */ (function () {
             'parse_mode': parse_mode,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.sendVideo = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.video, video = _d === void 0 ? '' : _d, _e = _b.duration, duration = _e === void 0 ? '' : _e, _f = _b.width, width = _f === void 0 ? '' : _f, _g = _b.height, height = _g === void 0 ? '' : _g, _h = _b.thumb, thumb = _h === void 0 ? '' : _h, _j = _b.caption, caption = _j === void 0 ? '' : _j, _k = _b.parse_mode, parse_mode = _k === void 0 ? '' : _k, _l = _b.supports_streaming, supports_streaming = _l === void 0 ? false : _l, _m = _b.disable_notification, disable_notification = _m === void 0 ? false : _m, _o = _b.reply_to_message_id, reply_to_message_id = _o === void 0 ? '' : _o, _p = _b.reply_markup, reply_markup = _p === void 0 ? '' : _p;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            video: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.video, video = _d === void 0 ? '' : _d, _e = _b.duration, duration = _e === void 0 ? '' : _e, _f = _b.width, width = _f === void 0 ? '' : _f, _g = _b.height, height = _g === void 0 ? '' : _g, _h = _b.thumb, thumb = _h === void 0 ? '' : _h, _j = _b.caption, caption = _j === void 0 ? '' : _j, _k = _b.parse_mode, parse_mode = _k === void 0 ? '' : _k, _l = _b.supports_streaming, supports_streaming = _l === void 0 ? false : _l, _m = _b.disable_notification, disable_notification = _m === void 0 ? false : _m, _o = _b.reply_to_message_id, reply_to_message_id = _o === void 0 ? '' : _o, _p = _b.reply_markup, reply_markup = _p === void 0 ? '' : _p;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (video === '')
@@ -162,12 +200,15 @@ var tgbot = /** @class */ (function () {
             'supports_streaming': supports_streaming,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.sendAnimation = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.animation, animation = _d === void 0 ? '' : _d, _e = _b.duration, duration = _e === void 0 ? '' : _e, _f = _b.width, width = _f === void 0 ? '' : _f, _g = _b.height, height = _g === void 0 ? '' : _g, _h = _b.thumb, thumb = _h === void 0 ? '' : _h, _j = _b.caption, caption = _j === void 0 ? '' : _j, _k = _b.parse_mode, parse_mode = _k === void 0 ? '' : _k, _l = _b.disable_notification, disable_notification = _l === void 0 ? false : _l, _m = _b.reply_to_message_id, reply_to_message_id = _m === void 0 ? '' : _m, _o = _b.reply_markup, reply_markup = _o === void 0 ? '' : _o;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            animation: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.animation, animation = _d === void 0 ? '' : _d, _e = _b.duration, duration = _e === void 0 ? '' : _e, _f = _b.width, width = _f === void 0 ? '' : _f, _g = _b.height, height = _g === void 0 ? '' : _g, _h = _b.thumb, thumb = _h === void 0 ? '' : _h, _j = _b.caption, caption = _j === void 0 ? '' : _j, _k = _b.parse_mode, parse_mode = _k === void 0 ? '' : _k, _l = _b.disable_notification, disable_notification = _l === void 0 ? false : _l, _m = _b.reply_to_message_id, reply_to_message_id = _m === void 0 ? '' : _m, _o = _b.reply_markup, reply_markup = _o === void 0 ? '' : _o;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (animation === '')
@@ -176,15 +217,15 @@ var tgbot = /** @class */ (function () {
             "method": "sendAnimation",
             'chat_id': String(chat_id),
             'animation': animation,
-            'duration': duration,
-            'width': width,
-            'height': height,
+            'duration': Number(duration),
+            'width': Number(width),
+            'height': Number(height),
             'thumb': thumb,
-            'caption': caption,
-            'parse_mode': parse_mode,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'caption': String(caption),
+            'parse_mode': String(parse_mode),
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -203,7 +244,7 @@ var tgbot = /** @class */ (function () {
             'parse_mode': parse_mode,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -222,7 +263,7 @@ var tgbot = /** @class */ (function () {
             'thumb': thumb,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -257,7 +298,7 @@ var tgbot = /** @class */ (function () {
             'live_period': live_period,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -274,7 +315,7 @@ var tgbot = /** @class */ (function () {
             'inline_message_id': inline_message_id,
             'latitude': latitude,
             'longitude': longitude,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -285,7 +326,7 @@ var tgbot = /** @class */ (function () {
             'chat_id': String(chat_id),
             'message_id': message_id,
             'inline_message_id': inline_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -312,7 +353,7 @@ var tgbot = /** @class */ (function () {
             'foursquare_type': foursquare_type,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -333,7 +374,7 @@ var tgbot = /** @class */ (function () {
             'vcard': vcard,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -361,7 +402,7 @@ var tgbot = /** @class */ (function () {
             'is_closed': is_closed,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -375,7 +416,7 @@ var tgbot = /** @class */ (function () {
             'emoji': emoji,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -694,7 +735,7 @@ var tgbot = /** @class */ (function () {
             'text': String(text),
             'parse_mode': parse_mode,
             'disable_web_page_preview': disable_web_page_preview,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -708,7 +749,7 @@ var tgbot = /** @class */ (function () {
             'caption': String(caption),
             'parse_mode': parse_mode,
             'disable_web_page_preview': disable_web_page_preview,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -722,7 +763,7 @@ var tgbot = /** @class */ (function () {
             'message_id': String(message_id),
             'inline_message_id': String(inline_message_id),
             'media': String(media),
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -733,7 +774,7 @@ var tgbot = /** @class */ (function () {
             'chat_id': String(chat_id),
             'message_id': String(message_id),
             'inline_message_id': String(inline_message_id),
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -747,7 +788,7 @@ var tgbot = /** @class */ (function () {
             "method": "stopPoll",
             'chat_id': String(chat_id),
             'message_id': String(message_id),
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -777,7 +818,7 @@ var tgbot = /** @class */ (function () {
             'sticker': sticker,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -945,7 +986,7 @@ var tgbot = /** @class */ (function () {
             'is_flexible': is_flexible,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': reply_markup
+            'reply_markup': JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -960,6 +1001,20 @@ var tgbot = /** @class */ (function () {
             'shipping_query_id': String(shipping_query_id),
             'ok': Boolean(ok),
             'shipping_options	': shipping_options,
+            'error_message': error_message
+        };
+        return this.start(start_payload);
+    };
+    tgbot.prototype.answerPreCheckoutQuery = function (_a) {
+        var _b = _a === void 0 ? {} : _a, _c = _b.pre_checkout_query_id, pre_checkout_query_id = _c === void 0 ? '' : _c, _d = _b.ok, ok = _d === void 0 ? '' : _d, _e = _b.error_message, error_message = _e === void 0 ? '' : _e;
+        if (pre_checkout_query_id === '')
+            this.miss_parameter("pre_checkout_query_id");
+        if (ok === '')
+            this.miss_parameter("ok");
+        var start_payload = {
+            "method": "answerPreCheckoutQuery",
+            'pre_checkout_query_id': String(pre_checkout_query_id),
+            'ok': Boolean(ok),
             'error_message': error_message
         };
         return this.start(start_payload);
