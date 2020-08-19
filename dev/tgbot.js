@@ -81,11 +81,11 @@ var tgbot = /** @class */ (function () {
             "method": "sendMessage",
             'chat_id': String(chat_id),
             'text': String(text),
-            'parse_mode': parse_mode,
-            'disable_web_page_preview': disable_web_page_preview,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'parse_mode': String(parse_mode),
+            'disable_web_page_preview': Boolean(disable_web_page_preview),
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -105,8 +105,8 @@ var tgbot = /** @class */ (function () {
             "method": "forwardMessage",
             'chat_id': String(chat_id),
             'from_chat_id': String(from_chat_id),
-            'disable_notification': disable_notification,
-            'message_id': message_id
+            'disable_notification': Boolean(disable_notification),
+            'message_id': Number(message_id)
         };
         return this.start(start_payload);
     };
@@ -123,11 +123,11 @@ var tgbot = /** @class */ (function () {
             "method": "sendPhoto",
             'chat_id': String(chat_id),
             'photo': photo,
-            'caption': caption,
-            'parse_mode': parse_mode,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'caption': String(caption),
+            'parse_mode': String(parse_mode),
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -144,15 +144,15 @@ var tgbot = /** @class */ (function () {
             "method": "sendAudio",
             'chat_id': String(chat_id),
             'audio': audio,
-            'caption': caption,
-            'parse_mode': parse_mode,
-            'duration': duration,
-            'performer': performer,
-            'title': title,
+            'caption': String(caption),
+            'parse_mode': String(parse_mode),
+            'duration': Number(duration),
+            'performer': String(performer),
+            'title': String(title),
             'thumb': thumb,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -170,11 +170,11 @@ var tgbot = /** @class */ (function () {
             'chat_id': String(chat_id),
             'document': document,
             'thumb': thumb,
-            'caption': caption,
-            'parse_mode': parse_mode,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'caption': String(caption),
+            'parse_mode': String(parse_mode),
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -191,16 +191,16 @@ var tgbot = /** @class */ (function () {
             "method": "sendVideo",
             'chat_id': String(chat_id),
             'video': video,
-            'duration': duration,
-            'width': width,
-            'height': height,
+            'duration': Number(duration),
+            'width': Number(width),
+            'height': Number(height),
             'thumb': thumb,
-            'caption': caption,
-            'parse_mode': parse_mode,
-            'supports_streaming': supports_streaming,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'caption': String(caption),
+            'parse_mode': String(parse_mode),
+            'supports_streaming': Boolean(supports_streaming),
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -225,7 +225,7 @@ var tgbot = /** @class */ (function () {
             'parse_mode': String(parse_mode),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -244,7 +244,7 @@ var tgbot = /** @class */ (function () {
             'parse_mode': parse_mode,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -263,7 +263,7 @@ var tgbot = /** @class */ (function () {
             'thumb': thumb,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -298,7 +298,7 @@ var tgbot = /** @class */ (function () {
             'live_period': live_period,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -315,7 +315,7 @@ var tgbot = /** @class */ (function () {
             'inline_message_id': inline_message_id,
             'latitude': latitude,
             'longitude': longitude,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -326,7 +326,7 @@ var tgbot = /** @class */ (function () {
             'chat_id': String(chat_id),
             'message_id': message_id,
             'inline_message_id': inline_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -353,7 +353,7 @@ var tgbot = /** @class */ (function () {
             'foursquare_type': foursquare_type,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -374,7 +374,7 @@ var tgbot = /** @class */ (function () {
             'vcard': vcard,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -402,7 +402,7 @@ var tgbot = /** @class */ (function () {
             'is_closed': is_closed,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -416,7 +416,7 @@ var tgbot = /** @class */ (function () {
             'emoji': emoji,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -735,7 +735,7 @@ var tgbot = /** @class */ (function () {
             'text': String(text),
             'parse_mode': parse_mode,
             'disable_web_page_preview': disable_web_page_preview,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -749,7 +749,7 @@ var tgbot = /** @class */ (function () {
             'caption': String(caption),
             'parse_mode': parse_mode,
             'disable_web_page_preview': disable_web_page_preview,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -763,7 +763,7 @@ var tgbot = /** @class */ (function () {
             'message_id': String(message_id),
             'inline_message_id': String(inline_message_id),
             'media': String(media),
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -774,7 +774,7 @@ var tgbot = /** @class */ (function () {
             'chat_id': String(chat_id),
             'message_id': String(message_id),
             'inline_message_id': String(inline_message_id),
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -788,7 +788,7 @@ var tgbot = /** @class */ (function () {
             "method": "stopPoll",
             'chat_id': String(chat_id),
             'message_id': String(message_id),
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -818,7 +818,7 @@ var tgbot = /** @class */ (function () {
             'sticker': sticker,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
@@ -986,7 +986,7 @@ var tgbot = /** @class */ (function () {
             'is_flexible': is_flexible,
             'disable_notification': disable_notification,
             'reply_to_message_id': reply_to_message_id,
-            'reply_markup': JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
