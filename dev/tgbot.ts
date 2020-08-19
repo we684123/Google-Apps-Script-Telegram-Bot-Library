@@ -1,4 +1,4 @@
-/** Telegram bot class */
+ message_id?: number,/** Telegram bot class */
 class tgbot {
   token: string
   api_url: string
@@ -479,10 +479,10 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
     }:{
-      chat_id = '',
-      media = [],
-      disable_notification = false,
-      reply_to_message_id = '',
+     chat_id: number | string,
+      media :any[],
+      disable_notification?: boolean,
+      reply_to_message_id?: number | string,
     }
      = {
        chat_id : '',
@@ -506,19 +506,23 @@ class tgbot {
       chat_id = '',
       latitude = '',
       longitude = '',
-      live_period = '',
+      live_period = null,
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
     }:{
-      chat_id = '',
-      latitude = '',
-      longitude = '',
-      live_period = '',
-      disable_notification = false,
-      reply_to_message_id = '',
-      reply_markup = ''
-    } = {}
+      chat_id: number | string,
+      latitude : number | string,
+      longitude : number | string,
+      live_period?: number|null,
+      disable_notification?: boolean,
+      reply_to_message_id?: number | string,
+      reply_markup?: any,
+    } = {
+      chat_id : '',
+      latitude : '',
+      longitude : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (latitude === '') this.miss_parameter("latitude")
@@ -539,22 +543,25 @@ class tgbot {
   public editMessageLiveLocation(
     {
       chat_id = '',
-      message_id = '',
+      message_id = null,
       inline_message_id = '',
-      latitude = '',
-      longitude = '',
+      latitude = null,
+      longitude = null,
       reply_markup = ''
     }:{
-      chat_id = '',
-      message_id = '',
-      inline_message_id = '',
-      latitude = '',
-      longitude = '',
-      reply_markup = ''
-    } = {}
+      chat_id?: number | string,
+      message_id?: number|null,
+      inline_message_id?: string,
+      latitude : number|null,
+      longitude : number|null,
+      reply_markup?: any,
+    } = {
+      latitude : null,
+      longitude : null,
+    }
   ) {
-    if (latitude === '') this.miss_parameter("latitude")
-    if (longitude === '') this.miss_parameter("longitude")
+    if (latitude === null) this.miss_parameter("latitude")
+    if (longitude === null) this.miss_parameter("longitude")
     let start_payload = {
       "method": "editMessageLiveLocation",
       'chat_id': String(chat_id),
@@ -570,14 +577,14 @@ class tgbot {
   public stopMessageLiveLocation(
     {
       chat_id = '',
-      message_id = '',
+      message_id = null,
       inline_message_id = '',
       reply_markup = ''
     }:{
-      chat_id = '',
-      message_id = '',
-      inline_message_id = '',
-      reply_markup = ''
+      chat_id?: number | string,
+      message_id?: number|null,
+      inline_message_id ?: string,
+      reply_markup?: any,
     } = {}
   ) {
     let start_payload = {
@@ -603,16 +610,16 @@ class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }:{
-      chat_id = '',
-      latitude = '',
-      longitude = '',
+      chat_id: number | string,
+      latitude : number,
+      longitude : number,
       title = '',
       address = '',
       foursquare_id = '',
       foursquare_type = '',
-      disable_notification = false,
-      reply_to_message_id = '',
-      reply_markup = ''
+      disable_notification?: boolean,
+      reply_to_message_id?: number | string,
+      reply_markup?: any,
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -647,14 +654,14 @@ class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }:{
-      chat_id = '',
+      chat_id: number | string,
       phone_number = '',
       first_name = '',
       last_name = '',
       vcard = '',
-      disable_notification = false,
-      reply_to_message_id = '',
-      reply_markup = ''
+      disable_notification?: boolean,
+      reply_to_message_id?: number | string,
+      reply_markup?: any,
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -692,7 +699,7 @@ class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }:{
-      chat_id = '',
+      chat_id: number | string,
       question = '',
       options = '',
       is_anonymous = false,
@@ -704,9 +711,9 @@ class tgbot {
       open_period = '',
       close_date = '',
       is_closed = false,
-      disable_notification = false,
-      reply_to_message_id = '',
-      reply_markup = ''
+      disable_notification?: boolean,
+      reply_to_message_id?: number | string,
+      reply_markup?: any,
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -741,11 +748,11 @@ class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }:{
-      chat_id = '',
+      chat_id: number | string,
       emoji = '',
-      disable_notification = false,
-      reply_to_message_id = '',
-      reply_markup = ''
+      disable_notification?: boolean,
+      reply_to_message_id?: number | string,
+      reply_markup?: any,
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -765,7 +772,7 @@ class tgbot {
       chat_id = '',
       action = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       action = '',
     } = {}
   ) {
@@ -823,7 +830,7 @@ class tgbot {
       user_id = '',
       until_date = ''
     }:{
-      chat_id = '',
+      chat_id: number | string,
       user_id = '',
       until_date = ''
     } = {}
@@ -844,7 +851,7 @@ class tgbot {
       chat_id = '',
       user_id = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       user_id = '',
     } = {}
   ) {
@@ -865,7 +872,7 @@ class tgbot {
       permissions = '',
       until_date = ''
     }:{
-      chat_id = '',
+      chat_id: number | string,
       user_id = '',
       permissions = '',
       until_date = ''
@@ -896,7 +903,7 @@ class tgbot {
       can_pin_messages = false,
       can_promote_members = false,
     }:{
-      chat_id = '',
+      chat_id: number | string,
       user_id = '',
       can_change_info = false,
       can_post_messages = false,
@@ -932,7 +939,7 @@ class tgbot {
       user_id = '',
       custom_title = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       user_id = '',
       custom_title = '',
     } = {}
@@ -953,7 +960,7 @@ class tgbot {
       chat_id = '',
       permissions = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       permissions = '',
     } = {}
   ) {
@@ -971,7 +978,7 @@ class tgbot {
     {
       chat_id = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
     } = {chat_id : ''}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -987,7 +994,7 @@ class tgbot {
       chat_id = '',
       photo = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       photo = '',
     } = {}
   ) {
@@ -1005,8 +1012,10 @@ class tgbot {
     {
       chat_id = '',
     }:{
-      chat_id = '',
-    } = {}
+      chat_id: number | string,
+    } = {
+      chat_id : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     let start_payload = {
@@ -1021,7 +1030,7 @@ class tgbot {
       chat_id = '',
       title = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       title = '',
     } = {}
   ) {
@@ -1040,7 +1049,7 @@ class tgbot {
       chat_id = '',
       description = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       description = '',
     } = {}
   ) {
@@ -1060,9 +1069,9 @@ class tgbot {
       message_id = '',
       disable_notification = false,
     }:{
-      chat_id = '',
-      message_id = '',
-      disable_notification = false,
+      chat_id: number | string,
+      message_id: number,
+      disable_notification?: boolean,
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -1080,8 +1089,10 @@ class tgbot {
     {
       chat_id = '',
     }:{
-      chat_id = '',
-    } = {}
+      chat_id: number | string,
+    } = {
+      chat_id : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     let start_payload = {
@@ -1095,8 +1106,10 @@ class tgbot {
     {
       chat_id = '',
     }:{
-      chat_id = '',
-    } = {}
+      chat_id: number | string,
+    } = {
+      chat_id : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     let start_payload = {
@@ -1110,8 +1123,10 @@ class tgbot {
     {
       chat_id = '',
     }:{
-      chat_id = '',
-    } = {}
+      chat_id: number | string,
+    } = {
+      chat_id : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     let start_payload = {
@@ -1125,8 +1140,10 @@ class tgbot {
     {
       chat_id = '',
     }:{
-      chat_id = '',
-    } = {}
+      chat_id: number | string,
+    } = {
+      chat_id : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     let start_payload = {
@@ -1141,7 +1158,7 @@ class tgbot {
       chat_id = '',
       user_id = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       user_id = '',
     } = {
       chat_id : '',
@@ -1163,7 +1180,7 @@ class tgbot {
       chat_id = '',
       sticker_set_name = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       sticker_set_name = '',
     } = {}
   ) {
@@ -1180,8 +1197,10 @@ class tgbot {
     {
       chat_id = '',
     }:{
-      chat_id = '',
-    } = {}
+      chat_id: number | string,
+    } = {
+      chat_id : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     let start_payload = {
@@ -1255,13 +1274,13 @@ class tgbot {
       disable_web_page_preview = false,
       reply_markup = ''
     }:{
-      chat_id = '',
-      message_id = '',
-      inline_message_id = '',
+      chat_id: number | string,
+      message_id?: number,
+      inline_message_id ?: string,
       text = '',
       parse_mode = '',
       disable_web_page_preview = false,
-      reply_markup = ''
+      reply_markup?: any,
     } = {}
   ) {
     if (text === '') this.miss_parameter("text")
@@ -1288,13 +1307,13 @@ class tgbot {
       disable_web_page_preview = false,
       reply_markup = ''
     }:{
-      chat_id = '',
-      message_id = '',
-      inline_message_id = '',
+      chat_id: number | string,
+      message_id?: number,
+      inline_message_id ?: string,
       caption = '',
       parse_mode = '',
       disable_web_page_preview = false,
-      reply_markup = ''
+      reply_markup?: any,
     } = {}
   ) {
     let start_payload = {
@@ -1318,11 +1337,11 @@ class tgbot {
       media = '',
       reply_markup = ''
     }:{
-      chat_id = '',
-      message_id = '',
-      inline_message_id = '',
+      chat_id: number | string,
+      message_id?: number,
+      inline_message_id ?: string,
       media = '',
-      reply_markup = ''
+      reply_markup?: any,
     } = {}
   ) {
     if (media === '') this.miss_parameter("media")
@@ -1344,10 +1363,10 @@ class tgbot {
       inline_message_id = '',
       reply_markup = ''
     }:{
-      chat_id = '',
-      message_id = '',
-      inline_message_id = '',
-      reply_markup = ''
+      chat_id: number | string,
+      message_id?: number,
+      inline_message_id ?: string,
+      reply_markup?: any,
     } = {}
   ) {
     let start_payload = {
@@ -1366,9 +1385,9 @@ class tgbot {
       message_id = '',
       reply_markup = ''
     }:{
-      chat_id = '',
-      message_id = '',
-      reply_markup = ''
+      chat_id: number | string,
+      message_id?: number,
+      reply_markup?: any,
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -1387,9 +1406,12 @@ class tgbot {
       chat_id = '',
       message_id = '',
     }:{
-      chat_id = '',
-      message_id = '',
-    } = {}
+      chat_id: number | string,
+      message_id: number,
+    } = {
+      chat_id : '',
+      message_id : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (message_id === '') this.miss_parameter("message_id")
@@ -1412,11 +1434,11 @@ class tgbot {
       reply_to_message_id = '',
       reply_markup = '',
     }:{
-      chat_id = '',
+      chat_id: number | string,
       sticker = '',
-      disable_notification = false,
-      reply_to_message_id = '',
-      reply_markup = '',
+      disable_notification?: boolean,
+      reply_to_message_id?: number | string,
+      reply_markup?: any,,
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -1661,7 +1683,7 @@ class tgbot {
     reply_to_message_id = '',
     reply_markup = '',
   }:{
-    chat_id = '',
+    chat_id: number | string,
     title = '',
     description = '',
     payload = '',
@@ -1681,9 +1703,9 @@ class tgbot {
     send_phone_number_to_provider = false,
     send_email_to_provider = false,
     is_flexible = false,
-    disable_notification = false,
-    reply_to_message_id = '',
-    reply_markup = '',
+    disable_notification?: boolean,
+    reply_to_message_id?: number | string,
+    reply_markup?: any,,
   } = {}) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (title === '') this.miss_parameter("title")
