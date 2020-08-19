@@ -402,7 +402,19 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
-    } = {}
+    }: {
+        chat_id: number | string,
+        voice: any,
+        duration?: number | string,
+        caption?: string,
+        parse_mode?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
+        chat_id: '',
+        voice: '',
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (voice === '') this.miss_parameter("voice")
@@ -410,11 +422,11 @@ class tgbot {
       "method": "sendVoice",
       'chat_id': String(chat_id),
       'voice': voice,
-      'duration': duration,
-      'caption': caption,
-      'parse_mode': parse_mode,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'duration': Number(duration),
+      'caption': String(caption),
+      'parse_mode': String(parse_mode),
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
     }
     return this.start(start_payload)
@@ -430,7 +442,19 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
-    } = {}
+    }: {
+        chat_id: number | string,
+        video_note: any,
+        duration?: number | string,
+        length?: string,
+        thumb?: any,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
+        chat_id: '',
+        video_note: '',
+      }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (video_note === '') this.miss_parameter("video_note")
@@ -438,11 +462,11 @@ class tgbot {
       "method": "sendVideoNote",
       'chat_id': String(chat_id),
       'video_note': video_note,
-      'length': length,
-      'duration': duration,
+      'length': Number(length),
+      'duration': Number(duration),
       'thumb': thumb,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
     }
     return this.start(start_payload)
@@ -451,25 +475,42 @@ class tgbot {
   public sendMediaGroup(
     {
       chat_id = '',
-      media = '',
+      media = [],
       disable_notification = false,
       reply_to_message_id = '',
-    } = {}
+    }:{
+      chat_id = '',
+      media = [],
+      disable_notification = false,
+      reply_to_message_id = '',
+    }
+     = {
+       chat_id : '',
+       media : [],
+     }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    if (media === '') this.miss_parameter("media")
+    if (media === []) this.miss_parameter("media")
     let start_payload = {
       "method": "sendMediaGroup",
       'chat_id': String(chat_id),
       'media': media,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
     }
     return this.start(start_payload)
   }
 
   public sendLocation(
     {
+      chat_id = '',
+      latitude = '',
+      longitude = '',
+      live_period = '',
+      disable_notification = false,
+      reply_to_message_id = '',
+      reply_markup = ''
+    }:{
       chat_id = '',
       latitude = '',
       longitude = '',
@@ -488,8 +529,8 @@ class tgbot {
       'latitude': latitude,
       'longitude': longitude,
       'live_period': live_period,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
     }
     return this.start(start_payload)
@@ -497,6 +538,13 @@ class tgbot {
 
   public editMessageLiveLocation(
     {
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      latitude = '',
+      longitude = '',
+      reply_markup = ''
+    }:{
       chat_id = '',
       message_id = '',
       inline_message_id = '',
@@ -525,6 +573,11 @@ class tgbot {
       message_id = '',
       inline_message_id = '',
       reply_markup = ''
+    }:{
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      reply_markup = ''
     } = {}
   ) {
     let start_payload = {
@@ -539,6 +592,17 @@ class tgbot {
 
   public sendVenue(
     {
+      chat_id = '',
+      latitude = '',
+      longitude = '',
+      title = '',
+      address = '',
+      foursquare_id = '',
+      foursquare_type = '',
+      disable_notification = false,
+      reply_to_message_id = '',
+      reply_markup = ''
+    }:{
       chat_id = '',
       latitude = '',
       longitude = '',
@@ -565,8 +629,8 @@ class tgbot {
       'address': address,
       'foursquare_id': foursquare_id,
       'foursquare_type': foursquare_type,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
     }
     return this.start(start_payload)
@@ -574,6 +638,15 @@ class tgbot {
 
   public sendContact(
     {
+      chat_id = '',
+      phone_number = '',
+      first_name = '',
+      last_name = '',
+      vcard = '',
+      disable_notification = false,
+      reply_to_message_id = '',
+      reply_markup = ''
+    }:{
       chat_id = '',
       phone_number = '',
       first_name = '',
@@ -594,8 +667,8 @@ class tgbot {
       'first_name': first_name,
       'last_name': last_name,
       'vcard': vcard,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
     }
     return this.start(start_payload)
@@ -603,6 +676,22 @@ class tgbot {
 
   public sendPoll(
     {
+      chat_id = '',
+      question = '',
+      options = '',
+      is_anonymous = false,
+      type = '',
+      allows_multiple_answers = false,
+      correct_option_id = '',
+      explanation = '',
+      explanation_parse_mode = '',
+      open_period = '',
+      close_date = '',
+      is_closed = false,
+      disable_notification = false,
+      reply_to_message_id = '',
+      reply_markup = ''
+    }:{
       chat_id = '',
       question = '',
       options = '',
@@ -637,8 +726,8 @@ class tgbot {
       'open_period': open_period,
       'close_date': close_date,
       'is_closed': is_closed,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
     }
     return this.start(start_payload)
@@ -651,6 +740,12 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = ''
+    }:{
+      chat_id = '',
+      emoji = '',
+      disable_notification = false,
+      reply_to_message_id = '',
+      reply_markup = ''
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -658,8 +753,8 @@ class tgbot {
       "method": "sendDice",
       'chat_id': String(chat_id),
       'emoji': emoji,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
     }
     return this.start(start_payload)
@@ -667,6 +762,9 @@ class tgbot {
 
   public sendChatAction(
     {
+      chat_id = '',
+      action = '',
+    }:{
       chat_id = '',
       action = '',
     } = {}
@@ -686,6 +784,10 @@ class tgbot {
       user_id = '',
       offset = '',
       limit = 100,
+    }:{
+      user_id = '',
+      offset = '',
+      limit = 100,
     } = {}
   ) {
     if (user_id === '') this.miss_parameter("user_id")
@@ -701,7 +803,11 @@ class tgbot {
   public getFile(
     {
       file_id = '',
-    } = {}
+    }:{
+      file_id:string,
+    } = {
+      file_id : '',
+    }
   ) {
     if (file_id === '') this.miss_parameter("file_id")
     let start_payload = {
@@ -713,6 +819,10 @@ class tgbot {
 
   public kickChatMember(
     {
+      chat_id = '',
+      user_id = '',
+      until_date = ''
+    }:{
       chat_id = '',
       user_id = '',
       until_date = ''
@@ -733,6 +843,9 @@ class tgbot {
     {
       chat_id = '',
       user_id = '',
+    }:{
+      chat_id = '',
+      user_id = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -747,6 +860,11 @@ class tgbot {
 
   public restrictChatMember(
     {
+      chat_id = '',
+      user_id = '',
+      permissions = '',
+      until_date = ''
+    }:{
       chat_id = '',
       user_id = '',
       permissions = '',
@@ -767,6 +885,17 @@ class tgbot {
 
   public promoteChatMember(
     {
+      chat_id = '',
+      user_id = '',
+      can_change_info = false,
+      can_post_messages = false,
+      can_edit_messages = false,
+      can_delete_messages = false,
+      can_invite_users = false,
+      can_restrict_members = false,
+      can_pin_messages = false,
+      can_promote_members = false,
+    }:{
       chat_id = '',
       user_id = '',
       can_change_info = false,
@@ -802,6 +931,10 @@ class tgbot {
       chat_id = '',
       user_id = '',
       custom_title = '',
+    }:{
+      chat_id = '',
+      user_id = '',
+      custom_title = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -819,6 +952,9 @@ class tgbot {
     {
       chat_id = '',
       permissions = '',
+    }:{
+      chat_id = '',
+      permissions = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -834,7 +970,9 @@ class tgbot {
   public exportChatInviteLink(
     {
       chat_id = '',
-    } = {}
+    }:{
+      chat_id = '',
+    } = {chat_id : ''}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     let start_payload = {
@@ -846,6 +984,9 @@ class tgbot {
 
   public setChatPhoto(
     {
+      chat_id = '',
+      photo = '',
+    }:{
       chat_id = '',
       photo = '',
     } = {}
@@ -863,6 +1004,8 @@ class tgbot {
   public deleteChatPhoto(
     {
       chat_id = '',
+    }:{
+      chat_id = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -875,6 +1018,9 @@ class tgbot {
 
   public setChatTitle(
     {
+      chat_id = '',
+      title = '',
+    }:{
       chat_id = '',
       title = '',
     } = {}
@@ -891,6 +1037,9 @@ class tgbot {
 
   public setChatDescription(
     {
+      chat_id = '',
+      description = '',
+    }:{
       chat_id = '',
       description = '',
     } = {}
@@ -910,6 +1059,10 @@ class tgbot {
       chat_id = '',
       message_id = '',
       disable_notification = false,
+    }:{
+      chat_id = '',
+      message_id = '',
+      disable_notification = false,
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -918,13 +1071,15 @@ class tgbot {
       "method": "pinChatMessage",
       'chat_id': String(chat_id),
       'message_id': message_id,
-      'disable_notification': disable_notification,
+      'disable_notification': Boolean(disable_notification),
     }
     return this.start(start_payload)
   }
 
   public unpinChatMessage(
     {
+      chat_id = '',
+    }:{
       chat_id = '',
     } = {}
   ) {
@@ -939,6 +1094,8 @@ class tgbot {
   public leaveChat(
     {
       chat_id = '',
+    }:{
+      chat_id = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -952,6 +1109,8 @@ class tgbot {
   public getChatAdministrators(
     {
       chat_id = '',
+    }:{
+      chat_id = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -964,6 +1123,8 @@ class tgbot {
 
   public getChatMembersCount(
     {
+      chat_id = '',
+    }:{
       chat_id = '',
     } = {}
   ) {
@@ -979,7 +1140,13 @@ class tgbot {
     {
       chat_id = '',
       user_id = '',
-    } = {}
+    }:{
+      chat_id = '',
+      user_id = '',
+    } = {
+      chat_id : '',
+      user_id : '',
+    }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (user_id === '') this.miss_parameter("user_id")
@@ -993,6 +1160,9 @@ class tgbot {
 
   public setChatStickerSet(
     {
+      chat_id = '',
+      sticker_set_name = '',
+    }:{
       chat_id = '',
       sticker_set_name = '',
     } = {}
@@ -1009,6 +1179,8 @@ class tgbot {
   public deleteChatStickerSet(
     {
       chat_id = '',
+    }:{
+      chat_id = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -1021,6 +1193,12 @@ class tgbot {
 
   public answerCallbackQuery(
     {
+      callback_query_id = '',
+      text = '',
+      show_alert = false,
+      url = '',
+      cache_time = '',
+    }:{
       callback_query_id = '',
       text = '',
       show_alert = false,
@@ -1043,7 +1221,11 @@ class tgbot {
   public setMyCommands(
     {
       commands = [],
-    } = {}
+    }:{
+      commands = [],
+    } = {
+      commands : [],
+    }
   ) {
     if (commands === []) this.miss_parameter("commands")
     let start_payload = {
@@ -1065,6 +1247,14 @@ class tgbot {
   // === Updating messages ===
   public editMessageText(
     {
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      text = '',
+      parse_mode = '',
+      disable_web_page_preview = false,
+      reply_markup = ''
+    }:{
       chat_id = '',
       message_id = '',
       inline_message_id = '',
@@ -1097,6 +1287,14 @@ class tgbot {
       parse_mode = '',
       disable_web_page_preview = false,
       reply_markup = ''
+    }:{
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      caption = '',
+      parse_mode = '',
+      disable_web_page_preview = false,
+      reply_markup = ''
     } = {}
   ) {
     let start_payload = {
@@ -1114,6 +1312,12 @@ class tgbot {
 
   public editMessageMedia(
     {
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      media = '',
+      reply_markup = ''
+    }:{
       chat_id = '',
       message_id = '',
       inline_message_id = '',
@@ -1139,6 +1343,11 @@ class tgbot {
       message_id = '',
       inline_message_id = '',
       reply_markup = ''
+    }:{
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+      reply_markup = ''
     } = {}
   ) {
     let start_payload = {
@@ -1153,6 +1362,10 @@ class tgbot {
 
   public stopPoll(
     {
+      chat_id = '',
+      message_id = '',
+      reply_markup = ''
+    }:{
       chat_id = '',
       message_id = '',
       reply_markup = ''
@@ -1171,6 +1384,9 @@ class tgbot {
 
   public deleteMessage(
     {
+      chat_id = '',
+      message_id = '',
+    }:{
       chat_id = '',
       message_id = '',
     } = {}
@@ -1195,6 +1411,12 @@ class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
       reply_markup = '',
+    }:{
+      chat_id = '',
+      sticker = '',
+      disable_notification = false,
+      reply_to_message_id = '',
+      reply_markup = '',
     } = {}
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
@@ -1203,8 +1425,8 @@ class tgbot {
       "method": "sendSticker",
       'chat_id': String(chat_id),
       'sticker': sticker,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
     }
     return this.start(start_payload)
@@ -1213,7 +1435,11 @@ class tgbot {
   public getStickerSet(
     {
       name = '',
-    } = {}
+    }:{
+      name :string,
+    } = {
+      name : '',
+    }
   ) {
     if (name === '') this.miss_parameter("name")
     let start_payload = {
@@ -1225,6 +1451,9 @@ class tgbot {
 
   public uploadStickerFile(
     {
+      user_id = '',
+      png_sticker = '',
+    }:{
       user_id = '',
       png_sticker = '',
     } = {}
@@ -1241,6 +1470,15 @@ class tgbot {
 
   public createNewStickerSet(
     {
+      user_id = '',
+      name = '',
+      title = '',
+      png_sticker = '',
+      tgs_sticker = '',
+      emojis = '',
+      contains_masks = false,
+      mask_position = '',
+    }:{
       user_id = '',
       name = '',
       title = '',
@@ -1277,6 +1515,13 @@ class tgbot {
       tgs_sticker = '',
       emojis = '',
       mask_position = '',
+    }:{
+      user_id = '',
+      name = '',
+      png_sticker = '',
+      tgs_sticker = '',
+      emojis = '',
+      mask_position = '',
     } = {}
   ) {
     if (user_id === '') this.miss_parameter("user_id")
@@ -1298,6 +1543,9 @@ class tgbot {
     {
       sticker = '',
       position = '',
+    }:{
+      sticker = '',
+      position = '',
     } = {}
   ) {
     if (sticker === '') this.miss_parameter("sticker")
@@ -1313,7 +1561,11 @@ class tgbot {
   public deleteStickerFromSet(
     {
       sticker = '',
-    } = {}
+    }:{
+      sticker : string,
+    } = {
+      sticker : '',
+    }
   ) {
     if (sticker === '') this.miss_parameter("sticker")
     let start_payload = {
@@ -1325,6 +1577,10 @@ class tgbot {
 
   public setStickerSetThumb(
     {
+      name = '',
+      user_id = '',
+      thumb = '',
+    }:{
       name = '',
       user_id = '',
       thumb = '',
@@ -1345,6 +1601,14 @@ class tgbot {
   // === Inline mode ===
   public answerInlineQuery(
     {
+      inline_query_id = '',
+      results = [],
+      cache_time = '',
+      is_personal = '',
+      next_offset = '',
+      switch_pm_text = '',
+      switch_pm_parameter = '',
+    }:{
       inline_query_id = '',
       results = [],
       cache_time = '',
@@ -1373,6 +1637,30 @@ class tgbot {
 
   // === Payments ===
   public sendInvoice({
+    chat_id = '',
+    title = '',
+    description = '',
+    payload = '',
+    provider_token = '',
+    start_parameter = '',
+    currency = '',
+    prices = [],
+    provider_data = '',
+    photo_url = '',
+    photo_size = '',
+    photo_width = '',
+    photo_height = '',
+    need_name = false,
+    need_phone_number = false,
+    need_email = false,
+    need_shipping_address = false,
+    send_phone_number_to_provider = false,
+    send_email_to_provider = false,
+    is_flexible = false,
+    disable_notification = false,
+    reply_to_message_id = '',
+    reply_markup = '',
+  }:{
     chat_id = '',
     title = '',
     description = '',
@@ -1427,8 +1715,8 @@ class tgbot {
       'send_phone_number_to_provider': send_phone_number_to_provider,
       'send_email_to_provider': send_email_to_provider,
       'is_flexible': is_flexible,
-      'disable_notification': disable_notification,
-      'reply_to_message_id': reply_to_message_id,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
     }
     return this.start(start_payload)
@@ -1436,6 +1724,11 @@ class tgbot {
 
   public answerShippingQuery(
     {
+      shipping_query_id = '',
+      ok = '',
+      shipping_options = '',
+      error_message = '',
+    }:{
       shipping_query_id = '',
       ok = '',
       shipping_options = '',
@@ -1459,6 +1752,10 @@ class tgbot {
       pre_checkout_query_id = '',
       ok = '',
       error_message = '',
+    }:{
+      pre_checkout_query_id = '',
+      ok = '',
+      error_message = '',
     } = {}
   ) {
     if (pre_checkout_query_id === '') this.miss_parameter("pre_checkout_query_id")
@@ -1477,7 +1774,11 @@ class tgbot {
   public getPath(
     {
       file_id = '',
-    } = {}
+    }:{
+      file_id : string,
+    } = {
+      file_id : '',
+    }
   ) {
     if (file_id === '') this.miss_parameter("file_id")
     const url = `"https://api.telegram.org/bot${this.token}/getFile?file_id=${file_id}`
@@ -1491,7 +1792,11 @@ class tgbot {
   public getFileDownloadUrl(
     {
       path = ''
-    } = {}
+    }:{
+      path = ''
+    } = {
+      path : ''
+    }
   ) {
     if (path === '') this.miss_parameter("path")
     let TGDurl = `https://api.telegram.org/file/bot${this.token}/${path}`
