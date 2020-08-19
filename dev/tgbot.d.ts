@@ -103,24 +103,24 @@ declare class tgbot {
         reply_markup?: any;
     }): any;
     sendVoice({ chat_id, voice, duration, caption, parse_mode, disable_notification, reply_to_message_id, reply_markup }?: {
-        chat_id?: string;
-        voice?: string;
-        duration?: string;
+        chat_id: number | string;
+        voice: any;
+        duration?: number | string;
         caption?: string;
         parse_mode?: string;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     sendVideoNote({ chat_id, video_note, duration, length, thumb, disable_notification, reply_to_message_id, reply_markup }?: {
-        chat_id?: string;
-        video_note?: string;
-        duration?: string;
+        chat_id: number | string;
+        video_note: any;
+        duration?: number | string;
         length?: string;
-        thumb?: string;
+        thumb?: any;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     sendMediaGroup({ chat_id, media, disable_notification, reply_to_message_id, }?: {
         chat_id?: string;

@@ -230,7 +230,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.sendVoice = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.voice, voice = _d === void 0 ? '' : _d, _e = _b.duration, duration = _e === void 0 ? '' : _e, _f = _b.caption, caption = _f === void 0 ? '' : _f, _g = _b.parse_mode, parse_mode = _g === void 0 ? '' : _g, _h = _b.disable_notification, disable_notification = _h === void 0 ? false : _h, _j = _b.reply_to_message_id, reply_to_message_id = _j === void 0 ? '' : _j, _k = _b.reply_markup, reply_markup = _k === void 0 ? '' : _k;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            voice: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.voice, voice = _d === void 0 ? '' : _d, _e = _b.duration, duration = _e === void 0 ? '' : _e, _f = _b.caption, caption = _f === void 0 ? '' : _f, _g = _b.parse_mode, parse_mode = _g === void 0 ? '' : _g, _h = _b.disable_notification, disable_notification = _h === void 0 ? false : _h, _j = _b.reply_to_message_id, reply_to_message_id = _j === void 0 ? '' : _j, _k = _b.reply_markup, reply_markup = _k === void 0 ? '' : _k;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (voice === '')
@@ -239,17 +242,20 @@ var tgbot = /** @class */ (function () {
             "method": "sendVoice",
             'chat_id': String(chat_id),
             'voice': voice,
-            'duration': duration,
-            'caption': caption,
-            'parse_mode': parse_mode,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'duration': Number(duration),
+            'caption': String(caption),
+            'parse_mode': String(parse_mode),
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.sendVideoNote = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.video_note, video_note = _d === void 0 ? '' : _d, _e = _b.duration, duration = _e === void 0 ? '' : _e, _f = _b.length, length = _f === void 0 ? '' : _f, _g = _b.thumb, thumb = _g === void 0 ? '' : _g, _h = _b.disable_notification, disable_notification = _h === void 0 ? false : _h, _j = _b.reply_to_message_id, reply_to_message_id = _j === void 0 ? '' : _j, _k = _b.reply_markup, reply_markup = _k === void 0 ? '' : _k;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            video_note: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.video_note, video_note = _d === void 0 ? '' : _d, _e = _b.duration, duration = _e === void 0 ? '' : _e, _f = _b.length, length = _f === void 0 ? '' : _f, _g = _b.thumb, thumb = _g === void 0 ? '' : _g, _h = _b.disable_notification, disable_notification = _h === void 0 ? false : _h, _j = _b.reply_to_message_id, reply_to_message_id = _j === void 0 ? '' : _j, _k = _b.reply_markup, reply_markup = _k === void 0 ? '' : _k;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (video_note === '')
@@ -258,11 +264,11 @@ var tgbot = /** @class */ (function () {
             "method": "sendVideoNote",
             'chat_id': String(chat_id),
             'video_note': video_note,
-            'length': length,
-            'duration': duration,
+            'length': Number(length),
+            'duration': Number(duration),
             'thumb': thumb,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
@@ -277,8 +283,8 @@ var tgbot = /** @class */ (function () {
             "method": "sendMediaGroup",
             'chat_id': String(chat_id),
             'media': media,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id)
         };
         return this.start(start_payload);
     };
@@ -296,8 +302,8 @@ var tgbot = /** @class */ (function () {
             'latitude': latitude,
             'longitude': longitude,
             'live_period': live_period,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
@@ -351,8 +357,8 @@ var tgbot = /** @class */ (function () {
             'address': address,
             'foursquare_id': foursquare_id,
             'foursquare_type': foursquare_type,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
@@ -372,8 +378,8 @@ var tgbot = /** @class */ (function () {
             'first_name': first_name,
             'last_name': last_name,
             'vcard': vcard,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
@@ -400,8 +406,8 @@ var tgbot = /** @class */ (function () {
             'open_period': open_period,
             'close_date': close_date,
             'is_closed': is_closed,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
@@ -414,8 +420,8 @@ var tgbot = /** @class */ (function () {
             "method": "sendDice",
             'chat_id': String(chat_id),
             'emoji': emoji,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
@@ -614,7 +620,7 @@ var tgbot = /** @class */ (function () {
             "method": "pinChatMessage",
             'chat_id': String(chat_id),
             'message_id': message_id,
-            'disable_notification': disable_notification
+            'disable_notification': Boolean(disable_notification)
         };
         return this.start(start_payload);
     };
@@ -816,8 +822,8 @@ var tgbot = /** @class */ (function () {
             "method": "sendSticker",
             'chat_id': String(chat_id),
             'sticker': sticker,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
@@ -984,8 +990,8 @@ var tgbot = /** @class */ (function () {
             'send_phone_number_to_provider': send_phone_number_to_provider,
             'send_email_to_provider': send_email_to_provider,
             'is_flexible': is_flexible,
-            'disable_notification': disable_notification,
-            'reply_to_message_id': reply_to_message_id,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);

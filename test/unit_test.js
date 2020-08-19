@@ -191,16 +191,65 @@ function unit_test() {
   //   logger.error(error)
   // }
 
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendAnimation()")
+  //   logger.info(bot.sendAnimation({
+  //     "chat_id": '207014603',
+  //     "animation": "https://media.giphy.com/media/S8MpS9WdQb98uHse9P/giphy.gif",
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // var file_id1 = "1XNmIIbH-t-l0S-dFLHiCrTRBUnHpkREH"
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendVoice()")
+  //   logger.info(bot.sendVoice({
+  //     "chat_id": '207014603',
+  //     "voice": "AwACAgUAAxkBAANPXz0ZirFc3YhpQSkdls9ViGAZpXcAAjEBAAIW5-hV7eYfJXG125wbBA",
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendVoice()")
+  //   logger.info(bot.sendVoice({
+  //     "chat_id": '207014603',
+  //     "voice": "AwACAgUAAxkBAANPXz0ZirFc3YhpQSkdls9ViGAZpXcAAjEBAAIW5-hV7eYfJXG125wbBA",
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
   var file_id1 = "1XNmIIbH-t-l0S-dFLHiCrTRBUnHpkREH"
   i++;
   logger.info("i = " + i);
   try {
-    logger.info("bot.sendAnimation()")
-    logger.info(bot.sendAnimation({
+    logger.info("bot.sendVideoNote()")
+    logger.info(bot.sendVideoNote({
       "chat_id": '207014603',
-      "animation": "https://media.giphy.com/media/S8MpS9WdQb98uHse9P/giphy.gif",
+      "video_note": DriveApp.getFileById(file_id1).getBlob(),
     }))
   } catch (error) {
     logger.error(error)
   }
+
+
+
+
+
+
+
+
+
+
+
+
 }
