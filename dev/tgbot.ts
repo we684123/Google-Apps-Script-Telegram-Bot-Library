@@ -1,4 +1,4 @@
- message_id?: number,/** Telegram bot class */
+/** Telegram bot class */
 class tgbot {
   token: string
   api_url: string
