@@ -494,7 +494,7 @@ class tgbot {
     let start_payload = {
       "method": "sendMediaGroup",
       'chat_id': String(chat_id),
-      'media': media,
+      'media': JSON.stringify(media),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
     }

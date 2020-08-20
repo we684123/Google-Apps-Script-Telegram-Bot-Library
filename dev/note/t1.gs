@@ -1,39 +1,24 @@
 {
-  "update_id": 33321929,
-  "message": {
-    "message_id": 39,
+  "ok": true,
+  "result": {
+    "message_id": 90,
     "from": {
-      "id": 207014603,
-      "is_bot": false,
-      "first_name": "永格天",
-      "last_name": "(則天)",
-      "username": "we684123",
-      "language_code": "zh-hant"
+      "id": 909196871,
+      "is_bot": true,
+      "first_name": "\u6b64\u65b9",
+      "username": "CiFang_bot"
     },
     "chat": {
       "id": 207014603,
-      "first_name": "永格天",
-      "last_name": "(則天)",
+      "first_name": "\u6c38\u683c\u5929",
+      "last_name": "(\u5247\u5929)",
       "username": "we684123",
       "type": "private"
     },
-    "date": 1597652764,
-    "sticker": {
-      "width": 512,
-      "height": 512,
-      "emoji": "👍",
-      "set_name": "Animated_Capoo",
-      "is_animated": true,
-      "thumb": {
-        "file_id": "AAMCAgADGQEAAydfOj8cakNkAeXIQTUmPDlptrXdXQACYBIAAujW4hJ3IT5zRVaK93HQmg8ABAEAB20AAwgtAAIaBA",
-        "file_unique_id": "AQADcdCaDwAECC0AAg",
-        "file_size": 3272,
-        "width": 128,
-        "height": 128
-      },
-      "file_id": "CAACAgIAAxkBAAMnXzo_HGpDZAHlyEE1Jjw5aba13V0AAmASAALo1uISdyE-c0VWivcaBA",
-      "file_unique_id": "AgADYBIAAujW4hI",
-      "file_size": 32383
+    "date": 1597925750,
+    "location": {
+      "latitude": 24.065642,
+      "longitude": 120.562652
     }
   }
 }

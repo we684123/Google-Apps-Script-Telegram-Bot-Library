@@ -228,26 +228,82 @@ function unit_test() {
   //   logger.error(error)
   // }
 
-  var file_id1 = "1XNmIIbH-t-l0S-dFLHiCrTRBUnHpkREH"
+  // var file_id1 = "1XNmIIbH-t-l0S-dFLHiCrTRBUnHpkREH"
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendVideoNote()")
+  //   logger.info(bot.sendVideoNote({
+  //     "chat_id": '207014603',
+  //     "video_note": DriveApp.getFileById(file_id1).getBlob(),
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendMediaGroup()")
+  //   var InputMediaPhoto1 = {
+  //     "type":"video",
+  //     "media":"BAACAgUAAxkBAANVXz5oRnhqL64hjn7cSehLZ4tAglIAAp0CAAIW5_hVaqDIhG5rxaUbBA",
+  //   }
+  //   var InputMediaPhoto2 = {
+  //     "type":"photo",
+  //     "media":"AgACAgUAAxkBAANUXz5m5Xeocvw_d5cAAe_BzeQ-qZ7dAAIcqjEbFuf4VaKfsSSEF43bFm0aa3QAAwEAAwIAA3kAA7XOBQABGwQ",
+  //   }
+  //   logger.info(bot.sendMediaGroup({
+  //     "chat_id": '207014603',
+  //     "media": [InputMediaPhoto1,InputMediaPhoto2],
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
   i++;
   logger.info("i = " + i);
+  var rt = ''
   try {
-    logger.info("bot.sendVideoNote()")
-    logger.info(bot.sendVideoNote({
+    logger.info("bot.sendLocation()")
+    rt = bot.sendLocation({
       "chat_id": '207014603',
-      "video_note": DriveApp.getFileById(file_id1).getBlob(),
+      "latitude": "24.065642",
+      "longitude": 120.562652,
+      "live_period": 60
+    })
+    logger.info(rt)
+  } catch (error) {
+    logger.error(error)
+  }
+
+  i++; // 需接續上面的才有用
+  logger.info("i = " + i);
+  var rt = JSON.parse(rt)
+  try {
+    logger.info("bot.editMessageLiveLocation()")
+    logger.info(rt = bot.editMessageLiveLocation({
+      "chat_id": '207014603',
+      "message_id": rt.result.message_id,
+      "latitude": "25.065642",
+      "longitude": 121.562652,
     }))
   } catch (error) {
     logger.error(error)
   }
 
-
-
-
-
-
-
-
+  i++; // 需接續上面的才有用
+  logger.info("i = " + i);
+  var rt = JSON.parse(rt)
+  try {
+    logger.info("bot.stopMessageLiveLocation()")
+    logger.info(bot.stopMessageLiveLocation({
+      "chat_id": '207014603',
+      "message_id": rt.result.message_id,
+    }))
+  } catch (error) {
+    logger.error(error)
+  }
 
 
 
