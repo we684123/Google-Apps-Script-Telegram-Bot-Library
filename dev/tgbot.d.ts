@@ -123,110 +123,110 @@ declare class tgbot {
         reply_markup?: any;
     }): any;
     sendMediaGroup({ chat_id, media, disable_notification, reply_to_message_id, }?: {
-        chat_id?: string;
-        media?: string;
+        chat_id: number | string;
+        media: any[];
         disable_notification?: boolean;
-        reply_to_message_id?: string;
+        reply_to_message_id?: number | string;
     }): any;
     sendLocation({ chat_id, latitude, longitude, live_period, disable_notification, reply_to_message_id, reply_markup }?: {
-        chat_id?: string;
-        latitude?: string;
-        longitude?: string;
-        live_period?: string;
+        chat_id: number | string;
+        latitude: number | string;
+        longitude: number | string;
+        live_period?: number | null;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     editMessageLiveLocation({ chat_id, message_id, inline_message_id, latitude, longitude, reply_markup }?: {
-        chat_id?: string;
-        message_id?: string;
+        chat_id?: number | string;
+        message_id?: number | null;
         inline_message_id?: string;
-        latitude?: string;
-        longitude?: string;
-        reply_markup?: string;
+        latitude: number | null;
+        longitude: number | null;
+        reply_markup?: any;
     }): any;
     stopMessageLiveLocation({ chat_id, message_id, inline_message_id, reply_markup }?: {
-        chat_id?: string;
-        message_id?: string;
+        chat_id?: number | string;
+        message_id?: number | null;
         inline_message_id?: string;
-        reply_markup?: string;
+        reply_markup?: any;
     }): any;
     sendVenue({ chat_id, latitude, longitude, title, address, foursquare_id, foursquare_type, disable_notification, reply_to_message_id, reply_markup }?: {
-        chat_id?: string;
-        latitude?: string;
-        longitude?: string;
-        title?: string;
-        address?: string;
+        chat_id: number | string;
+        latitude: number | null;
+        longitude: number | null;
+        title: string;
+        address: string;
         foursquare_id?: string;
         foursquare_type?: string;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     sendContact({ chat_id, phone_number, first_name, last_name, vcard, disable_notification, reply_to_message_id, reply_markup }?: {
-        chat_id?: string;
-        phone_number?: string;
-        first_name?: string;
+        chat_id: number | string;
+        phone_number: string;
+        first_name: string;
         last_name?: string;
         vcard?: string;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     sendPoll({ chat_id, question, options, is_anonymous, type, allows_multiple_answers, correct_option_id, explanation, explanation_parse_mode, open_period, close_date, is_closed, disable_notification, reply_to_message_id, reply_markup }?: {
-        chat_id?: string;
-        question?: string;
-        options?: string;
+        chat_id: number | string;
+        question: string;
+        options: string[];
         is_anonymous?: boolean;
         type?: string;
         allows_multiple_answers?: boolean;
-        correct_option_id?: string;
+        correct_option_id?: number | null;
         explanation?: string;
         explanation_parse_mode?: string;
-        open_period?: string;
-        close_date?: string;
+        open_period?: number | null;
+        close_date?: number | null;
         is_closed?: boolean;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     sendDice({ chat_id, emoji, disable_notification, reply_to_message_id, reply_markup }?: {
-        chat_id?: string;
+        chat_id: number | string;
         emoji?: string;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     sendChatAction({ chat_id, action, }?: {
-        chat_id?: string;
-        action?: string;
+        chat_id: number | string;
+        action: string;
     }): any;
     getUserProfilePhotos({ user_id, offset, limit, }?: {
-        user_id?: string;
-        offset?: string;
+        user_id: string;
+        offset?: number | null;
         limit?: number;
     }): any;
     getFile({ file_id, }?: {
-        file_id?: string;
+        file_id: string;
     }): any;
     kickChatMember({ chat_id, user_id, until_date }?: {
-        chat_id?: string;
-        user_id?: string;
-        until_date?: string;
+        chat_id: number | string;
+        user_id: string;
+        until_date?: number | null;
     }): any;
     unbanChatMember({ chat_id, user_id, }?: {
-        chat_id?: string;
-        user_id?: string;
+        chat_id: number | string;
+        user_id: string;
     }): any;
     restrictChatMember({ chat_id, user_id, permissions, until_date }?: {
-        chat_id?: string;
-        user_id?: string;
-        permissions?: string;
-        until_date?: string;
+        chat_id: number | string;
+        user_id: string;
+        permissions: object;
+        until_date?: number | null;
     }): any;
     promoteChatMember({ chat_id, user_id, can_change_info, can_post_messages, can_edit_messages, can_delete_messages, can_invite_users, can_restrict_members, can_pin_messages, can_promote_members, }?: {
-        chat_id?: string;
-        user_id?: string;
+        chat_id: number | string;
+        user_id: string;
         can_change_info?: boolean;
         can_post_messages?: boolean;
         can_edit_messages?: boolean;
@@ -237,178 +237,178 @@ declare class tgbot {
         can_promote_members?: boolean;
     }): any;
     setChatAdministratorCustomTitle({ chat_id, user_id, custom_title, }?: {
-        chat_id?: string;
-        user_id?: string;
-        custom_title?: string;
+        chat_id: number | string;
+        user_id: number | null;
+        custom_title: string;
     }): any;
     setChatPermissions({ chat_id, permissions, }?: {
-        chat_id?: string;
-        permissions?: string;
+        chat_id: number | string;
+        permissions: object;
     }): any;
     exportChatInviteLink({ chat_id, }?: {
-        chat_id?: string;
+        chat_id: number | string;
     }): any;
     setChatPhoto({ chat_id, photo, }?: {
-        chat_id?: string;
-        photo?: string;
+        chat_id: number | string;
+        photo: any;
     }): any;
     deleteChatPhoto({ chat_id, }?: {
-        chat_id?: string;
+        chat_id: number | string;
     }): any;
     setChatTitle({ chat_id, title, }?: {
-        chat_id?: string;
-        title?: string;
+        chat_id: number | string;
+        title: string;
     }): any;
     setChatDescription({ chat_id, description, }?: {
-        chat_id?: string;
+        chat_id: number | string;
         description?: string;
     }): any;
     pinChatMessage({ chat_id, message_id, disable_notification, }?: {
-        chat_id?: string;
-        message_id?: string;
+        chat_id: number | string;
+        message_id: number | null;
         disable_notification?: boolean;
     }): any;
     unpinChatMessage({ chat_id, }?: {
-        chat_id?: string;
+        chat_id: number | string;
     }): any;
     leaveChat({ chat_id, }?: {
-        chat_id?: string;
+        chat_id: number | string;
     }): any;
     getChatAdministrators({ chat_id, }?: {
-        chat_id?: string;
+        chat_id: number | string;
     }): any;
     getChatMembersCount({ chat_id, }?: {
-        chat_id?: string;
+        chat_id: number | string;
     }): any;
     getChatMember({ chat_id, user_id, }?: {
-        chat_id?: string;
-        user_id?: string;
+        chat_id: number | string;
+        user_id: number | null;
     }): any;
     setChatStickerSet({ chat_id, sticker_set_name, }?: {
-        chat_id?: string;
-        sticker_set_name?: string;
+        chat_id: number | string;
+        sticker_set_name: string;
     }): any;
     deleteChatStickerSet({ chat_id, }?: {
-        chat_id?: string;
+        chat_id: number | string;
     }): any;
     answerCallbackQuery({ callback_query_id, text, show_alert, url, cache_time, }?: {
         callback_query_id?: string;
         text?: string;
         show_alert?: boolean;
         url?: string;
-        cache_time?: string;
+        cache_time?: number | null;
     }): any;
     setMyCommands({ commands, }?: {
-        commands?: any[];
+        commands: object[];
     }): any;
     getMyCommands(): any;
     editMessageText({ chat_id, message_id, inline_message_id, text, parse_mode, disable_web_page_preview, reply_markup }?: {
-        chat_id?: string;
-        message_id?: string;
+        chat_id?: number | string;
+        message_id?: number | null;
         inline_message_id?: string;
-        text?: string;
+        text: string;
         parse_mode?: string;
         disable_web_page_preview?: boolean;
-        reply_markup?: string;
+        reply_markup?: any;
     }): any;
     editMessageCaption({ chat_id, message_id, inline_message_id, caption, parse_mode, disable_web_page_preview, reply_markup }?: {
-        chat_id?: string;
-        message_id?: string;
+        chat_id?: number | string;
+        message_id?: number | null;
         inline_message_id?: string;
         caption?: string;
         parse_mode?: string;
         disable_web_page_preview?: boolean;
-        reply_markup?: string;
+        reply_markup?: any;
     }): any;
     editMessageMedia({ chat_id, message_id, inline_message_id, media, reply_markup }?: {
-        chat_id?: string;
-        message_id?: string;
+        chat_id?: number | string;
+        message_id?: number | null;
         inline_message_id?: string;
-        media?: string;
-        reply_markup?: string;
+        media: object;
+        reply_markup?: any;
     }): any;
     editMessageReplyMarkup({ chat_id, message_id, inline_message_id, reply_markup }?: {
-        chat_id?: string;
-        message_id?: string;
+        chat_id?: number | string;
+        message_id?: number | null;
         inline_message_id?: string;
-        reply_markup?: string;
+        reply_markup?: any;
     }): any;
     stopPoll({ chat_id, message_id, reply_markup }?: {
-        chat_id?: string;
-        message_id?: string;
-        reply_markup?: string;
+        chat_id: number | string;
+        message_id: number | null;
+        reply_markup?: any;
     }): any;
     deleteMessage({ chat_id, message_id, }?: {
-        chat_id?: string;
-        message_id?: string;
+        chat_id: number | string;
+        message_id?: number | null;
     }): any;
     sendSticker({ chat_id, sticker, disable_notification, reply_to_message_id, reply_markup, }?: {
-        chat_id?: string;
-        sticker?: string;
+        chat_id: number | string;
+        sticker: any;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     getStickerSet({ name, }?: {
-        name?: string;
+        name: string;
     }): any;
     uploadStickerFile({ user_id, png_sticker, }?: {
-        user_id?: string;
-        png_sticker?: string;
+        user_id: number | null;
+        png_sticker: any;
     }): any;
     createNewStickerSet({ user_id, name, title, png_sticker, tgs_sticker, emojis, contains_masks, mask_position, }?: {
-        user_id?: string;
-        name?: string;
-        title?: string;
-        png_sticker?: string;
-        tgs_sticker?: string;
-        emojis?: string;
+        user_id: number | null;
+        name: string;
+        title: string;
+        png_sticker?: any;
+        tgs_sticker?: any;
+        emojis: string;
         contains_masks?: boolean;
-        mask_position?: string;
+        mask_position?: object;
     }): any;
     addStickerToSet({ user_id, name, png_sticker, tgs_sticker, emojis, mask_position, }?: {
-        user_id?: string;
-        name?: string;
-        png_sticker?: string;
-        tgs_sticker?: string;
-        emojis?: string;
-        mask_position?: string;
+        user_id: number | null;
+        name: string;
+        png_sticker?: any;
+        tgs_sticker?: any;
+        emojis: string;
+        mask_position?: object;
     }): any;
     setStickerPositionInSet({ sticker, position, }?: {
-        sticker?: string;
-        position?: string;
+        sticker: string;
+        position: number | null;
     }): any;
     deleteStickerFromSet({ sticker, }?: {
-        sticker?: string;
+        sticker: string;
     }): any;
     setStickerSetThumb({ name, user_id, thumb, }?: {
-        name?: string;
-        user_id?: string;
-        thumb?: string;
+        name: string;
+        user_id: number | null;
+        thumb?: any;
     }): any;
     answerInlineQuery({ inline_query_id, results, cache_time, is_personal, next_offset, switch_pm_text, switch_pm_parameter, }?: {
-        inline_query_id?: string;
-        results?: any[];
-        cache_time?: string;
-        is_personal?: string;
+        inline_query_id: string;
+        results: object[];
+        cache_time?: number | null;
+        is_personal?: boolean;
         next_offset?: string;
         switch_pm_text?: string;
         switch_pm_parameter?: string;
     }): any;
     sendInvoice({ chat_id, title, description, payload, provider_token, start_parameter, currency, prices, provider_data, photo_url, photo_size, photo_width, photo_height, need_name, need_phone_number, need_email, need_shipping_address, send_phone_number_to_provider, send_email_to_provider, is_flexible, disable_notification, reply_to_message_id, reply_markup, }?: {
-        chat_id?: string;
-        title?: string;
-        description?: string;
-        payload?: string;
-        provider_token?: string;
-        start_parameter?: string;
-        currency?: string;
-        prices?: any[];
+        chat_id: number | string;
+        title: string;
+        description: string;
+        payload: string;
+        provider_token: string;
+        start_parameter: string;
+        currency: string;
+        prices: object[];
         provider_data?: string;
         photo_url?: string;
-        photo_size?: string;
-        photo_width?: string;
-        photo_height?: string;
+        photo_size?: number | null;
+        photo_width?: number | null;
+        photo_height?: number | null;
         need_name?: boolean;
         need_phone_number?: boolean;
         need_email?: boolean;
@@ -417,25 +417,25 @@ declare class tgbot {
         send_email_to_provider?: boolean;
         is_flexible?: boolean;
         disable_notification?: boolean;
-        reply_to_message_id?: string;
-        reply_markup?: string;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
     }): any;
     answerShippingQuery({ shipping_query_id, ok, shipping_options, error_message, }?: {
-        shipping_query_id?: string;
-        ok?: string;
-        shipping_options?: string;
+        shipping_query_id: string;
+        ok: boolean | null;
+        shipping_options?: object[];
         error_message?: string;
     }): any;
     answerPreCheckoutQuery({ pre_checkout_query_id, ok, error_message, }?: {
-        pre_checkout_query_id?: string;
-        ok?: string;
+        pre_checkout_query_id: string;
+        ok: boolean | null;
         error_message?: string;
     }): any;
     getPath({ file_id, }?: {
-        file_id?: string;
+        file_id: string;
     }): any;
     getFileDownloadUrl({ path }?: {
-        path?: string;
+        path: any;
     }): string;
     private miss_parameter;
     private start;

@@ -274,10 +274,13 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.sendMediaGroup = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.media, media = _d === void 0 ? '' : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e, _f = _b.reply_to_message_id, reply_to_message_id = _f === void 0 ? '' : _f;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            media: []
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.media, media = _d === void 0 ? [] : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e, _f = _b.reply_to_message_id, reply_to_message_id = _f === void 0 ? '' : _f;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (media === '')
+        if (media === [])
             this.miss_parameter("media");
         var start_payload = {
             "method": "sendMediaGroup",
@@ -289,7 +292,11 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.sendLocation = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.latitude, latitude = _d === void 0 ? '' : _d, _e = _b.longitude, longitude = _e === void 0 ? '' : _e, _f = _b.live_period, live_period = _f === void 0 ? '' : _f, _g = _b.disable_notification, disable_notification = _g === void 0 ? false : _g, _h = _b.reply_to_message_id, reply_to_message_id = _h === void 0 ? '' : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            latitude: '',
+            longitude: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.latitude, latitude = _d === void 0 ? '' : _d, _e = _b.longitude, longitude = _e === void 0 ? '' : _e, _f = _b.live_period, live_period = _f === void 0 ? null : _f, _g = _b.disable_notification, disable_notification = _g === void 0 ? false : _g, _h = _b.reply_to_message_id, reply_to_message_id = _h === void 0 ? '' : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (latitude === '')
@@ -299,9 +306,9 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "sendLocation",
             'chat_id': String(chat_id),
-            'latitude': latitude,
-            'longitude': longitude,
-            'live_period': live_period,
+            'latitude': Number(latitude),
+            'longitude': Number(longitude),
+            'live_period': Number(live_period),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
@@ -309,40 +316,49 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.editMessageLiveLocation = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.latitude, latitude = _f === void 0 ? '' : _f, _g = _b.longitude, longitude = _g === void 0 ? '' : _g, _h = _b.reply_markup, reply_markup = _h === void 0 ? '' : _h;
-        if (latitude === '')
+        var _b = _a === void 0 ? {
+            latitude: null,
+            longitude: null
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.latitude, latitude = _f === void 0 ? null : _f, _g = _b.longitude, longitude = _g === void 0 ? null : _g, _h = _b.reply_markup, reply_markup = _h === void 0 ? '' : _h;
+        if (latitude === null)
             this.miss_parameter("latitude");
-        if (longitude === '')
+        if (longitude === null)
             this.miss_parameter("longitude");
         var start_payload = {
             "method": "editMessageLiveLocation",
             'chat_id': String(chat_id),
-            'message_id': message_id,
-            'inline_message_id': inline_message_id,
-            'latitude': latitude,
-            'longitude': longitude,
+            'message_id': Number(message_id),
+            'inline_message_id': String(inline_message_id),
+            'latitude': Number(latitude),
+            'longitude': Number(longitude),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.stopMessageLiveLocation = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.reply_markup, reply_markup = _f === void 0 ? '' : _f;
+        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.reply_markup, reply_markup = _f === void 0 ? '' : _f;
         var start_payload = {
             "method": "stopMessageLiveLocation",
             'chat_id': String(chat_id),
-            'message_id': message_id,
-            'inline_message_id': inline_message_id,
+            'message_id': Number(message_id),
+            'inline_message_id': String(inline_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.sendVenue = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.latitude, latitude = _d === void 0 ? '' : _d, _e = _b.longitude, longitude = _e === void 0 ? '' : _e, _f = _b.title, title = _f === void 0 ? '' : _f, _g = _b.address, address = _g === void 0 ? '' : _g, _h = _b.foursquare_id, foursquare_id = _h === void 0 ? '' : _h, _j = _b.foursquare_type, foursquare_type = _j === void 0 ? '' : _j, _k = _b.disable_notification, disable_notification = _k === void 0 ? false : _k, _l = _b.reply_to_message_id, reply_to_message_id = _l === void 0 ? '' : _l, _m = _b.reply_markup, reply_markup = _m === void 0 ? '' : _m;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            latitude: null,
+            longitude: null,
+            title: '',
+            address: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.latitude, latitude = _d === void 0 ? null : _d, _e = _b.longitude, longitude = _e === void 0 ? null : _e, _f = _b.title, title = _f === void 0 ? '' : _f, _g = _b.address, address = _g === void 0 ? '' : _g, _h = _b.foursquare_id, foursquare_id = _h === void 0 ? '' : _h, _j = _b.foursquare_type, foursquare_type = _j === void 0 ? '' : _j, _k = _b.disable_notification, disable_notification = _k === void 0 ? false : _k, _l = _b.reply_to_message_id, reply_to_message_id = _l === void 0 ? '' : _l, _m = _b.reply_markup, reply_markup = _m === void 0 ? '' : _m;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (latitude === '')
+        if (latitude === null)
             this.miss_parameter("latitude");
-        if (longitude === '')
+        if (longitude === null)
             this.miss_parameter("longitude");
         if (title === '')
             this.miss_parameter("title");
@@ -351,12 +367,12 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "sendVenue",
             'chat_id': String(chat_id),
-            'latitude': latitude,
-            'longitude': longitude,
-            'title': title,
-            'address': address,
-            'foursquare_id': foursquare_id,
-            'foursquare_type': foursquare_type,
+            'latitude': Number(latitude),
+            'longitude': Number(longitude),
+            'title': String(title),
+            'address': String(address),
+            'foursquare_id': String(foursquare_id),
+            'foursquare_type': String(foursquare_type),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
@@ -364,7 +380,11 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.sendContact = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.phone_number, phone_number = _d === void 0 ? '' : _d, _e = _b.first_name, first_name = _e === void 0 ? '' : _e, _f = _b.last_name, last_name = _f === void 0 ? '' : _f, _g = _b.vcard, vcard = _g === void 0 ? '' : _g, _h = _b.disable_notification, disable_notification = _h === void 0 ? false : _h, _j = _b.reply_to_message_id, reply_to_message_id = _j === void 0 ? '' : _j, _k = _b.reply_markup, reply_markup = _k === void 0 ? '' : _k;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            phone_number: '',
+            first_name: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.phone_number, phone_number = _d === void 0 ? '' : _d, _e = _b.first_name, first_name = _e === void 0 ? '' : _e, _f = _b.last_name, last_name = _f === void 0 ? '' : _f, _g = _b.vcard, vcard = _g === void 0 ? '' : _g, _h = _b.disable_notification, disable_notification = _h === void 0 ? false : _h, _j = _b.reply_to_message_id, reply_to_message_id = _j === void 0 ? '' : _j, _k = _b.reply_markup, reply_markup = _k === void 0 ? '' : _k;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (phone_number === '')
@@ -374,10 +394,10 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "sendContact",
             'chat_id': String(chat_id),
-            'phone_number': phone_number,
-            'first_name': first_name,
-            'last_name': last_name,
-            'vcard': vcard,
+            'phone_number': String(phone_number),
+            'first_name': String(first_name),
+            'last_name': String(last_name),
+            'vcard': String(vcard),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
@@ -385,27 +405,31 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.sendPoll = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.question, question = _d === void 0 ? '' : _d, _e = _b.options, options = _e === void 0 ? '' : _e, _f = _b.is_anonymous, is_anonymous = _f === void 0 ? false : _f, _g = _b.type, type = _g === void 0 ? '' : _g, _h = _b.allows_multiple_answers, allows_multiple_answers = _h === void 0 ? false : _h, _j = _b.correct_option_id, correct_option_id = _j === void 0 ? '' : _j, _k = _b.explanation, explanation = _k === void 0 ? '' : _k, _l = _b.explanation_parse_mode, explanation_parse_mode = _l === void 0 ? '' : _l, _m = _b.open_period, open_period = _m === void 0 ? '' : _m, _o = _b.close_date, close_date = _o === void 0 ? '' : _o, _p = _b.is_closed, is_closed = _p === void 0 ? false : _p, _q = _b.disable_notification, disable_notification = _q === void 0 ? false : _q, _r = _b.reply_to_message_id, reply_to_message_id = _r === void 0 ? '' : _r, _s = _b.reply_markup, reply_markup = _s === void 0 ? '' : _s;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            question: '',
+            options: []
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.question, question = _d === void 0 ? '' : _d, _e = _b.options, options = _e === void 0 ? [] : _e, _f = _b.is_anonymous, is_anonymous = _f === void 0 ? false : _f, _g = _b.type, type = _g === void 0 ? '' : _g, _h = _b.allows_multiple_answers, allows_multiple_answers = _h === void 0 ? false : _h, _j = _b.correct_option_id, correct_option_id = _j === void 0 ? null : _j, _k = _b.explanation, explanation = _k === void 0 ? '' : _k, _l = _b.explanation_parse_mode, explanation_parse_mode = _l === void 0 ? '' : _l, _m = _b.open_period, open_period = _m === void 0 ? null : _m, _o = _b.close_date, close_date = _o === void 0 ? null : _o, _p = _b.is_closed, is_closed = _p === void 0 ? false : _p, _q = _b.disable_notification, disable_notification = _q === void 0 ? false : _q, _r = _b.reply_to_message_id, reply_to_message_id = _r === void 0 ? '' : _r, _s = _b.reply_markup, reply_markup = _s === void 0 ? '' : _s;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (question === '')
             this.miss_parameter("question");
-        if (options === '')
+        if (options === [])
             this.miss_parameter("options");
         var start_payload = {
             "method": "sendPoll",
             'chat_id': String(chat_id),
-            'question': question,
+            'question': String(question),
             'options': options,
-            'is_anonymous': is_anonymous,
-            'type': type,
-            'allows_multiple_answers': allows_multiple_answers,
-            'correct_option_id': correct_option_id,
-            'explanation': explanation,
-            'explanation_parse_mode': explanation_parse_mode,
-            'open_period': open_period,
-            'close_date': close_date,
-            'is_closed': is_closed,
+            'is_anonymous': Boolean(is_anonymous),
+            'type': String(type),
+            'allows_multiple_answers': Boolean(allows_multiple_answers),
+            'correct_option_id': Number(correct_option_id),
+            'explanation': String(explanation),
+            'explanation_parse_mode': String(explanation_parse_mode),
+            'open_period': Number(open_period),
+            'close_date': Number(close_date),
+            'is_closed': Boolean(is_closed),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
@@ -413,13 +437,15 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.sendDice = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.emoji, emoji = _d === void 0 ? '' : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e, _f = _b.reply_to_message_id, reply_to_message_id = _f === void 0 ? '' : _f, _g = _b.reply_markup, reply_markup = _g === void 0 ? '' : _g;
+        var _b = _a === void 0 ? {
+            chat_id: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.emoji, emoji = _d === void 0 ? '' : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e, _f = _b.reply_to_message_id, reply_to_message_id = _f === void 0 ? '' : _f, _g = _b.reply_markup, reply_markup = _g === void 0 ? '' : _g;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
             "method": "sendDice",
             'chat_id': String(chat_id),
-            'emoji': emoji,
+            'emoji': String(emoji),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
@@ -427,7 +453,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.sendChatAction = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.action, action = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            action: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.action, action = _d === void 0 ? '' : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (action === '')
@@ -435,24 +464,28 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "sendChatAction",
             'chat_id': String(chat_id),
-            'action': action
+            'action': String(action)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.getUserProfilePhotos = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.user_id, user_id = _c === void 0 ? '' : _c, _d = _b.offset, offset = _d === void 0 ? '' : _d, _e = _b.limit, limit = _e === void 0 ? 100 : _e;
+        var _b = _a === void 0 ? {
+            user_id: ''
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? '' : _c, _d = _b.offset, offset = _d === void 0 ? null : _d, _e = _b.limit, limit = _e === void 0 ? 100 : _e;
         if (user_id === '')
             this.miss_parameter("user_id");
         var start_payload = {
             "method": "getUserProfilePhotos",
             'user_id': Number(user_id),
-            "offset": offset,
-            "limit": limit
+            "offset": Number(offset),
+            "limit": Number(limit)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.getFile = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).file_id, file_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            file_id: ''
+        } : _a).file_id, file_id = _b === void 0 ? '' : _b;
         if (file_id === '')
             this.miss_parameter("file_id");
         var start_payload = {
@@ -462,7 +495,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.kickChatMember = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.until_date, until_date = _e === void 0 ? '' : _e;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            user_id: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.until_date, until_date = _e === void 0 ? null : _e;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (user_id === '')
@@ -476,7 +512,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.unbanChatMember = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            user_id: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (user_id === '')
@@ -489,11 +528,17 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.restrictChatMember = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.permissions, permissions = _e === void 0 ? '' : _e, _f = _b.until_date, until_date = _f === void 0 ? '' : _f;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            user_id: '',
+            permissions: {}
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.permissions, permissions = _e === void 0 ? {} : _e, _f = _b.until_date, until_date = _f === void 0 ? null : _f;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (user_id === '')
             this.miss_parameter("user_id");
+        if (permissions === {})
+            this.miss_parameter("permissions");
         var start_payload = {
             "method": "restrictChatMember",
             'chat_id': String(chat_id),
@@ -504,7 +549,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.promoteChatMember = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.can_change_info, can_change_info = _e === void 0 ? false : _e, _f = _b.can_post_messages, can_post_messages = _f === void 0 ? false : _f, _g = _b.can_edit_messages, can_edit_messages = _g === void 0 ? false : _g, _h = _b.can_delete_messages, can_delete_messages = _h === void 0 ? false : _h, _j = _b.can_invite_users, can_invite_users = _j === void 0 ? false : _j, _k = _b.can_restrict_members, can_restrict_members = _k === void 0 ? false : _k, _l = _b.can_pin_messages, can_pin_messages = _l === void 0 ? false : _l, _m = _b.can_promote_members, can_promote_members = _m === void 0 ? false : _m;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            user_id: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.can_change_info, can_change_info = _e === void 0 ? false : _e, _f = _b.can_post_messages, can_post_messages = _f === void 0 ? false : _f, _g = _b.can_edit_messages, can_edit_messages = _g === void 0 ? false : _g, _h = _b.can_delete_messages, can_delete_messages = _h === void 0 ? false : _h, _j = _b.can_invite_users, can_invite_users = _j === void 0 ? false : _j, _k = _b.can_restrict_members, can_restrict_members = _k === void 0 ? false : _k, _l = _b.can_pin_messages, can_pin_messages = _l === void 0 ? false : _l, _m = _b.can_promote_members, can_promote_members = _m === void 0 ? false : _m;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (user_id === '')
@@ -525,10 +573,14 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setChatAdministratorCustomTitle = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.custom_title, custom_title = _e === void 0 ? '' : _e;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            user_id: null,
+            custom_title: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? null : _d, _e = _b.custom_title, custom_title = _e === void 0 ? '' : _e;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (user_id === '')
+        if (user_id === null)
             this.miss_parameter("user_id");
         var start_payload = {
             "method": "setChatAdministratorCustomTitle",
@@ -539,10 +591,13 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setChatPermissions = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.permissions, permissions = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            permissions: {}
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.permissions, permissions = _d === void 0 ? {} : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (permissions === '')
+        if (permissions === {})
             this.miss_parameter("permissions");
         var start_payload = {
             "method": "setChatPermissions",
@@ -552,7 +607,7 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.exportChatInviteLink = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? { chat_id: '' } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
@@ -562,7 +617,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setChatPhoto = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.photo, photo = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            photo: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.photo, photo = _d === void 0 ? '' : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (photo === '')
@@ -575,7 +633,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.deleteChatPhoto = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            chat_id: ''
+        } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
@@ -585,7 +645,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setChatTitle = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.title, title = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            title: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.title, title = _d === void 0 ? '' : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (title === '')
@@ -593,39 +656,44 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "setChatTitle",
             'chat_id': String(chat_id),
-            'title': title
+            'title': String(title)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.setChatDescription = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.description, description = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.description, description = _d === void 0 ? '' : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (description === '')
-            this.miss_parameter("description");
         var start_payload = {
             "method": "setChatDescription",
             'chat_id': String(chat_id),
-            'description': description
+            'description': String(description)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.pinChatMessage = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            message_id: null
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (message_id === '')
+        if (message_id === null)
             this.miss_parameter("message_id");
         var start_payload = {
             "method": "pinChatMessage",
             'chat_id': String(chat_id),
-            'message_id': message_id,
+            'message_id': Number(message_id),
             'disable_notification': Boolean(disable_notification)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.unpinChatMessage = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            chat_id: ''
+        } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
@@ -635,7 +703,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.leaveChat = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            chat_id: ''
+        } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
@@ -645,7 +715,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.getChatAdministrators = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            chat_id: ''
+        } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
@@ -655,7 +727,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.getChatMembersCount = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            chat_id: ''
+        } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
@@ -665,10 +739,13 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.getChatMember = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            user_id: null
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? null : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (user_id === '')
+        if (user_id === null)
             this.miss_parameter("user_id");
         var start_payload = {
             "method": "getChatMembersCount",
@@ -678,18 +755,23 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setChatStickerSet = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.sticker_set_name, sticker_set_name = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            sticker_set_name: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.sticker_set_name, sticker_set_name = _d === void 0 ? '' : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
             "method": "setChatStickerSet",
             'chat_id': String(chat_id),
-            'sticker_set_name': sticker_set_name
+            'sticker_set_name': String(sticker_set_name)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.deleteChatStickerSet = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            chat_id: ''
+        } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         var start_payload = {
@@ -699,7 +781,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.answerCallbackQuery = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.callback_query_id, callback_query_id = _c === void 0 ? '' : _c, _d = _b.text, text = _d === void 0 ? '' : _d, _e = _b.show_alert, show_alert = _e === void 0 ? false : _e, _f = _b.url, url = _f === void 0 ? '' : _f, _g = _b.cache_time, cache_time = _g === void 0 ? '' : _g;
+        var _b = _a === void 0 ? {
+            callback_query_id: ''
+        } : _a, _c = _b.callback_query_id, callback_query_id = _c === void 0 ? '' : _c, _d = _b.text, text = _d === void 0 ? '' : _d, _e = _b.show_alert, show_alert = _e === void 0 ? false : _e, _f = _b.url, url = _f === void 0 ? '' : _f, _g = _b.cache_time, cache_time = _g === void 0 ? null : _g;
         if (callback_query_id === '')
             this.miss_parameter("callback_query_id");
         var start_payload = {
@@ -713,7 +797,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setMyCommands = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).commands, commands = _b === void 0 ? [] : _b;
+        var _b = (_a === void 0 ? {
+            commands: []
+        } : _a).commands, commands = _b === void 0 ? [] : _b;
         if (commands === [])
             this.miss_parameter("commands");
         var start_payload = {
@@ -730,7 +816,9 @@ var tgbot = /** @class */ (function () {
     };
     // === Updating messages ===
     tgbot.prototype.editMessageText = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.text, text = _f === void 0 ? '' : _f, _g = _b.parse_mode, parse_mode = _g === void 0 ? '' : _g, _h = _b.disable_web_page_preview, disable_web_page_preview = _h === void 0 ? false : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
+        var _b = _a === void 0 ? {
+            text: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.text, text = _f === void 0 ? '' : _f, _g = _b.parse_mode, parse_mode = _g === void 0 ? '' : _g, _h = _b.disable_web_page_preview, disable_web_page_preview = _h === void 0 ? false : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
         if (text === '')
             this.miss_parameter("text");
         var start_payload = {
@@ -739,14 +827,14 @@ var tgbot = /** @class */ (function () {
             'message_id': String(message_id),
             'inline_message_id': String(inline_message_id),
             'text': String(text),
-            'parse_mode': parse_mode,
-            'disable_web_page_preview': disable_web_page_preview,
+            'parse_mode': String(parse_mode),
+            'disable_web_page_preview': Boolean(disable_web_page_preview),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.editMessageCaption = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.caption, caption = _f === void 0 ? '' : _f, _g = _b.parse_mode, parse_mode = _g === void 0 ? '' : _g, _h = _b.disable_web_page_preview, disable_web_page_preview = _h === void 0 ? false : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
+        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.caption, caption = _f === void 0 ? '' : _f, _g = _b.parse_mode, parse_mode = _g === void 0 ? '' : _g, _h = _b.disable_web_page_preview, disable_web_page_preview = _h === void 0 ? false : _h, _j = _b.reply_markup, reply_markup = _j === void 0 ? '' : _j;
         var start_payload = {
             "method": "editMessageCaption",
             'chat_id': String(chat_id),
@@ -760,8 +848,10 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.editMessageMedia = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.media, media = _f === void 0 ? '' : _f, _g = _b.reply_markup, reply_markup = _g === void 0 ? '' : _g;
-        if (media === '')
+        var _b = _a === void 0 ? {
+            media: {}
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.media, media = _f === void 0 ? {} : _f, _g = _b.reply_markup, reply_markup = _g === void 0 ? '' : _g;
+        if (media === {})
             this.miss_parameter("media");
         var start_payload = {
             "method": "editMessageMedia",
@@ -774,7 +864,7 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.editMessageReplyMarkup = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.reply_markup, reply_markup = _f === void 0 ? '' : _f;
+        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d, _e = _b.inline_message_id, inline_message_id = _e === void 0 ? '' : _e, _f = _b.reply_markup, reply_markup = _f === void 0 ? '' : _f;
         var start_payload = {
             "method": "editMessageReplyMarkup",
             'chat_id': String(chat_id),
@@ -785,10 +875,13 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.stopPoll = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d, _e = _b.reply_markup, reply_markup = _e === void 0 ? '' : _e;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            message_id: null
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d, _e = _b.reply_markup, reply_markup = _e === void 0 ? '' : _e;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (message_id === '')
+        if (message_id === null)
             this.miss_parameter("message_id");
         var start_payload = {
             "method": "stopPoll",
@@ -799,10 +892,13 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.deleteMessage = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            message_id: null
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.message_id, message_id = _d === void 0 ? null : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (message_id === '')
+        if (message_id === null)
             this.miss_parameter("message_id");
         var start_payload = {
             "method": "deleteMessage",
@@ -813,7 +909,10 @@ var tgbot = /** @class */ (function () {
     };
     // === Stickers ===
     tgbot.prototype.sendSticker = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.sticker, sticker = _d === void 0 ? '' : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e, _f = _b.reply_to_message_id, reply_to_message_id = _f === void 0 ? '' : _f, _g = _b.reply_markup, reply_markup = _g === void 0 ? '' : _g;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            sticker: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.sticker, sticker = _d === void 0 ? '' : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e, _f = _b.reply_to_message_id, reply_to_message_id = _f === void 0 ? '' : _f, _g = _b.reply_markup, reply_markup = _g === void 0 ? '' : _g;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (sticker === '')
@@ -829,7 +928,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.getStickerSet = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).name, name = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            name: ''
+        } : _a).name, name = _b === void 0 ? '' : _b;
         if (name === '')
             this.miss_parameter("name");
         var start_payload = {
@@ -839,8 +940,11 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.uploadStickerFile = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.user_id, user_id = _c === void 0 ? '' : _c, _d = _b.png_sticker, png_sticker = _d === void 0 ? '' : _d;
-        if (user_id === '')
+        var _b = _a === void 0 ? {
+            user_id: null,
+            png_sticker: ''
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? null : _c, _d = _b.png_sticker, png_sticker = _d === void 0 ? '' : _d;
+        if (user_id === null)
             this.miss_parameter("user_id");
         if (png_sticker === '')
             this.miss_parameter("png_sticker");
@@ -852,8 +956,13 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.createNewStickerSet = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.user_id, user_id = _c === void 0 ? '' : _c, _d = _b.name, name = _d === void 0 ? '' : _d, _e = _b.title, title = _e === void 0 ? '' : _e, _f = _b.png_sticker, png_sticker = _f === void 0 ? '' : _f, _g = _b.tgs_sticker, tgs_sticker = _g === void 0 ? '' : _g, _h = _b.emojis, emojis = _h === void 0 ? '' : _h, _j = _b.contains_masks, contains_masks = _j === void 0 ? false : _j, _k = _b.mask_position, mask_position = _k === void 0 ? '' : _k;
-        if (user_id === '')
+        var _b = _a === void 0 ? {
+            user_id: null,
+            name: '',
+            title: '',
+            emojis: ''
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? null : _c, _d = _b.name, name = _d === void 0 ? '' : _d, _e = _b.title, title = _e === void 0 ? '' : _e, _f = _b.png_sticker, png_sticker = _f === void 0 ? '' : _f, _g = _b.tgs_sticker, tgs_sticker = _g === void 0 ? '' : _g, _h = _b.emojis, emojis = _h === void 0 ? '' : _h, _j = _b.contains_masks, contains_masks = _j === void 0 ? false : _j, _k = _b.mask_position, mask_position = _k === void 0 ? {} : _k;
+        if (user_id === null)
             this.miss_parameter("user_id");
         if (name === '')
             this.miss_parameter("name");
@@ -869,14 +978,18 @@ var tgbot = /** @class */ (function () {
             'png_sticker': png_sticker,
             'tgs_sticker': tgs_sticker,
             'emojis': String(emojis),
-            'contains_masks': contains_masks,
+            'contains_masks': Boolean(contains_masks),
             'mask_position': mask_position
         };
         return this.start(start_payload);
     };
     tgbot.prototype.addStickerToSet = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.user_id, user_id = _c === void 0 ? '' : _c, _d = _b.name, name = _d === void 0 ? '' : _d, _e = _b.png_sticker, png_sticker = _e === void 0 ? '' : _e, _f = _b.tgs_sticker, tgs_sticker = _f === void 0 ? '' : _f, _g = _b.emojis, emojis = _g === void 0 ? '' : _g, _h = _b.mask_position, mask_position = _h === void 0 ? '' : _h;
-        if (user_id === '')
+        var _b = _a === void 0 ? {
+            user_id: null,
+            name: '',
+            emojis: ''
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? null : _c, _d = _b.name, name = _d === void 0 ? '' : _d, _e = _b.png_sticker, png_sticker = _e === void 0 ? '' : _e, _f = _b.tgs_sticker, tgs_sticker = _f === void 0 ? '' : _f, _g = _b.emojis, emojis = _g === void 0 ? '' : _g, _h = _b.mask_position, mask_position = _h === void 0 ? {} : _h;
+        if (user_id === null)
             this.miss_parameter("user_id");
         if (name === '')
             this.miss_parameter("name");
@@ -894,10 +1007,13 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setStickerPositionInSet = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.sticker, sticker = _c === void 0 ? '' : _c, _d = _b.position, position = _d === void 0 ? '' : _d;
+        var _b = _a === void 0 ? {
+            sticker: '',
+            position: null
+        } : _a, _c = _b.sticker, sticker = _c === void 0 ? '' : _c, _d = _b.position, position = _d === void 0 ? null : _d;
         if (sticker === '')
             this.miss_parameter("sticker");
-        if (position === '')
+        if (position === null)
             this.miss_parameter("position");
         var start_payload = {
             "method": "setStickerPositionInSet",
@@ -907,7 +1023,9 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.deleteStickerFromSet = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).sticker, sticker = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            sticker: ''
+        } : _a).sticker, sticker = _b === void 0 ? '' : _b;
         if (sticker === '')
             this.miss_parameter("sticker");
         var start_payload = {
@@ -917,10 +1035,13 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.setStickerSetThumb = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.name, name = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.thumb, thumb = _e === void 0 ? '' : _e;
+        var _b = _a === void 0 ? {
+            user_id: null,
+            name: ''
+        } : _a, _c = _b.name, name = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? null : _d, _e = _b.thumb, thumb = _e === void 0 ? '' : _e;
         if (name === '')
             this.miss_parameter("name");
-        if (user_id === '')
+        if (user_id === null)
             this.miss_parameter("user_id");
         var start_payload = {
             "method": "setStickerSetThumb",
@@ -932,7 +1053,10 @@ var tgbot = /** @class */ (function () {
     };
     // === Inline mode ===
     tgbot.prototype.answerInlineQuery = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.inline_query_id, inline_query_id = _c === void 0 ? '' : _c, _d = _b.results, results = _d === void 0 ? [] : _d, _e = _b.cache_time, cache_time = _e === void 0 ? '' : _e, _f = _b.is_personal, is_personal = _f === void 0 ? '' : _f, _g = _b.next_offset, next_offset = _g === void 0 ? '' : _g, _h = _b.switch_pm_text, switch_pm_text = _h === void 0 ? '' : _h, _j = _b.switch_pm_parameter, switch_pm_parameter = _j === void 0 ? '' : _j;
+        var _b = _a === void 0 ? {
+            inline_query_id: '',
+            results: []
+        } : _a, _c = _b.inline_query_id, inline_query_id = _c === void 0 ? '' : _c, _d = _b.results, results = _d === void 0 ? [] : _d, _e = _b.cache_time, cache_time = _e === void 0 ? null : _e, _f = _b.is_personal, is_personal = _f === void 0 ? false : _f, _g = _b.next_offset, next_offset = _g === void 0 ? '' : _g, _h = _b.switch_pm_text, switch_pm_text = _h === void 0 ? '' : _h, _j = _b.switch_pm_parameter, switch_pm_parameter = _j === void 0 ? '' : _j;
         if (inline_query_id === '')
             this.miss_parameter("inline_query_id");
         if (results === [])
@@ -942,16 +1066,25 @@ var tgbot = /** @class */ (function () {
             'inline_query_id': String(inline_query_id),
             'results': String(results),
             'cache_time': cache_time,
-            'is_personal': is_personal,
-            'next_offset': next_offset,
-            'switch_pm_text': switch_pm_text,
-            'switch_pm_parameter': switch_pm_parameter
+            'is_personal': Boolean(is_personal),
+            'next_offset': String(next_offset),
+            'switch_pm_text': String(switch_pm_text),
+            'switch_pm_parameter': String(switch_pm_parameter)
         };
         return this.start(start_payload);
     };
     // === Payments ===
     tgbot.prototype.sendInvoice = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.title, title = _d === void 0 ? '' : _d, _e = _b.description, description = _e === void 0 ? '' : _e, _f = _b.payload, payload = _f === void 0 ? '' : _f, _g = _b.provider_token, provider_token = _g === void 0 ? '' : _g, _h = _b.start_parameter, start_parameter = _h === void 0 ? '' : _h, _j = _b.currency, currency = _j === void 0 ? '' : _j, _k = _b.prices, prices = _k === void 0 ? [] : _k, _l = _b.provider_data, provider_data = _l === void 0 ? '' : _l, _m = _b.photo_url, photo_url = _m === void 0 ? '' : _m, _o = _b.photo_size, photo_size = _o === void 0 ? '' : _o, _p = _b.photo_width, photo_width = _p === void 0 ? '' : _p, _q = _b.photo_height, photo_height = _q === void 0 ? '' : _q, _r = _b.need_name, need_name = _r === void 0 ? false : _r, _s = _b.need_phone_number, need_phone_number = _s === void 0 ? false : _s, _t = _b.need_email, need_email = _t === void 0 ? false : _t, _u = _b.need_shipping_address, need_shipping_address = _u === void 0 ? false : _u, _v = _b.send_phone_number_to_provider, send_phone_number_to_provider = _v === void 0 ? false : _v, _w = _b.send_email_to_provider, send_email_to_provider = _w === void 0 ? false : _w, _x = _b.is_flexible, is_flexible = _x === void 0 ? false : _x, _y = _b.disable_notification, disable_notification = _y === void 0 ? false : _y, _z = _b.reply_to_message_id, reply_to_message_id = _z === void 0 ? '' : _z, _0 = _b.reply_markup, reply_markup = _0 === void 0 ? '' : _0;
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            title: '',
+            description: '',
+            payload: '',
+            provider_token: '',
+            start_parameter: '',
+            currency: '',
+            prices: []
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.title, title = _d === void 0 ? '' : _d, _e = _b.description, description = _e === void 0 ? '' : _e, _f = _b.payload, payload = _f === void 0 ? '' : _f, _g = _b.provider_token, provider_token = _g === void 0 ? '' : _g, _h = _b.start_parameter, start_parameter = _h === void 0 ? '' : _h, _j = _b.currency, currency = _j === void 0 ? '' : _j, _k = _b.prices, prices = _k === void 0 ? [] : _k, _l = _b.provider_data, provider_data = _l === void 0 ? '' : _l, _m = _b.photo_url, photo_url = _m === void 0 ? '' : _m, _o = _b.photo_size, photo_size = _o === void 0 ? null : _o, _p = _b.photo_width, photo_width = _p === void 0 ? null : _p, _q = _b.photo_height, photo_height = _q === void 0 ? null : _q, _r = _b.need_name, need_name = _r === void 0 ? false : _r, _s = _b.need_phone_number, need_phone_number = _s === void 0 ? false : _s, _t = _b.need_email, need_email = _t === void 0 ? false : _t, _u = _b.need_shipping_address, need_shipping_address = _u === void 0 ? false : _u, _v = _b.send_phone_number_to_provider, send_phone_number_to_provider = _v === void 0 ? false : _v, _w = _b.send_email_to_provider, send_email_to_provider = _w === void 0 ? false : _w, _x = _b.is_flexible, is_flexible = _x === void 0 ? false : _x, _y = _b.disable_notification, disable_notification = _y === void 0 ? false : _y, _z = _b.reply_to_message_id, reply_to_message_id = _z === void 0 ? '' : _z, _0 = _b.reply_markup, reply_markup = _0 === void 0 ? '' : _0;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (title === '')
@@ -972,24 +1105,24 @@ var tgbot = /** @class */ (function () {
             "method": "sendInvoice",
             'chat_id': String(chat_id),
             'title': String(title),
-            'description': description,
-            'payload': payload,
-            'provider_token': provider_token,
-            'start_parameter': start_parameter,
-            'currency': currency,
+            'description': String(description),
+            'payload': String(payload),
+            'provider_token': String(provider_token),
+            'start_parameter': String(start_parameter),
+            'currency': String(currency),
             'prices': prices,
-            'provider_data': provider_data,
-            'photo_url': photo_url,
+            'provider_data': String(provider_data),
+            'photo_url': String(photo_url),
             'photo_size': photo_size,
             'photo_width': photo_width,
             'photo_height': photo_height,
-            'need_name': need_name,
-            'need_phone_number': need_phone_number,
-            'need_email': need_email,
-            'need_shipping_address': need_shipping_address,
-            'send_phone_number_to_provider': send_phone_number_to_provider,
-            'send_email_to_provider': send_email_to_provider,
-            'is_flexible': is_flexible,
+            'need_name': Boolean(need_name),
+            'need_phone_number': Boolean(need_phone_number),
+            'need_email': Boolean(need_email),
+            'need_shipping_address': Boolean(need_shipping_address),
+            'send_phone_number_to_provider': Boolean(send_phone_number_to_provider),
+            'send_email_to_provider': Boolean(send_email_to_provider),
+            'is_flexible': Boolean(is_flexible),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
@@ -997,25 +1130,31 @@ var tgbot = /** @class */ (function () {
         return this.start(start_payload);
     };
     tgbot.prototype.answerShippingQuery = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.shipping_query_id, shipping_query_id = _c === void 0 ? '' : _c, _d = _b.ok, ok = _d === void 0 ? '' : _d, _e = _b.shipping_options, shipping_options = _e === void 0 ? '' : _e, _f = _b.error_message, error_message = _f === void 0 ? '' : _f;
+        var _b = _a === void 0 ? {
+            shipping_query_id: '',
+            ok: null
+        } : _a, _c = _b.shipping_query_id, shipping_query_id = _c === void 0 ? '' : _c, _d = _b.ok, ok = _d === void 0 ? null : _d, _e = _b.shipping_options, shipping_options = _e === void 0 ? [] : _e, _f = _b.error_message, error_message = _f === void 0 ? '' : _f;
         if (shipping_query_id === '')
             this.miss_parameter("shipping_query_id");
-        if (ok === '')
+        if (ok === null)
             this.miss_parameter("ok");
         var start_payload = {
             "method": "answerShippingQuery",
             'shipping_query_id': String(shipping_query_id),
             'ok': Boolean(ok),
             'shipping_options	': shipping_options,
-            'error_message': error_message
+            'error_message': String(error_message)
         };
         return this.start(start_payload);
     };
     tgbot.prototype.answerPreCheckoutQuery = function (_a) {
-        var _b = _a === void 0 ? {} : _a, _c = _b.pre_checkout_query_id, pre_checkout_query_id = _c === void 0 ? '' : _c, _d = _b.ok, ok = _d === void 0 ? '' : _d, _e = _b.error_message, error_message = _e === void 0 ? '' : _e;
+        var _b = _a === void 0 ? {
+            pre_checkout_query_id: '',
+            ok: null
+        } : _a, _c = _b.pre_checkout_query_id, pre_checkout_query_id = _c === void 0 ? '' : _c, _d = _b.ok, ok = _d === void 0 ? null : _d, _e = _b.error_message, error_message = _e === void 0 ? '' : _e;
         if (pre_checkout_query_id === '')
             this.miss_parameter("pre_checkout_query_id");
-        if (ok === '')
+        if (ok === null)
             this.miss_parameter("ok");
         var start_payload = {
             "method": "answerPreCheckoutQuery",
@@ -1027,7 +1166,9 @@ var tgbot = /** @class */ (function () {
     };
     // === public 自家der方法 ===
     tgbot.prototype.getPath = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).file_id, file_id = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            file_id: ''
+        } : _a).file_id, file_id = _b === void 0 ? '' : _b;
         if (file_id === '')
             this.miss_parameter("file_id");
         var url = "\"https://api.telegram.org/bot" + this.token + "/getFile?file_id=" + file_id;
@@ -1038,7 +1179,9 @@ var tgbot = /** @class */ (function () {
         return path;
     };
     tgbot.prototype.getFileDownloadUrl = function (_a) {
-        var _b = (_a === void 0 ? {} : _a).path, path = _b === void 0 ? '' : _b;
+        var _b = (_a === void 0 ? {
+            path: ''
+        } : _a).path, path = _b === void 0 ? '' : _b;
         if (path === '')
             this.miss_parameter("path");
         var TGDurl = "https://api.telegram.org/file/bot" + this.token + "/" + path;
