@@ -697,7 +697,7 @@ class tgbot {
       question = '',
       options = [],
       is_anonymous = false,
-      type = '',
+      type = 'regular',
       allows_multiple_answers = false,
       correct_option_id = null,
       explanation = '',
@@ -737,7 +737,7 @@ class tgbot {
       "method": "sendPoll",
       'chat_id': String(chat_id),
       'question': String(question),
-      'options': options,
+      'options': JSON.stringify(options),
       'is_anonymous': Boolean(is_anonymous),
       'type': String(type),
       'allows_multiple_answers': Boolean(allows_multiple_answers),
@@ -811,7 +811,7 @@ class tgbot {
       offset = null,
       limit = 100,
     }: {
-        user_id: string,
+        user_id: string | number,
         offset?: number | null,
         limit?: number
       } = {
@@ -821,7 +821,7 @@ class tgbot {
     if (user_id === '') this.miss_parameter("user_id")
     let start_payload = {
       "method": "getUserProfilePhotos",
-      'user_id': Number(user_id),
+      'user_id': String(user_id), // 對... 官網寫Integer	，但是要String
       "offset": Number(offset),
       "limit": Number(limit),
     }
@@ -864,7 +864,7 @@ class tgbot {
     let start_payload = {
       "method": "kickChatMember",
       'chat_id': String(chat_id),
-      'user_id': Number(user_id),
+      'user_id': String(user_id),
       'until_date': Number(until_date)
     }
     return this.start(start_payload)
@@ -887,7 +887,7 @@ class tgbot {
     let start_payload = {
       "method": "unbanChatMember",
       'chat_id': String(chat_id),
-      'user_id': Number(user_id),
+      'user_id': String(user_id),
     }
     return this.start(start_payload)
   }
@@ -900,7 +900,7 @@ class tgbot {
       until_date = null
     }: {
         chat_id: number | string,
-        user_id: string,
+        user_id: number | string,
         permissions: object,
         until_date?: number | null,
       } = {
@@ -915,7 +915,7 @@ class tgbot {
     let start_payload = {
       "method": "restrictChatMember",
       'chat_id': String(chat_id),
-      'user_id': Number(user_id),
+      'user_id': String(user_id), // 對... 官網寫Integer	，但是要String
       'permissions': permissions,
       'until_date': Number(until_date)
     }
@@ -936,7 +936,7 @@ class tgbot {
       can_promote_members = false,
     }: {
         chat_id: number | string,
-        user_id: string,
+        user_id: number | string,
         can_change_info?: boolean,
         can_post_messages?: boolean,
         can_edit_messages?: boolean,
@@ -955,7 +955,7 @@ class tgbot {
     let start_payload = {
       "method": "promoteChatMember",
       'chat_id': String(chat_id),
-      'user_id': Number(user_id),
+      'user_id': String(user_id), // 對... 官網寫Integer	，但是要String
       'can_change_info': Boolean(can_change_info),
       'can_post_messages': Boolean(can_post_messages),
       'can_edit_messages': Boolean(can_edit_messages),
@@ -971,24 +971,24 @@ class tgbot {
   public setChatAdministratorCustomTitle(
     {
       chat_id = '',
-      user_id = null,
+      user_id = '',
       custom_title = '',
     }: {
         chat_id: number | string,
-        user_id: number | null,
+        user_id: number | string,
         custom_title: string,
       } = {
         chat_id: '',
-        user_id: null,
+        user_id: '',
         custom_title: '',
       }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    if (user_id === null) this.miss_parameter("user_id")
+    if (user_id === '') this.miss_parameter("user_id")
     let start_payload = {
       "method": "setChatAdministratorCustomTitle",
       'chat_id': String(chat_id),
-      'user_id': Number(user_id),
+      'user_id': String(user_id), // 對... 官網寫Integer	，但是要String
       'custom_title': String(custom_title),
     }
     return this.start(start_payload)
@@ -1208,21 +1208,21 @@ class tgbot {
   public getChatMember(
     {
       chat_id = '',
-      user_id = null,
+      user_id = '',
     }: {
         chat_id: number | string,
-        user_id: number | null,
+        user_id: number | string,
       } = {
         chat_id: '',
-        user_id: null,
+        user_id: '',
       }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
-    if (user_id === null) this.miss_parameter("user_id")
+    if (user_id === '') this.miss_parameter("user_id")
     let start_payload = {
       "method": "getChatMembersCount",
       'chat_id': String(chat_id),
-      'user_id': Number(user_id),
+      'user_id': String(user_id), // 對... 官網寫Integer	，但是要String
     }
     return this.start(start_payload)
   }

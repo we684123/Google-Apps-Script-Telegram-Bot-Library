@@ -202,7 +202,7 @@ declare class tgbot {
         action: string;
     }): any;
     getUserProfilePhotos({ user_id, offset, limit, }?: {
-        user_id: string;
+        user_id: string | number;
         offset?: number | null;
         limit?: number;
     }): any;
@@ -220,13 +220,13 @@ declare class tgbot {
     }): any;
     restrictChatMember({ chat_id, user_id, permissions, until_date }?: {
         chat_id: number | string;
-        user_id: string;
+        user_id: number | string;
         permissions: object;
         until_date?: number | null;
     }): any;
     promoteChatMember({ chat_id, user_id, can_change_info, can_post_messages, can_edit_messages, can_delete_messages, can_invite_users, can_restrict_members, can_pin_messages, can_promote_members, }?: {
         chat_id: number | string;
-        user_id: string;
+        user_id: number | string;
         can_change_info?: boolean;
         can_post_messages?: boolean;
         can_edit_messages?: boolean;
@@ -238,7 +238,7 @@ declare class tgbot {
     }): any;
     setChatAdministratorCustomTitle({ chat_id, user_id, custom_title, }?: {
         chat_id: number | string;
-        user_id: number | null;
+        user_id: number | string;
         custom_title: string;
     }): any;
     setChatPermissions({ chat_id, permissions, }?: {
@@ -282,7 +282,7 @@ declare class tgbot {
     }): any;
     getChatMember({ chat_id, user_id, }?: {
         chat_id: number | string;
-        user_id: number | null;
+        user_id: number | string;
     }): any;
     setChatStickerSet({ chat_id, sticker_set_name, }?: {
         chat_id: number | string;

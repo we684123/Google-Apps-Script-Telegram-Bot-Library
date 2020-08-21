@@ -409,7 +409,7 @@ var tgbot = /** @class */ (function () {
             chat_id: '',
             question: '',
             options: []
-        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.question, question = _d === void 0 ? '' : _d, _e = _b.options, options = _e === void 0 ? [] : _e, _f = _b.is_anonymous, is_anonymous = _f === void 0 ? false : _f, _g = _b.type, type = _g === void 0 ? '' : _g, _h = _b.allows_multiple_answers, allows_multiple_answers = _h === void 0 ? false : _h, _j = _b.correct_option_id, correct_option_id = _j === void 0 ? null : _j, _k = _b.explanation, explanation = _k === void 0 ? '' : _k, _l = _b.explanation_parse_mode, explanation_parse_mode = _l === void 0 ? '' : _l, _m = _b.open_period, open_period = _m === void 0 ? null : _m, _o = _b.close_date, close_date = _o === void 0 ? null : _o, _p = _b.is_closed, is_closed = _p === void 0 ? false : _p, _q = _b.disable_notification, disable_notification = _q === void 0 ? false : _q, _r = _b.reply_to_message_id, reply_to_message_id = _r === void 0 ? '' : _r, _s = _b.reply_markup, reply_markup = _s === void 0 ? '' : _s;
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.question, question = _d === void 0 ? '' : _d, _e = _b.options, options = _e === void 0 ? [] : _e, _f = _b.is_anonymous, is_anonymous = _f === void 0 ? false : _f, _g = _b.type, type = _g === void 0 ? 'regular' : _g, _h = _b.allows_multiple_answers, allows_multiple_answers = _h === void 0 ? false : _h, _j = _b.correct_option_id, correct_option_id = _j === void 0 ? null : _j, _k = _b.explanation, explanation = _k === void 0 ? '' : _k, _l = _b.explanation_parse_mode, explanation_parse_mode = _l === void 0 ? '' : _l, _m = _b.open_period, open_period = _m === void 0 ? null : _m, _o = _b.close_date, close_date = _o === void 0 ? null : _o, _p = _b.is_closed, is_closed = _p === void 0 ? false : _p, _q = _b.disable_notification, disable_notification = _q === void 0 ? false : _q, _r = _b.reply_to_message_id, reply_to_message_id = _r === void 0 ? '' : _r, _s = _b.reply_markup, reply_markup = _s === void 0 ? '' : _s;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (question === '')
@@ -420,7 +420,7 @@ var tgbot = /** @class */ (function () {
             "method": "sendPoll",
             'chat_id': String(chat_id),
             'question': String(question),
-            'options': options,
+            'options': JSON.stringify(options),
             'is_anonymous': Boolean(is_anonymous),
             'type': String(type),
             'allows_multiple_answers': Boolean(allows_multiple_answers),
@@ -476,7 +476,7 @@ var tgbot = /** @class */ (function () {
             this.miss_parameter("user_id");
         var start_payload = {
             "method": "getUserProfilePhotos",
-            'user_id': Number(user_id),
+            'user_id': String(user_id),
             "offset": Number(offset),
             "limit": Number(limit)
         };
@@ -506,7 +506,7 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "kickChatMember",
             'chat_id': String(chat_id),
-            'user_id': Number(user_id),
+            'user_id': String(user_id),
             'until_date': Number(until_date)
         };
         return this.start(start_payload);
@@ -523,7 +523,7 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "unbanChatMember",
             'chat_id': String(chat_id),
-            'user_id': Number(user_id)
+            'user_id': String(user_id)
         };
         return this.start(start_payload);
     };
@@ -542,7 +542,7 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "restrictChatMember",
             'chat_id': String(chat_id),
-            'user_id': Number(user_id),
+            'user_id': String(user_id),
             'permissions': permissions,
             'until_date': Number(until_date)
         };
@@ -560,7 +560,7 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "promoteChatMember",
             'chat_id': String(chat_id),
-            'user_id': Number(user_id),
+            'user_id': String(user_id),
             'can_change_info': Boolean(can_change_info),
             'can_post_messages': Boolean(can_post_messages),
             'can_edit_messages': Boolean(can_edit_messages),
@@ -575,17 +575,17 @@ var tgbot = /** @class */ (function () {
     tgbot.prototype.setChatAdministratorCustomTitle = function (_a) {
         var _b = _a === void 0 ? {
             chat_id: '',
-            user_id: null,
+            user_id: '',
             custom_title: ''
-        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? null : _d, _e = _b.custom_title, custom_title = _e === void 0 ? '' : _e;
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.custom_title, custom_title = _e === void 0 ? '' : _e;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (user_id === null)
+        if (user_id === '')
             this.miss_parameter("user_id");
         var start_payload = {
             "method": "setChatAdministratorCustomTitle",
             'chat_id': String(chat_id),
-            'user_id': Number(user_id),
+            'user_id': String(user_id),
             'custom_title': String(custom_title)
         };
         return this.start(start_payload);
@@ -741,16 +741,16 @@ var tgbot = /** @class */ (function () {
     tgbot.prototype.getChatMember = function (_a) {
         var _b = _a === void 0 ? {
             chat_id: '',
-            user_id: null
-        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? null : _d;
+            user_id: ''
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d;
         if (chat_id === '')
             this.miss_parameter("chat_id");
-        if (user_id === null)
+        if (user_id === '')
             this.miss_parameter("user_id");
         var start_payload = {
             "method": "getChatMembersCount",
             'chat_id': String(chat_id),
-            'user_id': Number(user_id)
+            'user_id': String(user_id)
         };
         return this.start(start_payload);
     };

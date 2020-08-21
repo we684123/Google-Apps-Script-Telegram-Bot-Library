@@ -261,51 +261,173 @@ function unit_test() {
   //   logger.error(error)
   // }
 
+  // i++;
+  // logger.info("i = " + i);
+  // var rt = ''
+  // try {
+  //   logger.info("bot.sendLocation()")
+  //   rt = bot.sendLocation({
+  //     "chat_id": '207014603',
+  //     "latitude": "24.065642",
+  //     "longitude": 120.562652,
+  //     "live_period": 60
+  //   })
+  //   logger.info(rt)
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+  //
+  // i++; // 需接續上面的才有用
+  // logger.info("i = " + i);
+  // var rt = JSON.parse(rt)
+  // try {
+  //   logger.info("bot.editMessageLiveLocation()")
+  //   logger.info(rt = bot.editMessageLiveLocation({
+  //     "chat_id": '207014603',
+  //     "message_id": rt.result.message_id,
+  //     "latitude": "25.065642",
+  //     "longitude": 121.562652,
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+  //
+  // i++; // 需接續上面的才有用
+  // logger.info("i = " + i);
+  // var rt = JSON.parse(rt)
+  // try {
+  //   logger.info("bot.stopMessageLiveLocation()")
+  //   logger.info(bot.stopMessageLiveLocation({
+  //     "chat_id": '207014603',
+  //     "message_id": rt.result.message_id,
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendVenue()")
+  //   logger.info(bot.sendVenue({
+  //     "chat_id": '207014603',
+  //     "latitude": "25.065642",
+  //     "longitude": 121.562652,
+  //     "title" : '030//',
+  //     "address" : '0X路32號',
+  //     "foursquare_type":"food/icecream",
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+  //
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendContact()")
+  //   logger.info(bot.sendContact({
+  //     "chat_id": '207014603',
+  //     "phone_number" : '0800000123',
+  //     "first_name" : '王',
+  //     "last_name" : '小名',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendPoll()")
+  //   logger.info(bot.sendPoll({
+  //     "chat_id": '207014603',
+  //     "question" : '午餐?',
+  //     "options" : ["西瓜","芒果","榴槤"],
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendDice()")
+  //   logger.info(bot.sendDice({
+  //     "chat_id": '207014603',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendChatAction()")
+  //   logger.info(bot.sendChatAction({
+  //     "chat_id": '207014603',
+  //     "action":"typing",
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.getUserProfilePhotos()")
+  //   logger.info(bot.getUserProfilePhotos({
+  //     "user_id": '207014603',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.getUserProfilePhotos()")
+  //   logger.info(bot.getUserProfilePhotos({
+  //     "user_id": '207014603',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.kickChatMember()")
+  //   logger.info(bot.kickChatMember({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": '808968740',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.unbanChatMember()")
+  //   logger.info(bot.unbanChatMember({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": '808968740',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
   i++;
   logger.info("i = " + i);
-  var rt = ''
   try {
-    logger.info("bot.sendLocation()")
-    rt = bot.sendLocation({
-      "chat_id": '207014603',
-      "latitude": "24.065642",
-      "longitude": 120.562652,
-      "live_period": 60
-    })
-    logger.info(rt)
-  } catch (error) {
-    logger.error(error)
-  }
-
-  i++; // 需接續上面的才有用
-  logger.info("i = " + i);
-  var rt = JSON.parse(rt)
-  try {
-    logger.info("bot.editMessageLiveLocation()")
-    logger.info(rt = bot.editMessageLiveLocation({
-      "chat_id": '207014603',
-      "message_id": rt.result.message_id,
-      "latitude": "25.065642",
-      "longitude": 121.562652,
+    logger.info("bot.kickChatMember()")
+    logger.info(bot.kickChatMember({
+      "chat_id": '-1001097080770',
+      "user_id": '808968740',
+      "until_date": 35
     }))
   } catch (error) {
     logger.error(error)
   }
-
-  i++; // 需接續上面的才有用
-  logger.info("i = " + i);
-  var rt = JSON.parse(rt)
-  try {
-    logger.info("bot.stopMessageLiveLocation()")
-    logger.info(bot.stopMessageLiveLocation({
-      "chat_id": '207014603',
-      "message_id": rt.result.message_id,
-    }))
-  } catch (error) {
-    logger.error(error)
-  }
-
-
-
 
 }
