@@ -494,8 +494,12 @@ var tgbot = /** @class */ (function () {
         };
         return this.start(start_payload);
     };
-    tgbot.prototype.kickChatMember = function (_a) {
-        var _b = _a === void 0 ? {
+    tgbot.prototype.kickChatMember = function (
+    // kickChatMember TG會忽略掉 until_date 參數，需要再行實驗觀察
+    _a) {
+        var 
+        // kickChatMember TG會忽略掉 until_date 參數，需要再行實驗觀察
+        _b = _a === void 0 ? {
             chat_id: '',
             user_id: ''
         } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.until_date, until_date = _e === void 0 ? null : _e;
@@ -543,16 +547,20 @@ var tgbot = /** @class */ (function () {
             "method": "restrictChatMember",
             'chat_id': String(chat_id),
             'user_id': String(user_id),
-            'permissions': permissions,
+            'permissions': JSON.stringify(permissions),
             'until_date': Number(until_date)
         };
         return this.start(start_payload);
     };
-    tgbot.prototype.promoteChatMember = function (_a) {
-        var _b = _a === void 0 ? {
+    tgbot.prototype.promoteChatMember = function (
+    // 如果要使用這個功能，bot需有 "新增管理員"的權限? 還是全部的權限?
+    _a) {
+        var 
+        // 如果要使用這個功能，bot需有 "新增管理員"的權限? 還是全部的權限?
+        _b = _a === void 0 ? {
             chat_id: '',
             user_id: ''
-        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.can_change_info, can_change_info = _e === void 0 ? false : _e, _f = _b.can_post_messages, can_post_messages = _f === void 0 ? false : _f, _g = _b.can_edit_messages, can_edit_messages = _g === void 0 ? false : _g, _h = _b.can_delete_messages, can_delete_messages = _h === void 0 ? false : _h, _j = _b.can_invite_users, can_invite_users = _j === void 0 ? false : _j, _k = _b.can_restrict_members, can_restrict_members = _k === void 0 ? false : _k, _l = _b.can_pin_messages, can_pin_messages = _l === void 0 ? false : _l, _m = _b.can_promote_members, can_promote_members = _m === void 0 ? false : _m;
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.user_id, user_id = _d === void 0 ? '' : _d, _e = _b.can_change_info, can_change_info = _e === void 0 ? null : _e, _f = _b.can_post_messages, can_post_messages = _f === void 0 ? null : _f, _g = _b.can_edit_messages, can_edit_messages = _g === void 0 ? null : _g, _h = _b.can_delete_messages, can_delete_messages = _h === void 0 ? null : _h, _j = _b.can_invite_users, can_invite_users = _j === void 0 ? null : _j, _k = _b.can_restrict_members, can_restrict_members = _k === void 0 ? null : _k, _l = _b.can_pin_messages, can_pin_messages = _l === void 0 ? null : _l, _m = _b.can_promote_members, can_promote_members = _m === void 0 ? null : _m;
         if (chat_id === '')
             this.miss_parameter("chat_id");
         if (user_id === '')
@@ -602,7 +610,7 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "setChatPermissions",
             'chat_id': String(chat_id),
-            'permissions': Number(permissions)
+            'permissions': JSON.stringify(permissions)
         };
         return this.start(start_payload);
     };
@@ -616,8 +624,12 @@ var tgbot = /** @class */ (function () {
         };
         return this.start(start_payload);
     };
-    tgbot.prototype.setChatPhoto = function (_a) {
-        var _b = _a === void 0 ? {
+    tgbot.prototype.setChatPhoto = function (
+    // 照片僅能用新的上傳
+    _a) {
+        var 
+        // 照片僅能用新的上傳
+        _b = _a === void 0 ? {
             chat_id: '',
             photo: ''
         } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.photo, photo = _d === void 0 ? '' : _d;
@@ -644,8 +656,12 @@ var tgbot = /** @class */ (function () {
         };
         return this.start(start_payload);
     };
-    tgbot.prototype.setChatTitle = function (_a) {
-        var _b = _a === void 0 ? {
+    tgbot.prototype.setChatTitle = function (
+    // 特別的是，如果名子一樣的話，也會回傳 true
+    _a) {
+        var 
+        // 特別的是，如果名子一樣的話，也會回傳 true
+        _b = _a === void 0 ? {
             chat_id: '',
             title: ''
         } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.title, title = _d === void 0 ? '' : _d;
@@ -748,7 +764,7 @@ var tgbot = /** @class */ (function () {
         if (user_id === '')
             this.miss_parameter("user_id");
         var start_payload = {
-            "method": "getChatMembersCount",
+            "method": "getChatMember",
             'chat_id': String(chat_id),
             'user_id': String(user_id)
         };

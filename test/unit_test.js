@@ -12,6 +12,10 @@ function unit_test() {
   var bot = new tgbot("909196871:AAHFdyF9E_LhvjjPePs6JhNHVtDU79unK4I")
   var i = 0
 
+  var test_me_char_id = '207014603'
+  var test_sg_char_id = '-1001097080770'
+  var test_us_char_id = '808968740'
+
   // i++;
   // logger.info("i = " + i);
   // try {
@@ -417,17 +421,218 @@ function unit_test() {
   //   logger.error(error)
   // }
 
+  // i++; //NU
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.kickChatMember()")
+  //   logger.info(bot.kickChatMember({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": '808968740',
+  //     "until_date": 35
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.unbanChatMember()")
+  //   logger.info(bot.unbanChatMember({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": '808968740',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   var permissions = {
+  //     "can_send_messages":true,
+  //     "can_send_media_messages":true,
+  //     "can_send_polls":true,
+  //     "can_send_other_messages":true,
+  //     "can_add_web_page_previews":true,
+  //     "can_change_info":true,
+  //     "can_invite_users":true,
+  //     "can_pin_messages":true,
+  //   }
+  //   logger.info("bot.restrictChatMember()")
+  //   logger.info(bot.restrictChatMember({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": '808968740',
+  //     "permissions":permissions
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.promoteChatMember()")
+  //   logger.info(bot.promoteChatMember({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": '808968740',
+  //     "can_pin_messages":true
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.setChatAdministratorCustomTitle()")
+  //   logger.info(bot.setChatAdministratorCustomTitle({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": '808968740',
+  //     "custom_title": "幸運星⭐"
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   var permissions = {
+  //       "can_change_info":true,
+  //     }
+  //   logger.info("bot.setChatPermissions()")
+  //   logger.info(bot.setChatPermissions({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": '808968740',
+  //     "permissions":permissions
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.exportChatInviteLink()")
+  //   logger.info(bot.exportChatInviteLink({
+  //     "chat_id": '-1001097080770',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   var file_id = "1Y02FXMKdFD1IpZGg5RgSNlLLWQjNc6d_"
+  //   logger.info("bot.setChatPhoto()")
+  //   logger.info(bot.setChatPhoto({
+  //     "chat_id": '-1001097080770',
+  //     'photo': DriveApp.getFileById(file_id).getBlob()
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.deleteChatPhoto()")
+  //   logger.info(bot.deleteChatPhoto({
+  //     "chat_id": '-1001097080770',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.setChatTitle()")
+  //   logger.info(bot.setChatTitle({
+  //     "chat_id": '-1001097080770',
+  //     "title": '逆流(超級)',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.pinChatMessage()")
+  //   logger.info(bot.pinChatMessage({
+  //     "chat_id": '-1001097080770',
+  //     "message_id": 347,
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.unpinChatMessage()")
+  //   logger.info(bot.unpinChatMessage({
+  //     "chat_id": '-1001097080770',
+  //     "message_id": 347,
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.leaveChat()")
+  //   logger.info(bot.leaveChat({
+  //     "chat_id": '-1001097080770',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.getChatAdministrators()")
+  //   logger.info(bot.getChatAdministrators({
+  //     "chat_id": '-1001097080770',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+  //
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.getChatMembersCount()")
+  //   logger.info(bot.getChatMembersCount({
+  //     "chat_id": '-1001097080770',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
   i++;
   logger.info("i = " + i);
   try {
-    logger.info("bot.kickChatMember()")
-    logger.info(bot.kickChatMember({
+    logger.info("bot.getChatMember()")
+    logger.info(bot.getChatMember({
       "chat_id": '-1001097080770',
-      "user_id": '808968740',
-      "until_date": 35
+      "user_id": test_me_char_id
     }))
   } catch (error) {
     logger.error(error)
   }
+
+
+
+
+
+
+
+
 
 }

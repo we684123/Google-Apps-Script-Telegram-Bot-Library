@@ -227,14 +227,14 @@ declare class tgbot {
     promoteChatMember({ chat_id, user_id, can_change_info, can_post_messages, can_edit_messages, can_delete_messages, can_invite_users, can_restrict_members, can_pin_messages, can_promote_members, }?: {
         chat_id: number | string;
         user_id: number | string;
-        can_change_info?: boolean;
-        can_post_messages?: boolean;
-        can_edit_messages?: boolean;
-        can_delete_messages?: boolean;
-        can_invite_users?: boolean;
-        can_restrict_members?: boolean;
-        can_pin_messages?: boolean;
-        can_promote_members?: boolean;
+        can_change_info?: boolean | null;
+        can_post_messages?: boolean | null;
+        can_edit_messages?: boolean | null;
+        can_delete_messages?: boolean | null;
+        can_invite_users?: boolean | null;
+        can_restrict_members?: boolean | null;
+        can_pin_messages?: boolean | null;
+        can_promote_members?: boolean | null;
     }): any;
     setChatAdministratorCustomTitle({ chat_id, user_id, custom_title, }?: {
         chat_id: number | string;

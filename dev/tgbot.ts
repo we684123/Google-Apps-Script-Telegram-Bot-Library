@@ -846,6 +846,7 @@ class tgbot {
   }
 
   public kickChatMember(
+    // kickChatMember TG會忽略掉 until_date 參數，需要再行實驗觀察
     {
       chat_id = '',
       user_id = '',
@@ -916,35 +917,36 @@ class tgbot {
       "method": "restrictChatMember",
       'chat_id': String(chat_id),
       'user_id': String(user_id), // 對... 官網寫Integer	，但是要String
-      'permissions': permissions,
+      'permissions': JSON.stringify(permissions),
       'until_date': Number(until_date)
     }
     return this.start(start_payload)
   }
 
   public promoteChatMember(
+    // 如果要使用這個功能，bot需有 "新增管理員"的權限? 還是全部的權限?
     {
       chat_id = '',
       user_id = '',
-      can_change_info = false,
-      can_post_messages = false,
-      can_edit_messages = false,
-      can_delete_messages = false,
-      can_invite_users = false,
-      can_restrict_members = false,
-      can_pin_messages = false,
-      can_promote_members = false,
+      can_change_info = null,
+      can_post_messages = null,
+      can_edit_messages = null,
+      can_delete_messages = null,
+      can_invite_users = null,
+      can_restrict_members = null,
+      can_pin_messages = null,
+      can_promote_members = null,
     }: {
         chat_id: number | string,
         user_id: number | string,
-        can_change_info?: boolean,
-        can_post_messages?: boolean,
-        can_edit_messages?: boolean,
-        can_delete_messages?: boolean,
-        can_invite_users?: boolean,
-        can_restrict_members?: boolean,
-        can_pin_messages?: boolean,
-        can_promote_members?: boolean,
+        can_change_info?: boolean | null,
+        can_post_messages?: boolean | null,
+        can_edit_messages?: boolean | null,
+        can_delete_messages?: boolean | null,
+        can_invite_users?: boolean | null,
+        can_restrict_members?: boolean | null,
+        can_pin_messages?: boolean | null,
+        can_promote_members?: boolean | null,
       } = {
         chat_id: '',
         user_id: '',
@@ -1011,7 +1013,7 @@ class tgbot {
     let start_payload = {
       "method": "setChatPermissions",
       'chat_id': String(chat_id),
-      'permissions': Number(permissions),
+      'permissions': JSON.stringify(permissions),
     }
     return this.start(start_payload)
   }
@@ -1032,6 +1034,7 @@ class tgbot {
   }
 
   public setChatPhoto(
+    // 照片僅能用新的上傳
     {
       chat_id = '',
       photo = '',
@@ -1071,6 +1074,7 @@ class tgbot {
   }
 
   public setChatTitle(
+    // 特別的是，如果名子一樣的話，也會回傳 true
     {
       chat_id = '',
       title = '',
@@ -1220,7 +1224,7 @@ class tgbot {
     if (chat_id === '') this.miss_parameter("chat_id")
     if (user_id === '') this.miss_parameter("user_id")
     let start_payload = {
-      "method": "getChatMembersCount",
+      "method": "getChatMember",
       'chat_id': String(chat_id),
       'user_id': String(user_id), // 對... 官網寫Integer	，但是要String
     }
