@@ -1175,6 +1175,23 @@ class tgbot {
     return this.start(start_payload)
   }
 
+  public getChat(
+    {
+      chat_id = '',
+    }: {
+        chat_id: number | string,
+      } = {
+        chat_id: '',
+      }
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    let start_payload = {
+      "method": "getChat",
+      'chat_id': String(chat_id),
+    }
+    return this.start(start_payload)
+  }
+
   public getChatAdministrators(
     {
       chat_id = '',
@@ -1232,6 +1249,7 @@ class tgbot {
   }
 
   public setChatStickerSet(
+    // 人數未達100人則無法設定
     {
       chat_id = '',
       sticker_set_name = '',
@@ -1253,6 +1271,7 @@ class tgbot {
   }
 
   public deleteChatStickerSet(
+    // 人數未達100人則無法設定
     {
       chat_id = '',
     }: {
@@ -1310,7 +1329,7 @@ class tgbot {
     if (commands === []) this.miss_parameter("commands")
     let start_payload = {
       "method": "setMyCommands",
-      'commands': commands,
+      'commands': JSON.stringify(commands),
     }
     return this.start(start_payload)
   }

@@ -274,6 +274,9 @@ declare class tgbot {
     leaveChat({ chat_id, }?: {
         chat_id: number | string;
     }): any;
+    getChat({ chat_id, }?: {
+        chat_id: number | string;
+    }): any;
     getChatAdministrators({ chat_id, }?: {
         chat_id: number | string;
     }): any;

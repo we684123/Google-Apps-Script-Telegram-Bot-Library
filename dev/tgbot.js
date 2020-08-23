@@ -730,6 +730,18 @@ var tgbot = /** @class */ (function () {
         };
         return this.start(start_payload);
     };
+    tgbot.prototype.getChat = function (_a) {
+        var _b = (_a === void 0 ? {
+            chat_id: ''
+        } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
+        if (chat_id === '')
+            this.miss_parameter("chat_id");
+        var start_payload = {
+            "method": "getChat",
+            'chat_id': String(chat_id)
+        };
+        return this.start(start_payload);
+    };
     tgbot.prototype.getChatAdministrators = function (_a) {
         var _b = (_a === void 0 ? {
             chat_id: ''
@@ -770,8 +782,12 @@ var tgbot = /** @class */ (function () {
         };
         return this.start(start_payload);
     };
-    tgbot.prototype.setChatStickerSet = function (_a) {
-        var _b = _a === void 0 ? {
+    tgbot.prototype.setChatStickerSet = function (
+    // 人數未達100人則無法設定
+    _a) {
+        var 
+        // 人數未達100人則無法設定
+        _b = _a === void 0 ? {
             chat_id: '',
             sticker_set_name: ''
         } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.sticker_set_name, sticker_set_name = _d === void 0 ? '' : _d;
@@ -784,7 +800,9 @@ var tgbot = /** @class */ (function () {
         };
         return this.start(start_payload);
     };
-    tgbot.prototype.deleteChatStickerSet = function (_a) {
+    tgbot.prototype.deleteChatStickerSet = function (
+    // 人數未達100人則無法設定
+    _a) {
         var _b = (_a === void 0 ? {
             chat_id: ''
         } : _a).chat_id, chat_id = _b === void 0 ? '' : _b;
@@ -820,7 +838,7 @@ var tgbot = /** @class */ (function () {
             this.miss_parameter("commands");
         var start_payload = {
             "method": "setMyCommands",
-            'commands': commands
+            'commands': JSON.stringify(commands)
         };
         return this.start(start_payload);
     };

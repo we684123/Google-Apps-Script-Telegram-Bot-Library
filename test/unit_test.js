@@ -596,6 +596,17 @@ function unit_test() {
   // i++;
   // logger.info("i = " + i);
   // try {
+  //   logger.info("bot.getChat()")
+  //   logger.info(bot.getChat({
+  //     "chat_id": '-1001097080770',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
   //   logger.info("bot.getChatAdministrators()")
   //   logger.info(bot.getChatAdministrators({
   //     "chat_id": '-1001097080770',
@@ -615,24 +626,73 @@ function unit_test() {
   //   logger.error(error)
   // }
 
-  i++;
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.getChatMember()")
+  //   logger.info(bot.getChatMember({
+  //     "chat_id": '-1001097080770',
+  //     "user_id": test_me_char_id
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++; // 因為人數未達100人
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.setChatStickerSet()")
+  //   logger.info(bot.setChatStickerSet({
+  //     "chat_id": '-1001097080770',
+  //     "sticker_set_name": "meme_72"
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+  //
+  // i++; // 因為人數未達100人
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.deleteChatStickerSet()")
+  //   logger.info(bot.deleteChatStickerSet({
+  //     "chat_id": '-1001097080770',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // answerCallbackQuery 因為是回應型所以不測試了
+  // 除非哪天有心情寫 userbot 測試
+
+  i++; // 因為人數未達100人
   logger.info("i = " + i);
   try {
-    logger.info("bot.getChatMember()")
-    logger.info(bot.getChatMember({
-      "chat_id": '-1001097080770',
-      "user_id": test_me_char_id
+    logger.info("bot.setMyCommands()")
+    logger.info(bot.setMyCommands({
+      "commands": [{"command":"help","description":"救救我啊我救我"}],
     }))
   } catch (error) {
     logger.error(error)
   }
 
+  i++; // 因為人數未達100人
+  logger.info("i = " + i);
+  try {
+    logger.info("bot.getMyCommands()")
+    logger.info(bot.getMyCommands())
+  } catch (error) {
+    logger.error(error)
+  }
 
-
-
-
-
-
-
+  i++; // 因為人數未達100人
+  logger.info("i = " + i);
+  try {
+    logger.info("bot.setMyCommands()")
+    logger.info(bot.setMyCommands({
+      "commands": [],
+    }))
+  } catch (error) {
+    logger.error(error)
+  }
 
 }
