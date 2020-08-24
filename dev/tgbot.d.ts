@@ -274,6 +274,9 @@ declare class tgbot {
     leaveChat({ chat_id, }?: {
         chat_id: number | string;
     }): any;
+    getChat({ chat_id, }?: {
+        chat_id: number | string;
+    }): any;
     getChatAdministrators({ chat_id, }?: {
         chat_id: number | string;
     }): any;
@@ -356,7 +359,8 @@ declare class tgbot {
         user_id: number | null;
         png_sticker: any;
     }): any;
-    createNewStickerSet({ user_id, name, title, png_sticker, tgs_sticker, emojis, contains_masks, mask_position, }?: {
+    createNewStickerSet({ user_id, //這個要數字的id
+    name, title, png_sticker, tgs_sticker, emojis, contains_masks, mask_position }?: {
         user_id: number | null;
         name: string;
         title: string;
@@ -364,7 +368,7 @@ declare class tgbot {
         tgs_sticker?: any;
         emojis: string;
         contains_masks?: boolean;
-        mask_position?: object;
+        mask_position?: object | null;
     }): any;
     addStickerToSet({ user_id, name, png_sticker, tgs_sticker, emojis, mask_position, }?: {
         user_id: number | null;
@@ -372,7 +376,7 @@ declare class tgbot {
         png_sticker?: any;
         tgs_sticker?: any;
         emojis: string;
-        mask_position?: object;
+        mask_position?: object | null;
     }): any;
     setStickerPositionInSet({ sticker, position, }?: {
         sticker: string;
@@ -423,13 +427,39 @@ declare class tgbot {
     answerShippingQuery({ shipping_query_id, ok, shipping_options, error_message, }?: {
         shipping_query_id: string;
         ok: boolean | null;
-        shipping_options?: object[];
+        shipping_options?: object[] | null;
         error_message?: string;
     }): any;
     answerPreCheckoutQuery({ pre_checkout_query_id, ok, error_message, }?: {
         pre_checkout_query_id: string;
         ok: boolean | null;
         error_message?: string;
+    }): any;
+    setPassportDataErrors({ user_id, errors, }?: {
+        user_id: string;
+        errors: object[] | null;
+    }): any;
+    sendGame({ chat_id, game_short_name, disable_notification, reply_to_message_id, reply_markup }?: {
+        chat_id: string;
+        game_short_name: string | null;
+        disable_notification?: boolean;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
+    }): any;
+    setGameScore({ user_id, score, force, disable_edit_message, chat_id, message_id, inline_message_id, }?: {
+        user_id: string;
+        score: number | null;
+        force?: null;
+        disable_edit_message?: boolean | null;
+        chat_id?: string | number;
+        message_id?: string | number;
+        inline_message_id?: string;
+    }): any;
+    getGameHighScores({ user_id, chat_id, message_id, inline_message_id, }?: {
+        user_id: string;
+        chat_id?: string | number;
+        message_id?: string | number;
+        inline_message_id?: string;
     }): any;
     getPath({ file_id, }?: {
         file_id: string;
