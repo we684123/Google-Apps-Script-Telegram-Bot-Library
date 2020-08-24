@@ -427,7 +427,7 @@ declare class tgbot {
     answerShippingQuery({ shipping_query_id, ok, shipping_options, error_message, }?: {
         shipping_query_id: string;
         ok: boolean | null;
-        shipping_options?: object[];
+        shipping_options?: object[] | null;
         error_message?: string;
     }): any;
     answerPreCheckoutQuery({ pre_checkout_query_id, ok, error_message, }?: {

@@ -1100,7 +1100,7 @@ var tgbot = /** @class */ (function () {
         var start_payload = {
             "method": "answerInlineQuery",
             'inline_query_id': String(inline_query_id),
-            'results': String(results),
+            'results': JSON.stringify(results),
             'cache_time': cache_time,
             'is_personal': Boolean(is_personal),
             'next_offset': String(next_offset),
@@ -1169,7 +1169,7 @@ var tgbot = /** @class */ (function () {
         var _b = _a === void 0 ? {
             shipping_query_id: '',
             ok: null
-        } : _a, _c = _b.shipping_query_id, shipping_query_id = _c === void 0 ? '' : _c, _d = _b.ok, ok = _d === void 0 ? null : _d, _e = _b.shipping_options, shipping_options = _e === void 0 ? [] : _e, _f = _b.error_message, error_message = _f === void 0 ? '' : _f;
+        } : _a, _c = _b.shipping_query_id, shipping_query_id = _c === void 0 ? '' : _c, _d = _b.ok, ok = _d === void 0 ? null : _d, _e = _b.shipping_options, shipping_options = _e === void 0 ? null : _e, _f = _b.error_message, error_message = _f === void 0 ? '' : _f;
         if (shipping_query_id === '')
             this.miss_parameter("shipping_query_id");
         if (ok === null)
@@ -1178,7 +1178,7 @@ var tgbot = /** @class */ (function () {
             "method": "answerShippingQuery",
             'shipping_query_id': String(shipping_query_id),
             'ok': Boolean(ok),
-            'shipping_options	': shipping_options,
+            'shipping_options	': shipping_options == null ? null : JSON.stringify(shipping_options),
             'error_message': String(error_message)
         };
         return this.start(start_payload);

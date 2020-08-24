@@ -1756,7 +1756,7 @@ class tgbot {
     let start_payload = {
       "method": "answerInlineQuery",
       'inline_query_id': String(inline_query_id),
-      'results': String(results),
+      'results': JSON.stringify(results),
       'cache_time': cache_time,
       'is_personal': Boolean(is_personal),
       'next_offset': String(next_offset),
@@ -1868,12 +1868,12 @@ class tgbot {
     {
       shipping_query_id = '',
       ok = null,
-      shipping_options = [],
+      shipping_options = null,
       error_message = '',
     }: {
         shipping_query_id: string,
         ok: boolean | null,
-        shipping_options?: object[],
+        shipping_options?: object[] | null,
         error_message?: string,
       } = {
         shipping_query_id: '',
@@ -1886,7 +1886,7 @@ class tgbot {
       "method": "answerShippingQuery",
       'shipping_query_id': String(shipping_query_id),
       'ok': Boolean(ok),
-      'shipping_options	': shipping_options,
+      'shipping_options	': shipping_options == null ? null : JSON.stringify(shipping_options),
       'error_message': String(error_message),
     }
     return this.start(start_payload)

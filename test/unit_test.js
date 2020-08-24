@@ -823,7 +823,33 @@ function unit_test() {
   //   logger.error(error)
   // }
 
-
+  i++;
+  logger.info("i = " + i);
+  try {
+    var InlineQueryResult = [{
+      type: 'article',
+      id: '1',
+      title: "title1",
+      input_message_content: {
+        "message_text": "text1"
+      }
+    }, {
+      type: 'article',
+      id: '2',
+      title: "title2",
+      input_message_content: {
+        "message_text": "text2"
+      }
+    }]
+    logger.info("bot.answerInlineQuery()")
+    logger.info(bot.answerInlineQuery({
+      // inline_query_id 要及時生。 這個已通過
+      "inline_query_id": contents.inline_query.id,
+      "results": InlineQueryResult
+    }))
+  } catch (error) {
+    logger.error(error)
+  }
 
 
 
