@@ -359,7 +359,8 @@ declare class tgbot {
         user_id: number | null;
         png_sticker: any;
     }): any;
-    createNewStickerSet({ user_id, name, title, png_sticker, tgs_sticker, emojis, contains_masks, mask_position, }?: {
+    createNewStickerSet({ user_id, //這個要數字的id
+    name, title, png_sticker, tgs_sticker, emojis, contains_masks, mask_position }?: {
         user_id: number | null;
         name: string;
         title: string;
@@ -367,7 +368,7 @@ declare class tgbot {
         tgs_sticker?: any;
         emojis: string;
         contains_masks?: boolean;
-        mask_position?: object;
+        mask_position?: object | null;
     }): any;
     addStickerToSet({ user_id, name, png_sticker, tgs_sticker, emojis, mask_position, }?: {
         user_id: number | null;
@@ -375,7 +376,7 @@ declare class tgbot {
         png_sticker?: any;
         tgs_sticker?: any;
         emojis: string;
-        mask_position?: object;
+        mask_position?: object | null;
     }): any;
     setStickerPositionInSet({ sticker, position, }?: {
         sticker: string;

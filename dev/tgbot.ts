@@ -1585,14 +1585,14 @@ class tgbot {
 
   public createNewStickerSet(
     {
-      user_id = null,
+      user_id = null, //這個要數字的id
       name = '',
       title = '',
       png_sticker = '',
       tgs_sticker = '',
       emojis = '',
       contains_masks = false,
-      mask_position = {},
+      mask_position = null
     }: {
         user_id: number | null,
         name: string,
@@ -1600,8 +1600,8 @@ class tgbot {
         png_sticker?: any,
         tgs_sticker?: any,
         emojis: string,
-        contains_masks?: boolean,
-        mask_position?: object
+        contains_masks?: boolean
+        mask_position?: object | null,
       } = {
         user_id: null,
         name: '',
@@ -1622,7 +1622,7 @@ class tgbot {
       'tgs_sticker': tgs_sticker,
       'emojis': String(emojis),
       'contains_masks': Boolean(contains_masks),
-      'mask_position': mask_position,
+      'mask_position': mask_position == null ? null : JSON.stringify(mask_position),
     }
     return this.start(start_payload)
   }
@@ -1634,14 +1634,14 @@ class tgbot {
       png_sticker = '',
       tgs_sticker = '',
       emojis = '',
-      mask_position = {},
+      mask_position = null,
     }: {
         user_id: number | null,
         name: string,
         png_sticker?: any,
         tgs_sticker?: any,
         emojis: string,
-        mask_position?: object
+        mask_position?: object | null,
       } = {
         user_id: null,
         name: '',
@@ -1658,7 +1658,7 @@ class tgbot {
       'png_sticker': png_sticker,
       'tgs_sticker': tgs_sticker,
       'emojis': String(emojis),
-      'mask_position': mask_position,
+      'mask_position': mask_position == null ? null : JSON.stringify(mask_position),
     }
     return this.start(start_payload)
   }

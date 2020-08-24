@@ -664,35 +664,170 @@ function unit_test() {
   // answerCallbackQuery 因為是回應型所以不測試了
   // 除非哪天有心情寫 userbot 測試
 
-  i++; // 因為人數未達100人
-  logger.info("i = " + i);
-  try {
-    logger.info("bot.setMyCommands()")
-    logger.info(bot.setMyCommands({
-      "commands": [{"command":"help","description":"救救我啊我救我"}],
-    }))
-  } catch (error) {
-    logger.error(error)
-  }
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.setMyCommands()")
+  //   logger.info(bot.setMyCommands({
+  //     "commands": [{"command":"help","description":"救救我啊我救我"}],
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+  //
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.getMyCommands()")
+  //   logger.info(bot.getMyCommands())
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+  //
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.setMyCommands()")
+  //   logger.info(bot.setMyCommands({
+  //     "commands": [],
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
 
-  i++; // 因為人數未達100人
-  logger.info("i = " + i);
-  try {
-    logger.info("bot.getMyCommands()")
-    logger.info(bot.getMyCommands())
-  } catch (error) {
-    logger.error(error)
-  }
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendSticker()")
+  //   logger.info(bot.sendSticker({
+  //     "chat_id": test_me_char_id,
+  //     "sticker": 'CAACAgUAAxkBAANuX0N8qEoLkBRzYp96Q-YzKh1uclAAAkIFAALJQ7UJ7Q1Nag_aYQkbBA',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
 
-  i++; // 因為人數未達100人
-  logger.info("i = " + i);
-  try {
-    logger.info("bot.setMyCommands()")
-    logger.info(bot.setMyCommands({
-      "commands": [],
-    }))
-  } catch (error) {
-    logger.error(error)
-  }
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.sendSticker()")
+  //   logger.info(bot.sendSticker({
+  //     "chat_id": test_me_char_id,
+  //     "sticker": 'CAACAgUAAxkBAANuX0N8qEoLkBRzYp96Q-YzKh1uclAAAkIFAALJQ7UJ7Q1Nag_aYQkbBA',
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.getStickerSet()")
+  //   logger.info(bot.getStickerSet({
+  //     "name": "unit_test_by_CiFang_bot",
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   var file_id = "1P2wK9hAM4MNo2VL8nGnPFlJYXhCj0xfz"
+  //   logger.info("bot.uploadStickerFile()")
+  //   logger.info(bot.uploadStickerFile({
+  //     "user_id": test_me_char_id,
+  //     "png_sticker": DriveApp.getFileById(file_id).getBlob(),
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   var file_id = "1xk4xfC2dre1ax9ixhXB8dKqAWA_1tLAr"
+  //   logger.info("bot.createNewStickerSet()")
+  //   logger.info(bot.createNewStickerSet({
+  //     "user_id": test_me_char_id,
+  //     "name": "unit_test_by_CiFang_bot",
+  //     "title": "此方的unit_test",
+  //     "png_sticker": DriveApp.getFileById(file_id).getBlob(),
+  //     "emojis": "⭐"
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   var file_id = "1P2wK9hAM4MNo2VL8nGnPFlJYXhCj0xfz"
+  //   logger.info("bot.uploadStickerFile()")
+  //   logger.info(bot.uploadStickerFile({
+  //     "user_id": test_me_char_id,
+  //     "png_sticker": DriveApp.getFileById(file_id).getBlob(),
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.addStickerToSet()")
+  //   logger.info(bot.addStickerToSet({
+  //     "user_id": test_me_char_id,
+  //     "name":"unit_test_by_CiFang_bot",
+  //     "png_sticker":"BQACAgUAAxUAAV9Dh8RETrH39XROWYtMBDuPtHRIAAI_AQACP2UZVj4hNmpM6aq1GwQ",
+  //     "emojis": "☂️"
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.setStickerPositionInSet()")
+  //   logger.info(bot.setStickerPositionInSet({
+  //     "sticker": "CAACAgUAAx0CQWQfwgACAWtfQ5P1mz4DhgZLcRHydITrin0MJQACrwADy8pWDJQZhMROQnQ3GwQ",
+  //     "position":1
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   logger.info("bot.deleteStickerFromSet()")
+  //   logger.info(bot.deleteStickerFromSet({
+  //     "sticker": "CAACAgUAAx0CQWQfwgACAWtfQ5P1mz4DhgZLcRHydITrin0MJQACrwADy8pWDJQZhMROQnQ3GwQ",
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+  // i++;
+  // logger.info("i = " + i);
+  // try {
+  //   var file_id = "1qZJwWFbukd17tfd3wV2bvD_nkvUAxgee"
+  //   logger.info("bot.setStickerSetThumb()")
+  //   logger.info(bot.setStickerSetThumb({
+  //     "name": "unit_test_by_CiFang_bot",
+  //     "user_id":test_me_char_id,
+  //     "thumb":DriveApp.getFileById(file_id).getBlob(),
+  //   }))
+  // } catch (error) {
+  //   logger.error(error)
+  // }
+
+
+
+
+
+
+
 
 }

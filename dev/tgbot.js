@@ -995,7 +995,9 @@ var tgbot = /** @class */ (function () {
             name: '',
             title: '',
             emojis: ''
-        } : _a, _c = _b.user_id, user_id = _c === void 0 ? null : _c, _d = _b.name, name = _d === void 0 ? '' : _d, _e = _b.title, title = _e === void 0 ? '' : _e, _f = _b.png_sticker, png_sticker = _f === void 0 ? '' : _f, _g = _b.tgs_sticker, tgs_sticker = _g === void 0 ? '' : _g, _h = _b.emojis, emojis = _h === void 0 ? '' : _h, _j = _b.contains_masks, contains_masks = _j === void 0 ? false : _j, _k = _b.mask_position, mask_position = _k === void 0 ? {} : _k;
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? null : _c, //這個要數字的id
+        _d = _b.name, //這個要數字的id
+        name = _d === void 0 ? '' : _d, _e = _b.title, title = _e === void 0 ? '' : _e, _f = _b.png_sticker, png_sticker = _f === void 0 ? '' : _f, _g = _b.tgs_sticker, tgs_sticker = _g === void 0 ? '' : _g, _h = _b.emojis, emojis = _h === void 0 ? '' : _h, _j = _b.contains_masks, contains_masks = _j === void 0 ? false : _j, _k = _b.mask_position, mask_position = _k === void 0 ? null : _k;
         if (user_id === null)
             this.miss_parameter("user_id");
         if (name === '')
@@ -1013,7 +1015,7 @@ var tgbot = /** @class */ (function () {
             'tgs_sticker': tgs_sticker,
             'emojis': String(emojis),
             'contains_masks': Boolean(contains_masks),
-            'mask_position': mask_position
+            'mask_position': mask_position == null ? null : JSON.stringify(mask_position)
         };
         return this.start(start_payload);
     };
@@ -1022,7 +1024,7 @@ var tgbot = /** @class */ (function () {
             user_id: null,
             name: '',
             emojis: ''
-        } : _a, _c = _b.user_id, user_id = _c === void 0 ? null : _c, _d = _b.name, name = _d === void 0 ? '' : _d, _e = _b.png_sticker, png_sticker = _e === void 0 ? '' : _e, _f = _b.tgs_sticker, tgs_sticker = _f === void 0 ? '' : _f, _g = _b.emojis, emojis = _g === void 0 ? '' : _g, _h = _b.mask_position, mask_position = _h === void 0 ? {} : _h;
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? null : _c, _d = _b.name, name = _d === void 0 ? '' : _d, _e = _b.png_sticker, png_sticker = _e === void 0 ? '' : _e, _f = _b.tgs_sticker, tgs_sticker = _f === void 0 ? '' : _f, _g = _b.emojis, emojis = _g === void 0 ? '' : _g, _h = _b.mask_position, mask_position = _h === void 0 ? null : _h;
         if (user_id === null)
             this.miss_parameter("user_id");
         if (name === '')
@@ -1036,7 +1038,7 @@ var tgbot = /** @class */ (function () {
             'png_sticker': png_sticker,
             'tgs_sticker': tgs_sticker,
             'emojis': String(emojis),
-            'mask_position': mask_position
+            'mask_position': mask_position == null ? null : JSON.stringify(mask_position)
         };
         return this.start(start_payload);
     };
