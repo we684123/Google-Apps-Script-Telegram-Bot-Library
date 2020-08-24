@@ -3,6 +3,7 @@
 一個 TGbot lib
 
 # unit test
+所有method皆測試過可用，除了以下名單沒測
 
 ## 未測試名單(not use unit test)
 
