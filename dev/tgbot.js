@@ -1200,6 +1200,79 @@ var tgbot = /** @class */ (function () {
         };
         return this.start(start_payload);
     };
+    // === Telegram Passport ===
+    tgbot.prototype.setPassportDataErrors = function (_a) {
+        var _b = _a === void 0 ? {
+            user_id: '',
+            errors: null
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? '' : _c, _d = _b.errors, errors = _d === void 0 ? null : _d;
+        if (user_id === '')
+            this.miss_parameter("user_id");
+        if (errors === null)
+            this.miss_parameter("errors");
+        var start_payload = {
+            "method": "setPassportDataErrors",
+            "user_id": '',
+            "errors": null
+        };
+        return this.start(start_payload);
+    };
+    // === Games ===
+    tgbot.prototype.sendGame = function (_a) {
+        var _b = _a === void 0 ? {
+            chat_id: '',
+            game_short_name: null
+        } : _a, _c = _b.chat_id, chat_id = _c === void 0 ? '' : _c, _d = _b.game_short_name, game_short_name = _d === void 0 ? null : _d, _e = _b.disable_notification, disable_notification = _e === void 0 ? false : _e, _f = _b.reply_to_message_id, reply_to_message_id = _f === void 0 ? '' : _f, _g = _b.reply_markup, reply_markup = _g === void 0 ? '' : _g;
+        if (chat_id === '')
+            this.miss_parameter("chat_id");
+        if (game_short_name === null)
+            this.miss_parameter("game_short_name");
+        var start_payload = {
+            "method": "sendGame",
+            "chat_id": '',
+            "game_short_name": game_short_name,
+            'disable_notification': Boolean(disable_notification),
+            'reply_to_message_id': Number(reply_to_message_id),
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+        };
+        return this.start(start_payload);
+    };
+    tgbot.prototype.setGameScore = function (_a) {
+        var _b = _a === void 0 ? {
+            user_id: '',
+            score: null
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? '' : _c, _d = _b.score, score = _d === void 0 ? null : _d, _e = _b.force, force = _e === void 0 ? null : _e, _f = _b.disable_edit_message, disable_edit_message = _f === void 0 ? false : _f, _g = _b.chat_id, chat_id = _g === void 0 ? '' : _g, _h = _b.message_id, message_id = _h === void 0 ? '' : _h, _j = _b.inline_message_id, inline_message_id = _j === void 0 ? '' : _j;
+        if (user_id === '')
+            this.miss_parameter("user_id");
+        if (score === null)
+            this.miss_parameter("score");
+        var start_payload = {
+            "method": "setGameScore",
+            "user_id": '',
+            "score": score,
+            "force": force,
+            "disable_edit_message": disable_edit_message,
+            "chat_id": String(chat_id),
+            "message_id": String(message_id),
+            "inline_message_id": String(inline_message_id)
+        };
+        return this.start(start_payload);
+    };
+    tgbot.prototype.getGameHighScores = function (_a) {
+        var _b = _a === void 0 ? {
+            user_id: ''
+        } : _a, _c = _b.user_id, user_id = _c === void 0 ? '' : _c, _d = _b.chat_id, chat_id = _d === void 0 ? '' : _d, _e = _b.message_id, message_id = _e === void 0 ? '' : _e, _f = _b.inline_message_id, inline_message_id = _f === void 0 ? '' : _f;
+        if (user_id === '')
+            this.miss_parameter("user_id");
+        var start_payload = {
+            "method": "getGameHighScores",
+            "user_id": '',
+            "chat_id": String(chat_id),
+            "message_id": String(message_id),
+            "inline_message_id": String(inline_message_id)
+        };
+        return this.start(start_payload);
+    };
     // === public 自家der方法 ===
     tgbot.prototype.getPath = function (_a) {
         var _b = (_a === void 0 ? {

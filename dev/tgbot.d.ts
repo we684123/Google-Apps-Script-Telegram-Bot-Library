@@ -435,6 +435,32 @@ declare class tgbot {
         ok: boolean | null;
         error_message?: string;
     }): any;
+    setPassportDataErrors({ user_id, errors, }?: {
+        user_id: string;
+        errors: object[] | null;
+    }): any;
+    sendGame({ chat_id, game_short_name, disable_notification, reply_to_message_id, reply_markup }?: {
+        chat_id: string;
+        game_short_name: string | null;
+        disable_notification?: boolean;
+        reply_to_message_id?: number | string;
+        reply_markup?: any;
+    }): any;
+    setGameScore({ user_id, score, force, disable_edit_message, chat_id, message_id, inline_message_id, }?: {
+        user_id: string;
+        score: number | null;
+        force?: null;
+        disable_edit_message?: boolean | null;
+        chat_id?: string | number;
+        message_id?: string | number;
+        inline_message_id?: string;
+    }): any;
+    getGameHighScores({ user_id, chat_id, message_id, inline_message_id, }?: {
+        user_id: string;
+        chat_id?: string | number;
+        message_id?: string | number;
+        inline_message_id?: string;
+    }): any;
     getPath({ file_id, }?: {
         file_id: string;
     }): any;

@@ -1918,6 +1918,130 @@ class tgbot {
   }
 
 
+  // === Telegram Passport ===
+
+  public setPassportDataErrors(
+    {
+      user_id = '',
+      errors = null,
+    }: {
+        user_id: string,
+        errors: object[] | null,
+      } = {
+        user_id: '',
+        errors: null,
+      }
+  ) {
+    if (user_id === '') this.miss_parameter("user_id")
+    if (errors === null) this.miss_parameter("errors")
+    let start_payload = {
+      "method": "setPassportDataErrors",
+      "user_id": '',
+      "errors": null,
+    }
+    return this.start(start_payload)
+  }
+
+
+  // === Games ===
+
+  public sendGame(
+    {
+      chat_id = '',
+      game_short_name = null,
+      disable_notification = false,
+      reply_to_message_id = '',
+      reply_markup = ''
+    }: {
+        chat_id: string,
+        game_short_name: string | null,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
+        chat_id: '',
+        game_short_name: null,
+      }
+  ) {
+    if (chat_id === '') this.miss_parameter("chat_id")
+    if (game_short_name === null) this.miss_parameter("game_short_name")
+    let start_payload = {
+      "method": "sendGame",
+      "chat_id": '',
+      "game_short_name": game_short_name,
+      'disable_notification': Boolean(disable_notification),
+      'reply_to_message_id': Number(reply_to_message_id),
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+    }
+    return this.start(start_payload)
+  }
+
+  public setGameScore(
+    {
+      user_id = '',
+      score = null,
+      force = null,
+      disable_edit_message = false,
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+    }: {
+        user_id: string,
+        score: number | null,
+        force?: null,
+        disable_edit_message?: boolean | null,
+        chat_id?: string | number,
+        message_id?: string | number,
+        inline_message_id?: string,
+      } = {
+        user_id: '',
+        score: null,
+      }
+  ) {
+    if (user_id === '') this.miss_parameter("user_id")
+    if (score === null) this.miss_parameter("score")
+    let start_payload = {
+      "method": "setGameScore",
+      "user_id": '',
+      "score": score,
+      "force": force,
+      "disable_edit_message": disable_edit_message,
+      "chat_id": String(chat_id),
+      "message_id": String(message_id),
+      "inline_message_id": String(inline_message_id),
+    }
+    return this.start(start_payload)
+  }
+
+  public getGameHighScores(
+    {
+      user_id = '',
+      chat_id = '',
+      message_id = '',
+      inline_message_id = '',
+    }: {
+        user_id: string,
+        chat_id?: string | number,
+        message_id?: string | number,
+        inline_message_id?: string,
+      } = {
+        user_id: '',
+      }
+  ) {
+    if (user_id === '') this.miss_parameter("user_id")
+    let start_payload = {
+      "method": "getGameHighScores",
+      "user_id": '',
+      "chat_id": String(chat_id),
+      "message_id": String(message_id),
+      "inline_message_id": String(inline_message_id),
+    }
+    return this.start(start_payload)
+  }
+
+
+
+
   // === public 自家der方法 ===
   public getPath(
     {
