@@ -1,8 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ES3",  
+        "target": "ES2019",
         "module": "commonjs",
         "strict": true,
         "esModuleInterop": true,
+        "declaration": true,
+        "sourceMap":true,
+        "declarationMap":true
     }
 }

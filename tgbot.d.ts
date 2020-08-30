@@ -1,5 +1,5 @@
 /** Telegram bot class */
-declare class tgbot {
+export declare class tgbot {
     token: string;
     api_url: string;
     /**
@@ -470,3 +470,4 @@ declare class tgbot {
     private miss_parameter;
     private start;
 }
+//# sourceMappingURL=tgbot.d.ts.map

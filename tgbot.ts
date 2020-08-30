@@ -1,5 +1,5 @@
 /** Telegram bot class */
-class tgbot {
+export class tgbot {
   token: string
   api_url: string
 
