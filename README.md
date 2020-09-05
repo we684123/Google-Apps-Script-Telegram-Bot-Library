@@ -4,7 +4,8 @@
 讓你可以在 Google Apps Script 上輕鬆寫 Telegram bot    
 或者你也可以 npm install 後在 local 端開發    
 
-(這裡嵌GIF)
+![Imgur](https://imgur.com/iP46IBt.gif)
+![Imgur](https://imgur.com/5f4jlmG.gif)
 
 # npm install
 
