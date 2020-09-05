@@ -4,12 +4,12 @@
 讓你可以在 Google Apps Script 上輕鬆寫 Telegram bot    
 或者你也可以 npm install 後在 local 端開發    
 
+(這裡嵌GIF)
 
 # npm install
 
-```
-npm i google-apps-script-telegram-bot-library
-```
+```npm i google-apps-script-telegram-bot-library```
+
 
 
 # Google Apps Script Library install
@@ -42,3 +42,22 @@ Open Script Editor.
 |                           deleteChatStickerSet                            | 因為人數未達100人 |
 | [Telegram Passport](https://core.telegram.org/bots/api#telegram-passport) | 作者不知道原理:(  |
 |             [Games](https://core.telegram.org/bots/api#games)             | 作者不會寫遊戲:(  |
+
+# additional method
+
+這個 library 還有一些特有的 method 可以用
+
+## getPath
+獲取檔案的下載資訊
+
+| Parameters |  type  | Required |            Description            |
+| :--------: | :----: | :------: | :-------------------------------: |
+|  file_id   | string |   Yes    | File identifier to get info about |
+
+
+## getFileDownloadUrl
+獲取檔案的下載連結
+
+| Parameters |  type  | Required |          Description          |
+| :--------: | :----: | :------: | :---------------------------: |
+|    Path    | string |   Yes    | [getPath](#getPath)回傳的結果 |
