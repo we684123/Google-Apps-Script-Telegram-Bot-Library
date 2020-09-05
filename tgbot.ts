@@ -2085,6 +2085,6 @@ export class tgbot {
       "payload": payload
     }
     // @ts-ignore
-    return UrlFetchApp.fetch(this.api_url, data);
+    return JSON.parse(UrlFetchApp.fetch(this.api_url, data));
   }
 }
