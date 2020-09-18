@@ -2084,7 +2084,24 @@ export class tgbot {
       "method": "post",
       "payload": payload
     }
-    // @ts-ignore
-    return JSON.parse(UrlFetchApp.fetch(this.api_url, data));
+    try {
+      // @ts-ignore
+      return JSON.parse(UrlFetchApp.fetch(this.api_url, data));
+    } catch (error) {
+      // @ts-ignore
+      var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", this.api_url, false); // 超重要，同步
+      xhr.setRequestHeader('Content-Type', ' application/json');
+      xhr.send(JSON.stringify(payload));
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          return xhr.responseText;
+        } else {
+          throw new Error(`XMLHttpRequest error`);
+        }
+      };
+      return JSON.parse(xhr.responseText);
+    }
   }
 }
