@@ -132,6 +132,9 @@ export class tgbot {
       'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
     }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
+    }
     return this.start(start_payload)
   }
 
@@ -197,7 +200,10 @@ export class tgbot {
       'parse_mode': String(parse_mode),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -246,7 +252,10 @@ export class tgbot {
       'thumb': thumb,
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -286,7 +295,10 @@ export class tgbot {
       'parse_mode': String(parse_mode),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -338,7 +350,10 @@ export class tgbot {
       'supports_streaming': Boolean(supports_streaming),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -387,7 +402,10 @@ export class tgbot {
       'parse_mode': String(parse_mode),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -427,7 +445,10 @@ export class tgbot {
       'parse_mode': String(parse_mode),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -467,7 +488,10 @@ export class tgbot {
       'thumb': thumb,
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -535,7 +559,10 @@ export class tgbot {
       'live_period': Number(live_period),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -569,7 +596,10 @@ export class tgbot {
       'inline_message_id': String(inline_message_id),
       'latitude': Number(latitude),
       'longitude': Number(longitude),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -592,7 +622,10 @@ export class tgbot {
       'chat_id': String(chat_id),
       'message_id': Number(message_id),
       'inline_message_id': String(inline_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -644,7 +677,10 @@ export class tgbot {
       'foursquare_type': String(foursquare_type),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -686,7 +722,10 @@ export class tgbot {
       'vcard': String(vcard),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -749,7 +788,10 @@ export class tgbot {
       'is_closed': Boolean(is_closed),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -778,7 +820,10 @@ export class tgbot {
       'emoji': String(emoji),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1374,7 +1419,10 @@ export class tgbot {
       'text': String(text),
       'parse_mode': String(parse_mode),
       'disable_web_page_preview': Boolean(disable_web_page_preview),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1406,7 +1454,10 @@ export class tgbot {
       'caption': String(caption),
       'parse_mode': parse_mode,
       'disable_web_page_preview': disable_web_page_preview,
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1435,7 +1486,10 @@ export class tgbot {
       'message_id': String(message_id),
       'inline_message_id': String(inline_message_id),
       'media': String(media),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1458,7 +1512,10 @@ export class tgbot {
       'chat_id': String(chat_id),
       'message_id': String(message_id),
       'inline_message_id': String(inline_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1483,7 +1540,10 @@ export class tgbot {
       "method": "stopPoll",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1540,6 +1600,9 @@ export class tgbot {
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1861,6 +1924,9 @@ export class tgbot {
       'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
     }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
+    }
     return this.start(start_payload)
   }
 
@@ -1971,7 +2037,10 @@ export class tgbot {
       "game_short_name": game_short_name,
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
