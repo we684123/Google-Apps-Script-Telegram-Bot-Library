@@ -7,13 +7,13 @@
 ![Imgur](https://imgur.com/iP46IBt.gif)
 ![Imgur](https://imgur.com/5f4jlmG.gif)
 
-# npm install
+## npm install
 
-```npm i google-apps-script-telegram-bot-library```
+`npm i google-apps-script-telegram-bot-library`
 
 
 
-# Google Apps Script Library install
+## Google Apps Script Library install
 
 打開 gs 編輯頁面  
 -> "資源"  
@@ -31,11 +31,31 @@ Open Script Editor.
 -> select lastest version and save    
 
 
-# unit test
+
+## run on NodeJs
+
+```javascript
+const tgbot = require('google-apps-script-telegram-bot-library')
+var bot = new tgbot.tgbot("<botToken>")
+var result = bot.sendMessage({"chat_id":"207014603","text":"030"})
+console.log(result);
+```
+
+## run on Google Apps Script
+
+```javascript
+var tgbot = new TGbot.tgbot("<botToken>");
+var result = tgbot.sendMessage({"chat_id":"207014603","text":"030"})
+console.log(result);
+```
+
+-----
+
+## unit test
 所有method皆測試過可用，除了以下名單沒測
 
 
-## 未測試名單(not use unit test)
+### 未測試名單(not use unit test)
 
 |                                 名稱name                                  |    原因reason     |
 | :-----------------------------------------------------------------------: | :---------------: |
@@ -44,11 +64,11 @@ Open Script Editor.
 | [Telegram Passport](https://core.telegram.org/bots/api#telegram-passport) | 作者不知道原理:(  |
 |             [Games](https://core.telegram.org/bots/api#games)             | 作者不會寫遊戲:(  |
 
-# additional method
+## additional method
 
 這個 library 還有一些特有的 method 可以用
 
-## getPath
+### getPath
 獲取檔案的下載資訊
 
 | Parameters |  type  | Required |            Description            |
@@ -56,7 +76,7 @@ Open Script Editor.
 |  file_id   | string |   Yes    | File identifier to get info about |
 
 
-## getFileDownloadUrl
+### getFileDownloadUrl
 獲取檔案的下載連結
 
 | Parameters |  type  | Required |          Description          |
