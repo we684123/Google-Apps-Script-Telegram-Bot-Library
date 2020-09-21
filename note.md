@@ -6,3 +6,7 @@
 ``` mv ./tgbot2.js.map ./tgbot.js.map ```
 
 ``` rm ./tgbot2.js ```
+
+----
+
+``` npm publish ``` 
