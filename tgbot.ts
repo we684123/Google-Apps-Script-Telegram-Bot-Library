@@ -27,11 +27,11 @@ export class tgbot {
       timeout = 0,
       allowed_updates = ''
     }: {
-      offset?: number | string,
-      limit?: number,
-      timeout?: number,
-      allowed_updates?: string | string[],
-    } = {}
+        offset?: number | string,
+        limit?: number,
+        timeout?: number,
+        allowed_updates?: string | string[],
+      } = {}
   ) {
     /**
    * @param {object} options
@@ -57,11 +57,11 @@ export class tgbot {
     max_connections = 40,
     allowed_updates = []
   }: {
-    url: string,
-    certificate?: any,
-    max_connections?: number,
-    allowed_updates?: string[],
-  } = {
+      url: string,
+      certificate?: any,
+      max_connections?: number,
+      allowed_updates?: string[],
+    } = {
       url: '',
     }
   ) {
@@ -108,14 +108,14 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = '',
     }: {
-      chat_id: string | number,
-      text: string,
-      parse_mode?: string | undefined,
-      disable_web_page_preview?: Boolean | undefined,
-      disable_notification?: Boolean | undefined,
-      reply_to_message_id?: string | number | undefined,
-      reply_markup?: any | undefined,
-    } = {
+        chat_id: string | number,
+        text: string,
+        parse_mode?: string | undefined,
+        disable_web_page_preview?: Boolean | undefined,
+        disable_notification?: Boolean | undefined,
+        reply_to_message_id?: string | number | undefined,
+        reply_markup?: any | undefined,
+      } = {
         chat_id: '',
         text: '',
       }
@@ -132,6 +132,9 @@ export class tgbot {
       'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
     }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
+    }
     return this.start(start_payload)
   }
 
@@ -142,11 +145,11 @@ export class tgbot {
       disable_notification = false,
       message_id = ''
     }: {
-      chat_id: string | number,
-      from_chat_id: string | number,
-      disable_notification?: boolean,
-      message_id: string | number,
-    } = {
+        chat_id: string | number,
+        from_chat_id: string | number,
+        disable_notification?: boolean,
+        message_id: string | number,
+      } = {
         chat_id: '',
         from_chat_id: '',
         message_id: ''
@@ -175,14 +178,14 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: string | number,
-      photo: any,
-      caption?: string,
-      parse_mode?: string,
-      disable_notification?: boolean,
-      reply_to_message_id?: string | number,
-      reply_markup?: any,
-    } = {
+        chat_id: string | number,
+        photo: any,
+        caption?: string,
+        parse_mode?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: string | number,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         photo: '',
       }
@@ -197,7 +200,10 @@ export class tgbot {
       'parse_mode': String(parse_mode),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -216,18 +222,18 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: string | number,
-      audio: any,
-      caption?: string,
-      parse_mode?: string,
-      duration?: number | string,
-      performer?: string,
-      title?: string,
-      thumb?: any,
-      disable_notification?: boolean,
-      reply_to_message_id?: string | number,
-      reply_markup?: any,
-    } = {
+        chat_id: string | number,
+        audio: any,
+        caption?: string,
+        parse_mode?: string,
+        duration?: number | string,
+        performer?: string,
+        title?: string,
+        thumb?: any,
+        disable_notification?: boolean,
+        reply_to_message_id?: string | number,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         audio: '',
       }
@@ -246,7 +252,10 @@ export class tgbot {
       'thumb': thumb,
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -262,15 +271,15 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      document: any,
-      thumb?: any,
-      caption?: string,
-      parse_mode?: string,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        document: any,
+        thumb?: any,
+        caption?: string,
+        parse_mode?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         document: '',
       }
@@ -286,7 +295,10 @@ export class tgbot {
       'parse_mode': String(parse_mode),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -306,19 +318,19 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      video: any,
-      duration?: number | string,
-      width?: number | string,
-      height?: number | string,
-      thumb?: any,
-      caption?: string,
-      parse_mode?: string,
-      supports_streaming?: boolean,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        video: any,
+        duration?: number | string,
+        width?: number | string,
+        height?: number | string,
+        thumb?: any,
+        caption?: string,
+        parse_mode?: string,
+        supports_streaming?: boolean,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         video: '',
       }
@@ -338,7 +350,10 @@ export class tgbot {
       'supports_streaming': Boolean(supports_streaming),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -357,18 +372,18 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      animation: any,
-      duration?: number | string,
-      width?: number | string,
-      height?: number | string,
-      thumb?: any,
-      caption?: string,
-      parse_mode?: string,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        animation: any,
+        duration?: number | string,
+        width?: number | string,
+        height?: number | string,
+        thumb?: any,
+        caption?: string,
+        parse_mode?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         animation: '',
       }
@@ -387,7 +402,10 @@ export class tgbot {
       'parse_mode': String(parse_mode),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -403,15 +421,15 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      voice: any,
-      duration?: number | string,
-      caption?: string,
-      parse_mode?: string,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        voice: any,
+        duration?: number | string,
+        caption?: string,
+        parse_mode?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         voice: '',
       }
@@ -427,7 +445,10 @@ export class tgbot {
       'parse_mode': String(parse_mode),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -443,15 +464,15 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      video_note: any,
-      duration?: number | string,
-      length?: string,
-      thumb?: any,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        video_note: any,
+        duration?: number | string,
+        length?: string,
+        thumb?: any,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         video_note: '',
       }
@@ -467,7 +488,10 @@ export class tgbot {
       'thumb': thumb,
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -479,11 +503,11 @@ export class tgbot {
       disable_notification = false,
       reply_to_message_id = '',
     }: {
-      chat_id: number | string,
-      media: any[],
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-    }
+        chat_id: number | string,
+        media: any[],
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+      }
       = {
         chat_id: '',
         media: [],
@@ -511,14 +535,14 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      latitude: number | string,
-      longitude: number | string,
-      live_period?: number | null,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        latitude: number | string,
+        longitude: number | string,
+        live_period?: number | null,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         latitude: '',
         longitude: '',
@@ -535,7 +559,10 @@ export class tgbot {
       'live_period': Number(live_period),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -549,13 +576,13 @@ export class tgbot {
       longitude = null,
       reply_markup = ''
     }: {
-      chat_id?: number | string,
-      message_id?: number | null,
-      inline_message_id?: string,
-      latitude: number | null,
-      longitude: number | null,
-      reply_markup?: any,
-    } = {
+        chat_id?: number | string,
+        message_id?: number | null,
+        inline_message_id?: string,
+        latitude: number | null,
+        longitude: number | null,
+        reply_markup?: any,
+      } = {
         latitude: null,
         longitude: null,
       }
@@ -569,7 +596,10 @@ export class tgbot {
       'inline_message_id': String(inline_message_id),
       'latitude': Number(latitude),
       'longitude': Number(longitude),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -581,18 +611,21 @@ export class tgbot {
       inline_message_id = '',
       reply_markup = ''
     }: {
-      chat_id?: number | string,
-      message_id?: number | null,
-      inline_message_id?: string,
-      reply_markup?: any,
-    } = {}
+        chat_id?: number | string,
+        message_id?: number | null,
+        inline_message_id?: string,
+        reply_markup?: any,
+      } = {}
   ) {
     let start_payload = {
       "method": "stopMessageLiveLocation",
       'chat_id': String(chat_id),
       'message_id': Number(message_id),
       'inline_message_id': String(inline_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -610,17 +643,17 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      latitude: number | null,
-      longitude: number | null,
-      title: string,
-      address: string,
-      foursquare_id?: string,
-      foursquare_type?: string,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        latitude: number | null,
+        longitude: number | null,
+        title: string,
+        address: string,
+        foursquare_id?: string,
+        foursquare_type?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         latitude: null,
         longitude: null,
@@ -644,7 +677,10 @@ export class tgbot {
       'foursquare_type': String(foursquare_type),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -660,15 +696,15 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      phone_number: string,
-      first_name: string,
-      last_name?: string,
-      vcard?: string,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        phone_number: string,
+        first_name: string,
+        last_name?: string,
+        vcard?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         phone_number: '',
         first_name: '',
@@ -686,7 +722,10 @@ export class tgbot {
       'vcard': String(vcard),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -709,22 +748,22 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      question: string,
-      options: string[],
-      is_anonymous?: boolean,
-      type?: string,
-      allows_multiple_answers?: boolean,
-      correct_option_id?: number | null,
-      explanation?: string,
-      explanation_parse_mode?: string,
-      open_period?: number | null,
-      close_date?: number | null,
-      is_closed?: boolean,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        question: string,
+        options: string[],
+        is_anonymous?: boolean,
+        type?: string,
+        allows_multiple_answers?: boolean,
+        correct_option_id?: number | null,
+        explanation?: string,
+        explanation_parse_mode?: string,
+        open_period?: number | null,
+        close_date?: number | null,
+        is_closed?: boolean,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         question: '',
         options: [],
@@ -749,7 +788,10 @@ export class tgbot {
       'is_closed': Boolean(is_closed),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -762,12 +804,12 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      emoji?: string,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        emoji?: string,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
       }
   ) {
@@ -778,7 +820,10 @@ export class tgbot {
       'emoji': String(emoji),
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -788,9 +833,9 @@ export class tgbot {
       chat_id = '',
       action = '',
     }: {
-      chat_id: number | string,
-      action: string,
-    } = {
+        chat_id: number | string,
+        action: string,
+      } = {
         chat_id: '',
         action: '',
       }
@@ -811,10 +856,10 @@ export class tgbot {
       offset = null,
       limit = 100,
     }: {
-      user_id: string | number,
-      offset?: number | null,
-      limit?: number
-    } = {
+        user_id: string | number,
+        offset?: number | null,
+        limit?: number
+      } = {
         user_id: '',
       }
   ) {
@@ -832,8 +877,8 @@ export class tgbot {
     {
       file_id = '',
     }: {
-      file_id: string,
-    } = {
+        file_id: string,
+      } = {
         file_id: '',
       }
   ) {
@@ -852,10 +897,10 @@ export class tgbot {
       user_id = '',
       until_date = null
     }: {
-      chat_id: number | string,
-      user_id: string,
-      until_date?: number | null,
-    } = {
+        chat_id: number | string,
+        user_id: string,
+        until_date?: number | null,
+      } = {
         chat_id: '',
         user_id: '',
       }
@@ -876,9 +921,9 @@ export class tgbot {
       chat_id = '',
       user_id = '',
     }: {
-      chat_id: number | string,
-      user_id: string,
-    } = {
+        chat_id: number | string,
+        user_id: string,
+      } = {
         chat_id: '',
         user_id: '',
       }
@@ -900,11 +945,11 @@ export class tgbot {
       permissions = {},
       until_date = null
     }: {
-      chat_id: number | string,
-      user_id: number | string,
-      permissions: object,
-      until_date?: number | null,
-    } = {
+        chat_id: number | string,
+        user_id: number | string,
+        permissions: object,
+        until_date?: number | null,
+      } = {
         chat_id: '',
         user_id: '',
         permissions: {},
@@ -937,17 +982,17 @@ export class tgbot {
       can_pin_messages = null,
       can_promote_members = null,
     }: {
-      chat_id: number | string,
-      user_id: number | string,
-      can_change_info?: boolean | null,
-      can_post_messages?: boolean | null,
-      can_edit_messages?: boolean | null,
-      can_delete_messages?: boolean | null,
-      can_invite_users?: boolean | null,
-      can_restrict_members?: boolean | null,
-      can_pin_messages?: boolean | null,
-      can_promote_members?: boolean | null,
-    } = {
+        chat_id: number | string,
+        user_id: number | string,
+        can_change_info?: boolean | null,
+        can_post_messages?: boolean | null,
+        can_edit_messages?: boolean | null,
+        can_delete_messages?: boolean | null,
+        can_invite_users?: boolean | null,
+        can_restrict_members?: boolean | null,
+        can_pin_messages?: boolean | null,
+        can_promote_members?: boolean | null,
+      } = {
         chat_id: '',
         user_id: '',
       }
@@ -976,10 +1021,10 @@ export class tgbot {
       user_id = '',
       custom_title = '',
     }: {
-      chat_id: number | string,
-      user_id: number | string,
-      custom_title: string,
-    } = {
+        chat_id: number | string,
+        user_id: number | string,
+        custom_title: string,
+      } = {
         chat_id: '',
         user_id: '',
         custom_title: '',
@@ -1001,9 +1046,9 @@ export class tgbot {
       chat_id = '',
       permissions = {},
     }: {
-      chat_id: number | string,
-      permissions: object,
-    } = {
+        chat_id: number | string,
+        permissions: object,
+      } = {
         chat_id: '',
         permissions: {},
       }
@@ -1022,8 +1067,8 @@ export class tgbot {
     {
       chat_id = '',
     }: {
-      chat_id: number | string,
-    } = { chat_id: '' }
+        chat_id: number | string,
+      } = { chat_id: '' }
   ) {
     if (chat_id === '') this.miss_parameter("chat_id")
     let start_payload = {
@@ -1039,9 +1084,9 @@ export class tgbot {
       chat_id = '',
       photo = '',
     }: {
-      chat_id: number | string,
-      photo: any,
-    } = {
+        chat_id: number | string,
+        photo: any,
+      } = {
         chat_id: '',
         photo: '',
       }
@@ -1060,8 +1105,8 @@ export class tgbot {
     {
       chat_id = '',
     }: {
-      chat_id: number | string,
-    } = {
+        chat_id: number | string,
+      } = {
         chat_id: '',
       }
   ) {
@@ -1079,9 +1124,9 @@ export class tgbot {
       chat_id = '',
       title = '',
     }: {
-      chat_id: number | string,
-      title: string,
-    } = {
+        chat_id: number | string,
+        title: string,
+      } = {
         chat_id: '',
         title: '',
       }
@@ -1101,9 +1146,9 @@ export class tgbot {
       chat_id = '',
       description = '',
     }: {
-      chat_id: number | string,
-      description?: string,
-    } = {
+        chat_id: number | string,
+        description?: string,
+      } = {
         chat_id: '',
       }
   ) {
@@ -1122,10 +1167,10 @@ export class tgbot {
       message_id = null,
       disable_notification = false,
     }: {
-      chat_id: number | string,
-      message_id: number | null,
-      disable_notification?: boolean,
-    } = {
+        chat_id: number | string,
+        message_id: number | null,
+        disable_notification?: boolean,
+      } = {
         chat_id: '',
         message_id: null,
       }
@@ -1145,8 +1190,8 @@ export class tgbot {
     {
       chat_id = '',
     }: {
-      chat_id: number | string,
-    } = {
+        chat_id: number | string,
+      } = {
         chat_id: '',
       }
   ) {
@@ -1162,8 +1207,8 @@ export class tgbot {
     {
       chat_id = '',
     }: {
-      chat_id: number | string,
-    } = {
+        chat_id: number | string,
+      } = {
         chat_id: '',
       }
   ) {
@@ -1179,8 +1224,8 @@ export class tgbot {
     {
       chat_id = '',
     }: {
-      chat_id: number | string,
-    } = {
+        chat_id: number | string,
+      } = {
         chat_id: '',
       }
   ) {
@@ -1196,8 +1241,8 @@ export class tgbot {
     {
       chat_id = '',
     }: {
-      chat_id: number | string,
-    } = {
+        chat_id: number | string,
+      } = {
         chat_id: '',
       }
   ) {
@@ -1213,8 +1258,8 @@ export class tgbot {
     {
       chat_id = '',
     }: {
-      chat_id: number | string,
-    } = {
+        chat_id: number | string,
+      } = {
         chat_id: '',
       }
   ) {
@@ -1231,9 +1276,9 @@ export class tgbot {
       chat_id = '',
       user_id = '',
     }: {
-      chat_id: number | string,
-      user_id: number | string,
-    } = {
+        chat_id: number | string,
+        user_id: number | string,
+      } = {
         chat_id: '',
         user_id: '',
       }
@@ -1254,9 +1299,9 @@ export class tgbot {
       chat_id = '',
       sticker_set_name = '',
     }: {
-      chat_id: number | string,
-      sticker_set_name: string,
-    } = {
+        chat_id: number | string,
+        sticker_set_name: string,
+      } = {
         chat_id: '',
         sticker_set_name: '',
       }
@@ -1275,8 +1320,8 @@ export class tgbot {
     {
       chat_id = '',
     }: {
-      chat_id: number | string,
-    } = {
+        chat_id: number | string,
+      } = {
         chat_id: '',
       }
   ) {
@@ -1296,12 +1341,12 @@ export class tgbot {
       url = '',
       cache_time = null,
     }: {
-      callback_query_id?: string,
-      text?: string,
-      show_alert?: boolean,
-      url?: string,
-      cache_time?: number | null,
-    } = {
+        callback_query_id?: string,
+        text?: string,
+        show_alert?: boolean,
+        url?: string,
+        cache_time?: number | null,
+      } = {
         callback_query_id: '',
       }
   ) {
@@ -1321,8 +1366,8 @@ export class tgbot {
     {
       commands = [],
     }: {
-      commands: object[]
-    } = {
+        commands: object[]
+      } = {
         commands: [],
       }
   ) {
@@ -1354,14 +1399,14 @@ export class tgbot {
       disable_web_page_preview = false,
       reply_markup = ''
     }: {
-      chat_id?: number | string,
-      message_id?: number | null,
-      inline_message_id?: string,
-      text: string,
-      parse_mode?: string,
-      disable_web_page_preview?: boolean,
-      reply_markup?: any,
-    } = {
+        chat_id?: number | string,
+        message_id?: number | null,
+        inline_message_id?: string,
+        text: string,
+        parse_mode?: string,
+        disable_web_page_preview?: boolean,
+        reply_markup?: any,
+      } = {
         text: '',
       }
   ) {
@@ -1374,7 +1419,10 @@ export class tgbot {
       'text': String(text),
       'parse_mode': String(parse_mode),
       'disable_web_page_preview': Boolean(disable_web_page_preview),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1389,14 +1437,14 @@ export class tgbot {
       disable_web_page_preview = false,
       reply_markup = ''
     }: {
-      chat_id?: number | string,
-      message_id?: number | null,
-      inline_message_id?: string,
-      caption?: string,
-      parse_mode?: string,
-      disable_web_page_preview?: boolean,
-      reply_markup?: any,
-    } = {}
+        chat_id?: number | string,
+        message_id?: number | null,
+        inline_message_id?: string,
+        caption?: string,
+        parse_mode?: string,
+        disable_web_page_preview?: boolean,
+        reply_markup?: any,
+      } = {}
   ) {
     let start_payload = {
       "method": "editMessageCaption",
@@ -1406,7 +1454,10 @@ export class tgbot {
       'caption': String(caption),
       'parse_mode': parse_mode,
       'disable_web_page_preview': disable_web_page_preview,
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1419,12 +1470,12 @@ export class tgbot {
       media = {},
       reply_markup = ''
     }: {
-      chat_id?: number | string,
-      message_id?: number | null,
-      inline_message_id?: string,
-      media: object,
-      reply_markup?: any,
-    } = {
+        chat_id?: number | string,
+        message_id?: number | null,
+        inline_message_id?: string,
+        media: object,
+        reply_markup?: any,
+      } = {
         media: {},
       }
   ) {
@@ -1435,7 +1486,10 @@ export class tgbot {
       'message_id': String(message_id),
       'inline_message_id': String(inline_message_id),
       'media': String(media),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1447,18 +1501,21 @@ export class tgbot {
       inline_message_id = '',
       reply_markup = ''
     }: {
-      chat_id?: number | string,
-      message_id?: number | null,
-      inline_message_id?: string,
-      reply_markup?: any,
-    } = {}
+        chat_id?: number | string,
+        message_id?: number | null,
+        inline_message_id?: string,
+        reply_markup?: any,
+      } = {}
   ) {
     let start_payload = {
       "method": "editMessageReplyMarkup",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
       'inline_message_id': String(inline_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1469,10 +1526,10 @@ export class tgbot {
       message_id = null,
       reply_markup = ''
     }: {
-      chat_id: number | string,
-      message_id: number | null,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        message_id: number | null,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         message_id: null,
       }
@@ -1483,7 +1540,10 @@ export class tgbot {
       "method": "stopPoll",
       'chat_id': String(chat_id),
       'message_id': String(message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1493,9 +1553,9 @@ export class tgbot {
       chat_id = '',
       message_id = null,
     }: {
-      chat_id: number | string,
-      message_id?: number | null,
-    } = {
+        chat_id: number | string,
+        message_id?: number | null,
+      } = {
         chat_id: '',
         message_id: null,
       }
@@ -1521,12 +1581,12 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = '',
     }: {
-      chat_id: number | string,
-      sticker: any,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: number | string,
+        sticker: any,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         sticker: '',
       }
@@ -1541,6 +1601,9 @@ export class tgbot {
       'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
     }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
+    }
     return this.start(start_payload)
   }
 
@@ -1548,8 +1611,8 @@ export class tgbot {
     {
       name = '',
     }: {
-      name: string,
-    } = {
+        name: string,
+      } = {
         name: '',
       }
   ) {
@@ -1566,9 +1629,9 @@ export class tgbot {
       user_id = null,
       png_sticker = '',
     }: {
-      user_id: number | null,
-      png_sticker: any,
-    } = {
+        user_id: number | null,
+        png_sticker: any,
+      } = {
         user_id: null,
         png_sticker: '',
       }
@@ -1594,15 +1657,15 @@ export class tgbot {
       contains_masks = false,
       mask_position = null
     }: {
-      user_id: number | null,
-      name: string,
-      title: string,
-      png_sticker?: any,
-      tgs_sticker?: any,
-      emojis: string,
-      contains_masks?: boolean
-      mask_position?: object | null,
-    } = {
+        user_id: number | null,
+        name: string,
+        title: string,
+        png_sticker?: any,
+        tgs_sticker?: any,
+        emojis: string,
+        contains_masks?: boolean
+        mask_position?: object | null,
+      } = {
         user_id: null,
         name: '',
         title: '',
@@ -1636,13 +1699,13 @@ export class tgbot {
       emojis = '',
       mask_position = null,
     }: {
-      user_id: number | null,
-      name: string,
-      png_sticker?: any,
-      tgs_sticker?: any,
-      emojis: string,
-      mask_position?: object | null,
-    } = {
+        user_id: number | null,
+        name: string,
+        png_sticker?: any,
+        tgs_sticker?: any,
+        emojis: string,
+        mask_position?: object | null,
+      } = {
         user_id: null,
         name: '',
         emojis: '',
@@ -1668,9 +1731,9 @@ export class tgbot {
       sticker = '',
       position = null,
     }: {
-      sticker: string,
-      position: number | null,
-    } = {
+        sticker: string,
+        position: number | null,
+      } = {
         sticker: '',
         position: null,
       }
@@ -1689,8 +1752,8 @@ export class tgbot {
     {
       sticker = '',
     }: {
-      sticker: string,
-    } = {
+        sticker: string,
+      } = {
         sticker: '',
       }
   ) {
@@ -1708,10 +1771,10 @@ export class tgbot {
       user_id = null,
       thumb = '',
     }: {
-      name: string,
-      user_id: number | null,
-      thumb?: any,
-    } = {
+        name: string,
+        user_id: number | null,
+        thumb?: any,
+      } = {
         user_id: null,
         name: '',
       }
@@ -1739,14 +1802,14 @@ export class tgbot {
       switch_pm_text = '',
       switch_pm_parameter = '',
     }: {
-      inline_query_id: string,
-      results: object[],
-      cache_time?: number | null,
-      is_personal?: boolean,
-      next_offset?: string,
-      switch_pm_text?: string,
-      switch_pm_parameter?: string,
-    } = {
+        inline_query_id: string,
+        results: object[],
+        cache_time?: number | null,
+        is_personal?: boolean,
+        next_offset?: string,
+        switch_pm_text?: string,
+        switch_pm_parameter?: string,
+      } = {
         inline_query_id: '',
         results: [],
       }
@@ -1794,30 +1857,30 @@ export class tgbot {
     reply_to_message_id = '',
     reply_markup = '',
   }: {
-    chat_id: number | string,
-    title: string,
-    description: string,
-    payload: string,
-    provider_token: string,
-    start_parameter: string,
-    currency: string,
-    prices: object[],
-    provider_data?: string,
-    photo_url?: string,
-    photo_size?: number | null,
-    photo_width?: number | null,
-    photo_height?: number | null,
-    need_name?: boolean,
-    need_phone_number?: boolean,
-    need_email?: boolean,
-    need_shipping_address?: boolean,
-    send_phone_number_to_provider?: boolean,
-    send_email_to_provider?: boolean,
-    is_flexible?: boolean,
-    disable_notification?: boolean,
-    reply_to_message_id?: number | string,
-    reply_markup?: any,
-  } = {
+      chat_id: number | string,
+      title: string,
+      description: string,
+      payload: string,
+      provider_token: string,
+      start_parameter: string,
+      currency: string,
+      prices: object[],
+      provider_data?: string,
+      photo_url?: string,
+      photo_size?: number | null,
+      photo_width?: number | null,
+      photo_height?: number | null,
+      need_name?: boolean,
+      need_phone_number?: boolean,
+      need_email?: boolean,
+      need_shipping_address?: boolean,
+      send_phone_number_to_provider?: boolean,
+      send_email_to_provider?: boolean,
+      is_flexible?: boolean,
+      disable_notification?: boolean,
+      reply_to_message_id?: number | string,
+      reply_markup?: any,
+    } = {
       chat_id: '',
       title: '',
       description: '',
@@ -1861,6 +1924,9 @@ export class tgbot {
       'reply_to_message_id': Number(reply_to_message_id),
       'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
     }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
+    }
     return this.start(start_payload)
   }
 
@@ -1871,11 +1937,11 @@ export class tgbot {
       shipping_options = null,
       error_message = '',
     }: {
-      shipping_query_id: string,
-      ok: boolean | null,
-      shipping_options?: object[] | null,
-      error_message?: string,
-    } = {
+        shipping_query_id: string,
+        ok: boolean | null,
+        shipping_options?: object[] | null,
+        error_message?: string,
+      } = {
         shipping_query_id: '',
         ok: null,
       }
@@ -1898,10 +1964,10 @@ export class tgbot {
       ok = null,
       error_message = '',
     }: {
-      pre_checkout_query_id: string,
-      ok: boolean | null,
-      error_message?: string,
-    } = {
+        pre_checkout_query_id: string,
+        ok: boolean | null,
+        error_message?: string,
+      } = {
         pre_checkout_query_id: '',
         ok: null,
       }
@@ -1925,9 +1991,9 @@ export class tgbot {
       user_id = '',
       errors = null,
     }: {
-      user_id: string,
-      errors: object[] | null,
-    } = {
+        user_id: string,
+        errors: object[] | null,
+      } = {
         user_id: '',
         errors: null,
       }
@@ -1953,12 +2019,12 @@ export class tgbot {
       reply_to_message_id = '',
       reply_markup = ''
     }: {
-      chat_id: string,
-      game_short_name: string | null,
-      disable_notification?: boolean,
-      reply_to_message_id?: number | string,
-      reply_markup?: any,
-    } = {
+        chat_id: string,
+        game_short_name: string | null,
+        disable_notification?: boolean,
+        reply_to_message_id?: number | string,
+        reply_markup?: any,
+      } = {
         chat_id: '',
         game_short_name: null,
       }
@@ -1971,7 +2037,10 @@ export class tgbot {
       "game_short_name": game_short_name,
       'disable_notification': Boolean(disable_notification),
       'reply_to_message_id': Number(reply_to_message_id),
-      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+      'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
+    }
+    if (start_payload['reply_markup'] == null) {
+      delete start_payload['reply_markup']
     }
     return this.start(start_payload)
   }
@@ -1986,14 +2055,14 @@ export class tgbot {
       message_id = '',
       inline_message_id = '',
     }: {
-      user_id: string,
-      score: number | null,
-      force?: null,
-      disable_edit_message?: boolean | null,
-      chat_id?: string | number,
-      message_id?: string | number,
-      inline_message_id?: string,
-    } = {
+        user_id: string,
+        score: number | null,
+        force?: null,
+        disable_edit_message?: boolean | null,
+        chat_id?: string | number,
+        message_id?: string | number,
+        inline_message_id?: string,
+      } = {
         user_id: '',
         score: null,
       }
@@ -2020,11 +2089,11 @@ export class tgbot {
       message_id = '',
       inline_message_id = '',
     }: {
-      user_id: string,
-      chat_id?: string | number,
-      message_id?: string | number,
-      inline_message_id?: string,
-    } = {
+        user_id: string,
+        chat_id?: string | number,
+        message_id?: string | number,
+        inline_message_id?: string,
+      } = {
         user_id: '',
       }
   ) {
@@ -2047,8 +2116,8 @@ export class tgbot {
     {
       file_id = '',
     }: {
-      file_id: string,
-    } = {
+        file_id: string,
+      } = {
         file_id: '',
       }
   ) {
@@ -2065,8 +2134,8 @@ export class tgbot {
     {
       path = ''
     }: {
-      path: any
-    } = {
+        path: any
+      } = {
         path: ''
       }
   ) {
@@ -2084,7 +2153,24 @@ export class tgbot {
       "method": "post",
       "payload": payload
     }
-    // @ts-ignore
-    return JSON.parse(UrlFetchApp.fetch(this.api_url, data));
+    try {
+      // @ts-ignore
+      return JSON.parse(UrlFetchApp.fetch(this.api_url, data));
+    } catch (error) {
+      // @ts-ignore
+      var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", this.api_url, false); // 超重要，同步
+      xhr.setRequestHeader('Content-Type', ' application/json');
+      xhr.send(JSON.stringify(payload));
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          return xhr.responseText;
+        } else {
+          throw new Error(`XMLHttpRequest error`);
+        }
+      };
+      return JSON.parse(xhr.responseText);
+    }
   }
 }

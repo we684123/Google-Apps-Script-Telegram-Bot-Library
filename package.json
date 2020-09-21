@@ -1,6 +1,6 @@
 {
   "name": "google-apps-script-telegram-bot-library",
-  "version": "1.0.5",
+  "version": "1.1.2",
   "description": "you can use this library to develop your tgbot on google apps script",
   "main": "tgbot.js",
   "types": "tgbot.d.ts",
@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/we684123/Google-Apps-Script-Telegram-Bot-Library/issues"
   },
-  "homepage": "https://github.com/we684123/Google-Apps-Script-Telegram-Bot-Library#readme"
+  "homepage": "https://github.com/we684123/Google-Apps-Script-Telegram-Bot-Library#readme",
+  "dependencies":{
+    "xmlhttprequest":">=1.8.0"
+  }
 }
