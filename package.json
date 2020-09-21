@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/we684123/Google-Apps-Script-Telegram-Bot-Library/issues"
   },
-  "homepage": "https://github.com/we684123/Google-Apps-Script-Telegram-Bot-Library#readme"
+  "homepage": "https://github.com/we684123/Google-Apps-Script-Telegram-Bot-Library#readme",
+  "dependencies":{
+    "xmlhttprequest":">=1.8.0"
+  }
 }
