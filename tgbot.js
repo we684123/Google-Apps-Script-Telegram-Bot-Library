@@ -87,6 +87,9 @@ class tgbot {
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     forwardMessage({ chat_id = '', from_chat_id = '', disable_notification = false, message_id = '' } = {
@@ -125,8 +128,11 @@ class tgbot {
             'parse_mode': String(parse_mode),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendAudio({ chat_id = '', audio = '', caption = '', parse_mode = '', duration = '', performer = '', title = '', thumb = '', disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -149,8 +155,11 @@ class tgbot {
             'thumb': thumb,
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendDocument({ chat_id = '', document = '', thumb = '', caption = '', parse_mode = '', disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -170,8 +179,11 @@ class tgbot {
             'parse_mode': String(parse_mode),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendVideo({ chat_id = '', video = '', duration = '', width = '', height = '', thumb = '', caption = '', parse_mode = '', supports_streaming = false, disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -195,8 +207,11 @@ class tgbot {
             'supports_streaming': Boolean(supports_streaming),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendAnimation({ chat_id = '', animation = '', duration = '', width = '', height = '', thumb = '', caption = '', parse_mode = '', disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -219,8 +234,11 @@ class tgbot {
             'parse_mode': String(parse_mode),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendVoice({ chat_id = '', voice = '', duration = '', caption = '', parse_mode = '', disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -240,8 +258,11 @@ class tgbot {
             'parse_mode': String(parse_mode),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendVideoNote({ chat_id = '', video_note = '', duration = '', length = '', thumb = '', disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -261,8 +282,11 @@ class tgbot {
             'thumb': thumb,
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendMediaGroup({ chat_id = '', media = [], disable_notification = false, reply_to_message_id = '', } = {
@@ -301,8 +325,11 @@ class tgbot {
             'live_period': Number(live_period),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     editMessageLiveLocation({ chat_id = '', message_id = null, inline_message_id = '', latitude = null, longitude = null, reply_markup = '' } = {
@@ -320,8 +347,11 @@ class tgbot {
             'inline_message_id': String(inline_message_id),
             'latitude': Number(latitude),
             'longitude': Number(longitude),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     stopMessageLiveLocation({ chat_id = '', message_id = null, inline_message_id = '', reply_markup = '' } = {}) {
@@ -330,8 +360,11 @@ class tgbot {
             'chat_id': String(chat_id),
             'message_id': Number(message_id),
             'inline_message_id': String(inline_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendVenue({ chat_id = '', latitude = null, longitude = null, title = '', address = '', foursquare_id = '', foursquare_type = '', disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -362,8 +395,11 @@ class tgbot {
             'foursquare_type': String(foursquare_type),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendContact({ chat_id = '', phone_number = '', first_name = '', last_name = '', vcard = '', disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -386,8 +422,11 @@ class tgbot {
             'vcard': String(vcard),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendPoll({ chat_id = '', question = '', options = [], is_anonymous = false, type = 'regular', allows_multiple_answers = false, correct_option_id = null, explanation = '', explanation_parse_mode = '', open_period = null, close_date = null, is_closed = false, disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -417,8 +456,11 @@ class tgbot {
             'is_closed': Boolean(is_closed),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendDice({ chat_id = '', emoji = '', disable_notification = false, reply_to_message_id = '', reply_markup = '' } = {
@@ -432,8 +474,11 @@ class tgbot {
             'emoji': String(emoji),
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     sendChatAction({ chat_id = '', action = '', } = {
@@ -811,8 +856,11 @@ class tgbot {
             'text': String(text),
             'parse_mode': String(parse_mode),
             'disable_web_page_preview': Boolean(disable_web_page_preview),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     editMessageCaption({ chat_id = '', message_id = null, inline_message_id = '', caption = '', parse_mode = '', disable_web_page_preview = false, reply_markup = '' } = {}) {
@@ -824,8 +872,11 @@ class tgbot {
             'caption': String(caption),
             'parse_mode': parse_mode,
             'disable_web_page_preview': disable_web_page_preview,
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     editMessageMedia({ chat_id = '', message_id = null, inline_message_id = '', media = {}, reply_markup = '' } = {
@@ -839,8 +890,11 @@ class tgbot {
             'message_id': String(message_id),
             'inline_message_id': String(inline_message_id),
             'media': String(media),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     editMessageReplyMarkup({ chat_id = '', message_id = null, inline_message_id = '', reply_markup = '' } = {}) {
@@ -849,8 +903,11 @@ class tgbot {
             'chat_id': String(chat_id),
             'message_id': String(message_id),
             'inline_message_id': String(inline_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     stopPoll({ chat_id = '', message_id = null, reply_markup = '' } = {
@@ -865,8 +922,11 @@ class tgbot {
             "method": "stopPoll",
             'chat_id': String(chat_id),
             'message_id': String(message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     deleteMessage({ chat_id = '', message_id = null, } = {
@@ -901,6 +961,9 @@ class tgbot {
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     getStickerSet({ name = '', } = {
@@ -1095,6 +1158,9 @@ class tgbot {
             'reply_to_message_id': Number(reply_to_message_id),
             'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     answerShippingQuery({ shipping_query_id = '', ok = null, shipping_options = null, error_message = '', } = {
@@ -1161,8 +1227,11 @@ class tgbot {
             "game_short_name": game_short_name,
             'disable_notification': Boolean(disable_notification),
             'reply_to_message_id': Number(reply_to_message_id),
-            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup)
+            'reply_markup': reply_markup == '' ? null : JSON.stringify(reply_markup),
         };
+        if (start_payload['reply_markup'] == null) {
+            delete start_payload['reply_markup'];
+        }
         return this.start(start_payload);
     }
     setGameScore({ user_id = '', score = null, force = null, disable_edit_message = false, chat_id = '', message_id = '', inline_message_id = '', } = {
@@ -1205,7 +1274,7 @@ class tgbot {
     }) {
         if (file_id === '')
             this.miss_parameter("file_id");
-        const url = `"https://api.telegram.org/bot${this.token}/getFile?file_id=${file_id}`;
+        const url = `https://api.telegram.org/bot${this.token}/getFile?file_id=${file_id}`;
         // @ts-ignore
         var html = UrlFetchApp.fetch(url);
         var json_html = JSON.parse(html);
@@ -1229,8 +1298,27 @@ class tgbot {
             "method": "post",
             "payload": payload
         };
-        // @ts-ignore
-        return UrlFetchApp.fetch(this.api_url, data);
+        try {
+            // @ts-ignore
+            return JSON.parse(UrlFetchApp.fetch(this.api_url, data));
+        }
+        catch (error) {
+            // @ts-ignore
+            var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", this.api_url, false); // 超重要，同步
+            xhr.setRequestHeader('Content-Type', ' application/json');
+            xhr.send(JSON.stringify(payload));
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    return xhr.responseText;
+                }
+                else {
+                    throw new Error(`XMLHttpRequest error`);
+                }
+            };
+            return JSON.parse(xhr.responseText);
+        }
     }
 }
 exports.tgbot = tgbot;
