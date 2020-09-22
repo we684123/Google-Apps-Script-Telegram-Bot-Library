@@ -37,7 +37,16 @@ Open Script Editor.
 ```javascript
 const tgbot = require('google-apps-script-telegram-bot-library')
 var bot = new tgbot.tgbot("<botToken>")
-var result = bot.sendMessage({"chat_id":"123","text":"030"})
+var result = bot.sendMessage({"chat_id":"123","text":"030//"})
+console.log(result);
+```
+
+## Run on TypeScript
+
+```typescript
+import{tgbot} from "google-apps-script-telegram-bot-library"
+var bot = new tgbot("<botToken>")
+var result = bot.sendMessage({"chat_id":"123","text":"030//"})
 console.log(result);
 ```
 
@@ -45,7 +54,7 @@ console.log(result);
 
 ```javascript
 var tgbot = new TGbot.tgbot("<botToken>");
-var result = tgbot.sendMessage({"chat_id":"123","text":"030"})
+var result = tgbot.sendMessage({"chat_id":"123","text":"030//"})
 console.log(result);
 ```
 
