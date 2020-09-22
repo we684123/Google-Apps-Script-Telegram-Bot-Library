@@ -44,7 +44,7 @@ console.log(result);
 ## Run on TypeScript
 
 ```typescript
-import{tgbot} from "google-apps-script-telegram-bot-library"
+import {tgbot} from "google-apps-script-telegram-bot-library"
 var bot = new tgbot("<botToken>")
 var result = bot.sendMessage({"chat_id":"123","text":"030//"})
 console.log(result);
