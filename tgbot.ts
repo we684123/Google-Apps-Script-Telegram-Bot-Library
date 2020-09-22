@@ -2122,12 +2122,7 @@ export class tgbot {
       }
   ) {
     if (file_id === '') this.miss_parameter("file_id")
-    const url = `https://api.telegram.org/bot${this.token}/getFile?file_id=${file_id}`
-    // @ts-ignore
-    var html: string = UrlFetchApp.fetch(url);
-    var json_html: any = JSON.parse(html);
-    var path = json_html.result.file_path
-    return path;
+    return this.getFile({"file_id":file_id}).result.file_path
   }
 
   public getFileDownloadUrl(

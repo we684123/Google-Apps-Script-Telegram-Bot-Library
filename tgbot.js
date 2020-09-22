@@ -1353,12 +1353,7 @@ var tgbot = /** @class */ (function () {
         } : _a).file_id, file_id = _b === void 0 ? '' : _b;
         if (file_id === '')
             this.miss_parameter("file_id");
-        var url = "https://api.telegram.org/bot" + this.token + "/getFile?file_id=" + file_id;
-        // @ts-ignore
-        var html = UrlFetchApp.fetch(url);
-        var json_html = JSON.parse(html);
-        var path = json_html.result.file_path;
-        return path;
+        return this.getFile({ "file_id": file_id }).result.file_path;
     };
     tgbot.prototype.getFileDownloadUrl = function (_a) {
         var _b = (_a === void 0 ? {
@@ -1378,8 +1373,6 @@ var tgbot = /** @class */ (function () {
             "method": "post",
             "payload": payload
         };
-        var api_url = this.api_url
-//        return JSON.parse(UrlFetchApp.fetch(api_url, data));
         try {
             // @ts-ignore
             return JSON.parse(UrlFetchApp.fetch(this.api_url, data));
