@@ -10,8 +10,8 @@ this library is follow [official telegam bot api](https://core.telegram.org/bots
 你可以在該網站找到所有這個 library 所支援的 methods  
 you can find all availability methods from this library in web
 
-目前配合的 api 版本: v4.9  
-Availability version: v4.9
+ℹ目前配合的 api 版本: v4.9  
+ℹavailability version: v4.9
 
 ![Imgur](https://imgur.com/iP46IBt.gif)  
 ![Imgur](https://imgur.com/5f4jlmG.gif)
